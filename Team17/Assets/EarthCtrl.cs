@@ -7,9 +7,11 @@ public class EarthCtrl : MonoBehaviour
     // Start is called before the first frame update
     public float hp;
     public float maxHp;
+    public GameObject ryusei;
     void Start()
     {
         hp = maxHp;
+      
     }
 
     // Update is called once per frame
@@ -20,5 +22,13 @@ public class EarthCtrl : MonoBehaviour
     public void Damage(float damage)
     {
         hp -= damage;
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag=="Meteo")
+        {
+            Instantiate(ryusei,new Vector3(25,23,-1), transform.rotation);
+        }
+
     }
 }
