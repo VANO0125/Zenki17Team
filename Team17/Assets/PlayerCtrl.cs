@@ -45,6 +45,7 @@ public class PlayerCtrl : MonoBehaviour
         {
             isCatch = true;
             catchMeteo = meteoHit.transform.gameObject;
+            catchMeteo.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
 
         //掴んだ隕石を止める
@@ -52,8 +53,6 @@ public class PlayerCtrl : MonoBehaviour
         {
             rig.constraints = RigidbodyConstraints2D.FreezePosition;
             catchMeteo.transform.parent = transform;
-            catchMeteo.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            catchMeteo.GetComponent<Rigidbody2D>().isKinematic = true;
         }
         else
         {
@@ -68,10 +67,8 @@ public class PlayerCtrl : MonoBehaviour
         //Bボタンを離すと前方に隕石を投げる
         if (isCatch && !GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
         {
-            isCatch = false;
-            catchMeteo.GetComponent<Rigidbody2D>().isKinematic = false;
-            catchMeteo.GetComponent<Rigidbody2D>().AddForce((catchMeteo.transform.position - transform.position).normalized * 50, ForceMode2D.Impulse);
             catchMeteo.transform.parent = null;
+            catchMeteo.GetComponent<Rigidbody2D>().AddForce((catchMeteo.transform.position - transform.position).normalized * 50, ForceMode2D.Impulse);
             catchMeteo = null;
         }
     }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MeteoCtrl : MonoBehaviour
 {
+    public float size;//隕石の大きさ
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,11 @@ public class MeteoCtrl : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Earth")
+            Destroy(gameObject);
     }
 }
