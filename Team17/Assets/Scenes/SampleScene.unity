@@ -236,7 +236,7 @@ PrefabInstance:
     - target: {fileID: 8737730600621317920, guid: 32abf45a15ceb3c4095ac028951e4d98,
         type: 3}
       propertyPath: m_Name
-      value: earth
+      value: Earth
       objectReference: {fileID: 0}
     - target: {fileID: 2164588960988197776, guid: 32abf45a15ceb3c4095ac028951e4d98,
         type: 3}
@@ -296,7 +296,7 @@ PrefabInstance:
     - target: {fileID: 8601035571790664143, guid: 32abf45a15ceb3c4095ac028951e4d98,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7186988539121719486, guid: 32abf45a15ceb3c4095ac028951e4d98,
         type: 3}
