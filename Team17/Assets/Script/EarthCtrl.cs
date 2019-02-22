@@ -38,8 +38,6 @@ public class EarthCtrl : MonoBehaviour
     {
         this.score += score;//加点
         scoreNumber.Set(this.score);//スコアを更新
-        
-        this.score += score;
         star.FallStar();
     }
 }

@@ -9,17 +9,19 @@ public class Number : MonoBehaviour
     private Image[] score = new Image[10];
     private int count = 9;
     private int damage;
+    private int digit;
 
     // Use this for initialization
     void Start()
     {
+        for (int i = 0; i < 10; i++)
+            score[i] = transform.GetChild(i).gameObject.GetComponent<Image>();
     }
 
     public void Set(int score)
     {
-        for (int i = 0; i < 10; i++)
-            this.score[i] = transform.GetChild(i).gameObject.GetComponent<Image>();
-        var digit = score;
+        count = 9;
+         digit += score;
         //要素数0には１桁目の値が格納
         List<int> number = new List<int>();
         while (digit != 0)
