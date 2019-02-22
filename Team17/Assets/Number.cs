@@ -5,32 +5,20 @@ using UnityEngine.UI;
 
 public class Number : MonoBehaviour
 {
-	/*
-    public Sprite numbers;
-	public Sprite[] sprites;
-    private GameObject[] objects = new GameObject[7];
-    private int count = 6;
+    public Sprite[] numbers;
+    private Image[] score = new Image[10];
+    private int count = 9;
     private int damage;
 
     // Use this for initialization
     void Start()
     {
-		for(int i=0;i<9;i++)
-		{
-		//numbers
-		}
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void Set(int score)
     {
-        for (int i = 0; i < 7; i++)
-            objects[i] = transform.GetChild(i).gameObject;
+        for (int i = 0; i < 10; i++)
+            this.score[i] = transform.GetChild(i).gameObject.GetComponent<Image>();
         var digit = score;
         //要素数0には１桁目の値が格納
         List<int> number = new List<int>();
@@ -39,9 +27,9 @@ public class Number : MonoBehaviour
             score = digit % 10;
             digit = digit / 10;
             number.Add(score);
-            objects[count].GetComponent<SpriteRenderer>().sprite= numbers[score];
+            this.score[count].sprite = numbers[score];
             count--;
         }
-        Destroy(gameObject,1f);
-    }*/
+        // Destroy(gameObject,1f);
+    }
 }

@@ -7,6 +7,7 @@ public class MeteoCtrl : MonoBehaviour
     public float size;//隕石の大きさ
     public float safeSize = 3;//地球にダメージを与えない最大の大きさ
     public float damage = 1;//基礎ダメージ
+    public int point=100;//基礎加点スコア
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,7 @@ public class MeteoCtrl : MonoBehaviour
             EarthCtrl earth = col.gameObject.GetComponent<EarthCtrl>();
             //サイズが一定以下なら加点
             if (size <= safeSize)
-             earth.AddScore(size); 
+             earth.AddScore((int)size*point); 
             //一定以上ならダメージ
             else
                 earth.Damage(size * damage);

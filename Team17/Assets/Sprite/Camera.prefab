@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3209338339426327236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 25.3, y: 23, z: -1.7977889}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5125, y: 1, z: 1}
   m_Children:
   - {fileID: 4612516790133412659}
   m_Father: {fileID: 0}
@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4612516790133412659}
   - component: {fileID: 2908572427495816782}
+  - component: {fileID: 202750368}
   m_Layer: 0
   m_Name: yozora
   m_TagString: Untagged
@@ -162,3 +163,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &202750368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8644799738534967140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0fb6a17bf4de76458772b534dee26ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ryusei: {fileID: 6966006002032072323, guid: 4e90f8bceff4d47448222f2c665d988a, type: 3}
+  meteo: {fileID: 9125032537140859127, guid: b0e60e3d782425c4fb5ed94d0a4c1d23, type: 3}

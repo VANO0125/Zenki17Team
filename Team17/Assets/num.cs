@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour
+public class num : MonoBehaviour
 {
-	public int score;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +15,4 @@ public class ScoreManager : MonoBehaviour
     {
         
     }
-
-	public void AddScore(int point)
-	{score+= point;}
 }
