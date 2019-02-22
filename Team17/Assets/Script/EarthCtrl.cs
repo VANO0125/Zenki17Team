@@ -32,12 +32,4 @@ public class EarthCtrl : MonoBehaviour
         this.score += score;
         star.FallStar();
     }
-    //void OnCollisionEnter2D(Collision2D col)
-    //{
-    //    if (col.gameObject.tag=="Meteo")
-    //    {
-    //        Instantiate(ryusei,new Vector3(25,23,-1), transform.rotation);
-    //    }
-
-    //}
 }

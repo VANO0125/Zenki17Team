@@ -20,12 +20,14 @@ public class ShootingStar : MonoBehaviour
 
     public void FallStar()
     {
+        //流れ星を2秒表示
         GameObject obj = Instantiate(ryusei, transform.position, Quaternion.identity);
         Destroy(obj, 2f);
     }
 
     public void FallMeteo()
     {
+        //隕石を2秒表示
         GameObject obj = Instantiate(meteo, transform.position, Quaternion.identity);
         Destroy(obj, 2f);
     }
