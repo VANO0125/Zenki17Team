@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7547906917642476415}
   - component: {fileID: 7149734529273902492}
   - component: {fileID: 8356052484856300692}
-  - component: {fileID: 6946318127781122154}
+  - component: {fileID: 6417529311024763088}
   m_Layer: 8
   m_Name: Meteo
   m_TagString: Meteo
@@ -119,7 +119,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &6946318127781122154
+--- !u!114 &6417529311024763088
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,6 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e45f05632d83b4c947cd4d22ab758b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 5
+  size: 1
   safeSize: 3
   damage: 1
