@@ -8,12 +8,14 @@ public class PlayerCtrl : MonoBehaviour
     private Rigidbody2D rig;
     private bool isCatch;//隕石を掴んでいるか
     private GameObject catchMeteo;//掴んでいる隕石
-
     public float speed;//移動スピード
+    private bool isShot;
 
     // Start is called before the first frame update
     void Start()
     {
+        isShot = false;
+        isCatch = false;
         rig = GetComponent<Rigidbody2D>();
     }
 
@@ -67,9 +69,22 @@ public class PlayerCtrl : MonoBehaviour
         //Bボタンを離すと前方に隕石を投げる
         if (isCatch && !GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
         {
+            isShot = true;
             catchMeteo.transform.parent = null;
             catchMeteo.GetComponent<Rigidbody2D>().AddForce((catchMeteo.transform.position - transform.position).normalized * 50, ForceMode2D.Impulse);
             catchMeteo = null;
         }
+       
     }
+
+    public bool GetShot()
+    {
+        return isShot;
+    }
+
+    public bool GetCatch()
+    {
+        return isCatch;
+    }
+
 }
