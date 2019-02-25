@@ -10,6 +10,7 @@ public class EarthCtrl : MonoBehaviour
     public float maxHp;
     private int score;//スコア
     public Number scoreNumber;//スコア描写
+    public GameObject over;
     public bool isDead;//死亡判定
 
 	public ShootingStar star;//地上視点
@@ -40,6 +41,7 @@ public class EarthCtrl : MonoBehaviour
     {
         //破壊処理
         Destroy(gameObject);
+        over.SetActive(true);
     }
 
     public void Damage(float damage)
