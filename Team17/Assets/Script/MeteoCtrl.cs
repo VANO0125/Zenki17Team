@@ -22,7 +22,9 @@ public class MeteoCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        size=Random.Range(1,5);
+        //メテオランダム
+        size=Random.Range(3,5);
+        //メテオキャッチ
         transform.localScale *= size;
         isCaught = false;
         hitNum = 0;

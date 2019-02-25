@@ -33,7 +33,7 @@ public class MeteoManger : MonoBehaviour
         if (timer >= timermax)
         {
             Instantiate(Meteo, train.position, train.rotation);
-            
+          
             timer = 0;
         }
     }
