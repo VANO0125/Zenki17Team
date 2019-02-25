@@ -19,7 +19,7 @@ public class MeteoCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
- 
+        transform.localScale *= size;
     }
 
     // Update is called once per frame
