@@ -22,6 +22,8 @@ public class MeteoCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        size=Random.Range(1,5);
+        transform.localScale *= size;
         isCaught = false;
         hitNum = 0;
         player = GameObject.Find("Player").GetComponent<PlayerCtrl>();
@@ -32,6 +34,7 @@ public class MeteoCtrl : MonoBehaviour
     void Update()
     {
         Move();
+        
     }
 
     void Move()
