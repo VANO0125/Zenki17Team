@@ -10,10 +10,12 @@ public class MeteoManger : MonoBehaviour
     private List<GameObject> spawnPos;
     private float timer;
     public float timermax;
+    public float meteosize;
     // Start is called before the first frame update
     void Start()
     {
         timer = 0;
+        
     }
 
     // Update is called once per frame
@@ -21,6 +23,7 @@ public class MeteoManger : MonoBehaviour
     {
         SpawnPos();
         Spawn();
+        
     }
 
     void Spawn()
@@ -30,7 +33,7 @@ public class MeteoManger : MonoBehaviour
         if (timer >= timermax)
         {
             Instantiate(Meteo, train.position, train.rotation);
-
+            
             timer = 0;
         }
     }
