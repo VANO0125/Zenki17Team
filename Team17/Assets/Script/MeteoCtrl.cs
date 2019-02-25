@@ -8,6 +8,7 @@ public class MeteoCtrl : MonoBehaviour
     public float safeSize = 3;//地球にダメージを与えない最大の大きさ
     public float divisionNum = 2;//分裂数
     public float damage = 1;//基礎ダメージ
+    public bool isCaught;
     public int point=100;//基礎加点スコア
     [SerializeField]
     private PlayerCtrl player;
@@ -15,12 +16,18 @@ public class MeteoCtrl : MonoBehaviour
     private GameObject target;
     [SerializeField]
     private float speed;
+    Rigidbody2D rb;
+    private int hitNum;
 
     // Start is called before the first frame update
     void Start()
     {
         size=Random.Range(1,5);
         transform.localScale *= size;
+        isCaught = false;
+        hitNum = 0;
+        player = GameObject.Find("Player").GetComponent<PlayerCtrl>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -32,8 +39,9 @@ public class MeteoCtrl : MonoBehaviour
 
     void Move()
     {
-        if (player.GetCatch()) return;
-        transform.position = Vector2.Lerp(transform.position, target.transform.position, speed*0.01f);
+        if (isCaught) return;
+        rb.AddForceAtPosition((target.transform.position - transform.position).normalized * speed * 0.01f, target.transform.position, ForceMode2D.Impulse);
+       
     }
 
     //スケールとサイズを分裂数分割る
@@ -70,12 +78,18 @@ public class MeteoCtrl : MonoBehaviour
         if(col.gameObject.tag == "Meteo" && player.GetShot())
         {
             Vector2 hitPos;
+
             Transform spawnpos = transform;
-            Division();
+            if(hitNum <=0)
+            {
+                Division();
+            }
+           
             foreach (ContactPoint2D point in col.contacts)
             {
                 hitPos = point.point;               
             }
+            hitNum++;
         }
     }
 }
