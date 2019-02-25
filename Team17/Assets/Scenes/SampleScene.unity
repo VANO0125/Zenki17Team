@@ -273,7 +273,7 @@ MonoBehaviour:
   m_MaximumDistance: 5000
   m_MinimumFOV: 3
   m_MaximumFOV: 60
-  m_MinimumOrthoSize: 15
+  m_MinimumOrthoSize: 25
   m_MaximumOrthoSize: 100
 --- !u!114 &229025509
 MonoBehaviour:
@@ -429,7 +429,7 @@ Camera:
   far clip plane: 5000
   field of view: 60
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1635,6 +1635,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 8644799738534967140, guid: f228b385e63b1f543a210c5cb7c9c440,
+        type: 3}
+      propertyPath: m_Name
+      value: yozora
+      objectReference: {fileID: 0}
     - target: {fileID: 3022746255391099988, guid: f228b385e63b1f543a210c5cb7c9c440,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1734,6 +1739,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016059348366812077, guid: f228b385e63b1f543a210c5cb7c9c440,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f228b385e63b1f543a210c5cb7c9c440, type: 3}
