@@ -60,21 +60,23 @@ public class MeteoCtrl : MonoBehaviour
         return new Vector2(px, py);
     }
   
-
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Earth")
         {
             EarthCtrl earth = col.gameObject.GetComponent<EarthCtrl>();
             //サイズが一定以下なら加点
             if (size <= safeSize)
-             earth.AddScore((int)size*point); 
+                earth.AddScore((int)size * point);
             //一定以上ならダメージ
             else
                 earth.Damage(size * damage);
             Destroy(gameObject);
         }
+    }
 
+    void OnCollisionEnter2D(Collision2D col)
+    {
         if(col.gameObject.tag == "Meteo" && player.GetShot())
         {
             Vector2 hitPos;

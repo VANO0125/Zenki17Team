@@ -13,8 +13,9 @@ TextureImporter:
     21300016: number_8
     21300018: number_9
     21300020: number_10
+    21300022: number_11
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 9
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -321,6 +322,26 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 6ca725ab650088f4cb7b80db00e6e270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: number_11
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 6
+        width: 37
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03928175309760c48b30150e56e2bd03
       vertices: []
       indices: 
       edges: []

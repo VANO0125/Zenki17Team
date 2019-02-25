@@ -32,6 +32,5 @@ public class Number : MonoBehaviour
             this.score[count].sprite = numbers[score];
             count--;
         }
-        // Destroy(gameObject,1f);
     }
 }
