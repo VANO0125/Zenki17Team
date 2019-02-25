@@ -28,12 +28,13 @@ public class MeteoManger : MonoBehaviour
 
     void Spawn()
     {
-
+        //メテオ数
+         Meteo.gameObject.GetComponent<MeteoCtrl>().size = Random.Range(2, 5);
         timer += Time.deltaTime;
         if (timer >= timermax)
         {
             Instantiate(Meteo, train.position, train.rotation);
-          
+           
             timer = 0;
         }
     }
