@@ -74,7 +74,6 @@ public class EarthCtrl : MonoBehaviour
         {
             isDisplay = false;
             earthCamera.SetActive(false);
-        }
-        
+        }        
     }
 }

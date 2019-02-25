@@ -131,12 +131,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e45f05632d83b4c947cd4d22ab758b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 1
+  size: 4
   safeSize: 3
   divisionNum: 2
   damage: 1
-  isCaught: 0
   point: 100
   player: {fileID: 6055413462914045809, guid: 44c56ea0d4be1474c98ca15b53235656, type: 3}
   target: {fileID: 8737730600621317920, guid: 32abf45a15ceb3c4095ac028951e4d98, type: 3}
   speed: 1
+  isShot: 0
+  isCaught: 0
+  hitNum: 0

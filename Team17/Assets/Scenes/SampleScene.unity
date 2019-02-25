@@ -265,7 +265,7 @@ MonoBehaviour:
   m_MaximumDistance: 5000
   m_MinimumFOV: 3
   m_MaximumFOV: 60
-  m_MinimumOrthoSize: 15
+  m_MinimumOrthoSize: 30
   m_MaximumOrthoSize: 100
 --- !u!114 &229025509
 MonoBehaviour:
@@ -421,7 +421,7 @@ Camera:
   far clip plane: 5000
   field of view: 60
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 30
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -727,22 +727,37 @@ PrefabInstance:
     - target: {fileID: 2164588960988197776, guid: 32abf45a15ceb3c4095ac028951e4d98,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 35.67717
+      value: 96.85281
       objectReference: {fileID: 0}
     - target: {fileID: 2164588960988197776, guid: 32abf45a15ceb3c4095ac028951e4d98,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 35.67717
+      value: 96.85281
       objectReference: {fileID: 0}
     - target: {fileID: 2164588960988197776, guid: 32abf45a15ceb3c4095ac028951e4d98,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 35.67717
+      value: 96.85281
       objectReference: {fileID: 0}
     - target: {fileID: 8601035571790664143, guid: 32abf45a15ceb3c4095ac028951e4d98,
         type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8601035571790664143, guid: 32abf45a15ceb3c4095ac028951e4d98,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.00083727913
+      objectReference: {fileID: 0}
+    - target: {fileID: 8601035571790664143, guid: 32abf45a15ceb3c4095ac028951e4d98,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.09269323
+      objectReference: {fileID: 0}
+    - target: {fileID: 8601035571790664143, guid: 32abf45a15ceb3c4095ac028951e4d98,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0022327935
       objectReference: {fileID: 0}
     - target: {fileID: 7186988539121719486, guid: 32abf45a15ceb3c4095ac028951e4d98,
         type: 3}
@@ -1765,7 +1780,7 @@ PrefabInstance:
     - target: {fileID: 4496239096916791920, guid: 235979e6cee88b84aab56e4785c8559d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.511
+      value: 19.57
       objectReference: {fileID: 0}
     - target: {fileID: 4496239096916791920, guid: 235979e6cee88b84aab56e4785c8559d,
         type: 3}
@@ -1889,6 +1904,11 @@ PrefabInstance:
     - target: {fileID: 3022746255391099988, guid: f228b385e63b1f543a210c5cb7c9c440,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016059348366812077, guid: f228b385e63b1f543a210c5cb7c9c440,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
