@@ -75,7 +75,7 @@ public class PlayerCtrl : MonoBehaviour
             catchMeteo.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
             catchMeteo.GetComponent<Rigidbody2D>().simulated = true;
             catchMeteo.transform.parent = null;
-            catchMeteo.GetComponent<Rigidbody2D>().AddForce((catchMeteo.transform.position - transform.position).normalized * 50, ForceMode2D.Impulse);
+            catchMeteo.GetComponent<Rigidbody2D>().AddForce(transform.up * 50, ForceMode2D.Impulse);
             catchMeteo = null;
         }
        
