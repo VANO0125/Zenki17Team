@@ -45,14 +45,16 @@ public class PlayerCtrl : MonoBehaviour
         RaycastHit2D meteoHit = Physics2D.Raycast(catchRay.origin, catchRay.direction, 2, layerMask);
         if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any) && catchMeteo == null && meteoHit)
         {
-            isCatch = true;
+            isCatch = true;      
             catchMeteo = meteoHit.transform.gameObject;
             catchMeteo.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            catchMeteo.GetComponent<Rigidbody2D>().simulated = false;
         }
 
         //掴んだ隕石を止める
         if (catchMeteo != null)
-        {
+        { 
+            catchMeteo.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
             rig.constraints = RigidbodyConstraints2D.FreezePosition;
             catchMeteo.transform.parent = transform;
         }
@@ -70,6 +72,8 @@ public class PlayerCtrl : MonoBehaviour
         if (isCatch && !GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
         {
             isShot = true;
+            catchMeteo.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            catchMeteo.GetComponent<Rigidbody2D>().simulated = true;
             catchMeteo.transform.parent = null;
             catchMeteo.GetComponent<Rigidbody2D>().AddForce((catchMeteo.transform.position - transform.position).normalized * 50, ForceMode2D.Impulse);
             catchMeteo = null;
