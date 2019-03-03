@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2438377464458552666}
   - component: {fileID: 1542153682314192148}
   - component: {fileID: 3490960002770280129}
+  - component: {fileID: 2125600044}
   m_Layer: 0
   m_Name: Moon
   m_TagString: Untagged
@@ -111,3 +112,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.72499996
+--- !u!58 &2125600044
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261551831918765764}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.061992235, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.8863386

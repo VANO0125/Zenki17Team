@@ -9,12 +9,13 @@ public class MeteoCtrl : MonoBehaviour
     public float divisionNum = 2;//分裂数
     public float damage = 1;//基礎ダメージ
     public int point = 100;//基礎加点スコア
-    [SerializeField]
-    private PlayerCtrl player;
+    private Vector3 startScale;//基礎サイズ
     [SerializeField]
     private GameObject target;
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private GameObject color;//色を変える部分
     Rigidbody2D rb;
     Vector2[] directions ={
            new Vector2(1,1),
@@ -28,18 +29,15 @@ public class MeteoCtrl : MonoBehaviour
     SpriteRenderer render;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //メテオキャッチ
-        //transform.localScale *= size;
         isCaught = false;
         hitNum = 0;
         isShot = false;
-       // size = Random.Range(3, 15);
-        transform.localScale *= 1 + 0.1f * size;
-        player = GameObject.Find("Player").GetComponent<PlayerCtrl>();
         rb = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
+        startScale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -48,7 +46,12 @@ public class MeteoCtrl : MonoBehaviour
         ColorChange();
         Move();
         Death();
+    }
 
+    public void SetSize(float size)
+    {
+        this.size = size;
+        transform.localScale = startScale * size;
     }
 
     void Move()
@@ -64,8 +67,8 @@ public class MeteoCtrl : MonoBehaviour
     void Division(GameObject obj)
     {
 
-        obj.GetComponent<MeteoCtrl>().size = obj.GetComponent<MeteoCtrl>().size / divisionNum;
-        obj.transform.localScale *= 1 / divisionNum;
+        obj.GetComponent<MeteoCtrl>().SetSize(obj.GetComponent<MeteoCtrl>().size / divisionNum);
+        //obj.transform.localScale *= 1 / divisionNum;
         for (int i = 0; i < divisionNum; i++)
         {
             var divisionMeteo = Instantiate(obj) as GameObject;
@@ -90,7 +93,7 @@ public class MeteoCtrl : MonoBehaviour
     {
         if (size < 1)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 2f);
         }
     }
 
@@ -98,11 +101,11 @@ public class MeteoCtrl : MonoBehaviour
     {
         if (size > safeSize)
         {
-            render.color = Color.red;
+            color.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0.5f);
         }
         else
         {
-            render.color = Color.blue;
+            color.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 0.5f);
         }
     }
 
@@ -128,6 +131,7 @@ public class MeteoCtrl : MonoBehaviour
             isShot = false;
             //MeteoCtrl divisionMeteo = col.gameObject.GetComponent<MeteoCtrl>();
             Division(col.gameObject);
+            Destroy(col.gameObject);
         }
     }
 }

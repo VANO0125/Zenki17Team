@@ -208,6 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 10
   scoreNumber: {fileID: 0}
+  over: {fileID: 0}
   isDead: 0
   star: {fileID: 0}
   earthCamera: {fileID: 0}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MeteoManger : MonoBehaviour
 {
-    public GameObject Meteo;
+    public MeteoCtrl Meteo;
     private Transform train;
     [SerializeField]
     private List<GameObject> spawnPos;
@@ -15,7 +15,7 @@ public class MeteoManger : MonoBehaviour
     void Start()
     {
         timer = 0;
-        
+
     }
 
     // Update is called once per frame
@@ -23,18 +23,17 @@ public class MeteoManger : MonoBehaviour
     {
         SpawnPos();
         Spawn();
-        
+
     }
 
     void Spawn()
     {
         //メテオ数
-         Meteo.gameObject.GetComponent<MeteoCtrl>().size = Random.Range(2, 5);
         timer += Time.deltaTime;
         if (timer >= timermax)
         {
-            Instantiate(Meteo, train.position, train.rotation);
-           
+            MeteoCtrl newMeteo = Instantiate(Meteo, train.position, Quaternion.identity)as MeteoCtrl;
+            newMeteo.SetSize(Random.Range(2, 5));
             timer = 0;
         }
     }
