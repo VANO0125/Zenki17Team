@@ -126,13 +126,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e828f39261146f43835267280f654a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Meteo: {fileID: 6946318127781122153, guid: fd9ea97d5d438f348ba41c27fa46ff61, type: 3}
+  Meteo: {fileID: 6417529311024763088, guid: fd9ea97d5d438f348ba41c27fa46ff61, type: 3}
   spawnPos:
   - {fileID: 149770807554099175}
   - {fileID: 149770808296686268}
   - {fileID: 149770808986607169}
   - {fileID: 149770809388250834}
   timermax: 2
+  meteosize: 0
 --- !u!1 &149770808296686268
 GameObject:
   m_ObjectHideFlags: 0

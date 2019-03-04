@@ -55,7 +55,7 @@ public class PlayerCtrl : MonoBehaviour
         if (catchMeteo != null)
         { 
             catchMeteo.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
-            rig.constraints = RigidbodyConstraints2D.FreezePosition;
+           // rig.constraints = RigidbodyConstraints2D.FreezePosition;
             catchMeteo.transform.parent = transform;
         }
         else

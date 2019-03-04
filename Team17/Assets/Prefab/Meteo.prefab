@@ -212,13 +212,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 1
-  safeSize: 3
-  divisionNum: 2
+  safeSize: 2.5
+  divisionNum: 4
   damage: 1
   point: 100
   target: {fileID: 8737730600621317920, guid: 32abf45a15ceb3c4095ac028951e4d98, type: 3}
-  speed: 1
+  speed: 2
   color: {fileID: 3106484367855262856}
+  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   isShot: 0
   isCaught: 0
   hitNum: 0

@@ -16,6 +16,8 @@ public class MeteoCtrl : MonoBehaviour
     private float speed;
     [SerializeField]
     private GameObject color;//色を変える部分
+    [SerializeField]
+    private GameObject effect;//分裂時のエフェクト
     Rigidbody2D rb;
     Vector2[] directions ={
            new Vector2(1,1),
@@ -26,7 +28,6 @@ public class MeteoCtrl : MonoBehaviour
     public bool isShot;
     public bool isCaught;
     public int hitNum;
-    SpriteRenderer render;
 
     // Start is called before the first frame update
     void Awake()
@@ -36,7 +37,6 @@ public class MeteoCtrl : MonoBehaviour
         hitNum = 0;
         isShot = false;
         rb = GetComponent<Rigidbody2D>();
-        render = GetComponent<SpriteRenderer>();
         startScale = transform.localScale;
     }
 
@@ -56,17 +56,13 @@ public class MeteoCtrl : MonoBehaviour
 
     void Move()
     {
-        rb.AddForceAtPosition((
-                               target.transform.position - transform.position).normalized * speed * 0.01f,
-                               target.transform.position,
-                               ForceMode2D.Impulse
-                               );
+        rb.AddForce((target.transform.position - transform.position).normalized * speed);
     }
 
     //スケールとサイズを分裂数分割る
     void Division(GameObject obj)
     {
-
+        Instantiate(effect, transform.position, Quaternion.identity);
         obj.GetComponent<MeteoCtrl>().SetSize(obj.GetComponent<MeteoCtrl>().size / divisionNum);
         //obj.transform.localScale *= 1 / divisionNum;
         for (int i = 0; i < divisionNum; i++)
@@ -91,7 +87,7 @@ public class MeteoCtrl : MonoBehaviour
 
     void Death()
     {
-        if (size < 1)
+        if (size < 0.25)
         {
             Destroy(gameObject, 2f);
         }
@@ -100,13 +96,12 @@ public class MeteoCtrl : MonoBehaviour
     void ColorChange()
     {
         if (size > safeSize)
-        {
             color.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0.5f);
-        }
+        else if (size < 0.25)
+            color.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         else
-        {
             color.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 0.5f);
-        }
+        
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -129,7 +124,6 @@ public class MeteoCtrl : MonoBehaviour
         if (col.gameObject.tag == "Meteo" && isShot)
         {
             isShot = false;
-            //MeteoCtrl divisionMeteo = col.gameObject.GetComponent<MeteoCtrl>();
             Division(col.gameObject);
             Destroy(col.gameObject);
         }

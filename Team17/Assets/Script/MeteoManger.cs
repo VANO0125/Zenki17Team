@@ -33,7 +33,7 @@ public class MeteoManger : MonoBehaviour
         if (timer >= timermax)
         {
             MeteoCtrl newMeteo = Instantiate(Meteo, train.position, Quaternion.identity)as MeteoCtrl;
-            newMeteo.SetSize(Random.Range(2, 5));
+            newMeteo.SetSize(Random.Range(4, 8));
             timer = 0;
         }
     }
