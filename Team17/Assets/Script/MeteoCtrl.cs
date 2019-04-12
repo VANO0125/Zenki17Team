@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MeteoCtrl : MonoBehaviour
 {
+    private float totalSize;
     public float size;//隕石の大きさ
     public float safeSize = 5;//地球にダメージを与えない最大の大きさ
     public float divisionNum = 2;//分裂数
     public float damage = 1;//基礎ダメージ
     public int point = 100;//基礎加点スコア
-    private Vector3 startScale;//基礎サイズ
     [SerializeField]
     private GameObject target;
     [SerializeField]
@@ -27,17 +27,23 @@ public class MeteoCtrl : MonoBehaviour
                                 };
     public bool isShot;
     public bool isCaught;
-    public int hitNum;
 
     // Start is called before the first frame update
     void Awake()
     {
+        //子オブジェクトがあればサイズを合計
+        if (transform.childCount == 0)
+            totalSize = size;
+        else
+        {
+            for (int i = 0; i < transform.childCount; i++)
+                totalSize += transform.GetChild(i).GetComponent<MeteoCtrl>().size;
+        }
+
         //メテオキャッチ
         isCaught = false;
-        hitNum = 0;
         isShot = false;
         rb = GetComponent<Rigidbody2D>();
-        startScale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -51,57 +57,44 @@ public class MeteoCtrl : MonoBehaviour
     public void SetSize(float size)
     {
         this.size = size;
-        transform.localScale = startScale * size;
     }
 
     void Move()
     {
-        rb.AddForce((target.transform.position - transform.position).normalized * speed);
+         rb.AddForce((target.transform.position - transform.position).normalized * speed);
     }
 
     //スケールとサイズを分裂数分割る
-    void Division(GameObject obj)
+    void Division(int num)
     {
-        Instantiate(effect, transform.position, Quaternion.identity);
-        obj.GetComponent<MeteoCtrl>().SetSize(obj.GetComponent<MeteoCtrl>().size / divisionNum);
-        //obj.transform.localScale *= 1 / divisionNum;
-        for (int i = 0; i < divisionNum; i++)
+        //隕石をnum分分離させる
+        for (int i = 0; i < num; i++)
         {
-            var divisionMeteo = Instantiate(obj) as GameObject;
-            //divisionMeteo.transform.localScale *= 1 / divisionNum;
-            //divisionMeteo.GetComponent<MeteoCtrl>().size = obj.GetComponent<MeteoCtrl>().size;
-            //divisionMeteo.transform.localScale = obj.transform.localScale;
-            divisionMeteo.transform.position = obj.transform.TransformPoint(directions[i] / 4);
+            totalSize -= transform.GetChild(i).GetComponent<MeteoCtrl>().size;
+            transform.GetChild(i).gameObject.layer = 8;
+            transform.GetChild(i).GetComponent<Rigidbody2D>().isKinematic = false;
+            transform.GetChild(i).GetComponent<CircleCollider2D>().isTrigger = false;
+            transform.GetChild(i).parent = null;
         }
-    }
-
-
-    private Vector2 CircleHorizon(float radius, Vector2 colPos)
-    {
-        var angle = Random.Range(0, 360);
-        var rad = angle * Mathf.Deg2Rad;
-        var px = Mathf.Cos(rad) * radius + colPos.x;
-        var py = Mathf.Sin(rad) * radius + colPos.y;
-        return new Vector2(px, py);
     }
 
     void Death()
     {
-        if (size < 0.25)
-        {
-            Destroy(gameObject, 2f);
-        }
+        //if (size < 0.25)
+        //{
+        //    Destroy(gameObject, 2f);
+        //}
     }
 
     void ColorChange()
     {
-        if (size > safeSize)
-            color.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0.5f);
-        else if (size < 0.25)
-            color.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
-        else
-            color.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 0.5f);
-        
+        //if (size > safeSize)
+        //    color.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0.5f);
+        //else if (size < 0.25)
+        //    color.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
+        //else
+        //    color.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 0.5f);
+
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -110,22 +103,21 @@ public class MeteoCtrl : MonoBehaviour
         {
             EarthCtrl earth = col.gameObject.GetComponent<EarthCtrl>();
             //サイズが一定以下なら加点
-            if (size <= safeSize)
-                earth.AddScore((int)size * point);
+            if (totalSize <= safeSize)
+                earth.AddScore((int)totalSize * point);
             //一定以上ならダメージ
             else
-                earth.Damage(size * damage);
+                earth.Damage(totalSize * damage);
             Destroy(gameObject);
         }
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Meteo" && isShot)
+        if (col.gameObject.tag == "Meteo" && col.gameObject.GetComponent<MeteoCtrl>().isShot && transform.childCount > 0)
         {
-            isShot = false;
-            Division(col.gameObject);
-            Destroy(col.gameObject);
+            col.gameObject.GetComponent<MeteoCtrl>().isShot = false;
+            Division(1);
         }
     }
 }
