@@ -212,3 +212,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  shotPower: 100
+  isShot: 0

@@ -170,11 +170,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6946318127781122153}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 4.319292
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
   damage: 1
   point: 100
   target: {fileID: 8737730600621317920, guid: 32abf45a15ceb3c4095ac028951e4d98, type: 3}
-  speed: 2
+  speed: 5
   color: {fileID: 3106484367855262856}
   effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   isShot: 0

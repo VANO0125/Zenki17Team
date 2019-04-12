@@ -9,6 +9,8 @@ public class PlayerCtrl : MonoBehaviour
     private bool isCatch;//隕石を掴んでいるか
     private GameObject catchMeteo;//掴んでいる隕石
     public float speed;//移動スピード
+    [SerializeField]
+    private float shotPower;
    public bool isShot;
 
     // Start is called before the first frame update
@@ -53,9 +55,8 @@ public class PlayerCtrl : MonoBehaviour
 
         //掴んだ隕石を止める
         if (catchMeteo != null)
-        { 
-            catchMeteo.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
-           // rig.constraints = RigidbodyConstraints2D.FreezePosition;
+        {
+            catchMeteo.GetComponent<MeteoCtrl>().isCaught = true;
             catchMeteo.transform.parent = transform;
         }
         else
@@ -71,15 +72,25 @@ public class PlayerCtrl : MonoBehaviour
         //Bボタンを離すと前方に隕石を投げる
         if (isCatch && !GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
         {
-            catchMeteo.GetComponent<MeteoCtrl>().isShot = true;
-            catchMeteo.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-            catchMeteo.GetComponent<Rigidbody2D>().simulated = true;
-            catchMeteo.transform.parent = null;
-            catchMeteo.GetComponent<Rigidbody2D>().AddForce(transform.up * 50, ForceMode2D.Impulse);
-            catchMeteo = null;
+            StartCoroutine(MeteoThrowCoroutine());
         }
-       
     }
+
+    IEnumerator MeteoThrowCoroutine()
+    {
+        catchMeteo.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        catchMeteo.GetComponent<MeteoCtrl>().isShot = true;
+        catchMeteo.GetComponent<Rigidbody2D>().simulated = true;
+        
+        catchMeteo.transform.position += transform.forward * shotPower * Time.deltaTime;    
+        yield return new WaitForEndOfFrame();
+        catchMeteo.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        catchMeteo.transform.parent = null;
+        catchMeteo = null;
+        yield break;
+    }
+
+    
 
 
     public bool GetCatch()

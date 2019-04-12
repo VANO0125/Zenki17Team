@@ -27,6 +27,7 @@ public class MeteoCtrl : MonoBehaviour
                                 };
     public bool isShot;
     public bool isCaught;
+    public bool isHit;
     public int hitNum;
 
     // Start is called before the first frame update
@@ -36,6 +37,7 @@ public class MeteoCtrl : MonoBehaviour
         isCaught = false;
         hitNum = 0;
         isShot = false;
+        isHit = false;
         rb = GetComponent<Rigidbody2D>();
         startScale = transform.localScale;
     }
@@ -56,7 +58,11 @@ public class MeteoCtrl : MonoBehaviour
 
     void Move()
     {
-        rb.AddForce((target.transform.position - transform.position).normalized * speed);
+        if (isCaught) return;
+        if(target.transform.position != transform.position)
+        {
+            transform.position = Vector3.MoveTowards(this.gameObject.transform.position, target.transform.position, speed * Time.deltaTime);
+        }
     }
 
     //スケールとサイズを分裂数分割る
@@ -64,13 +70,9 @@ public class MeteoCtrl : MonoBehaviour
     {
         Instantiate(effect, transform.position, Quaternion.identity);
         obj.GetComponent<MeteoCtrl>().SetSize(obj.GetComponent<MeteoCtrl>().size / divisionNum);
-        //obj.transform.localScale *= 1 / divisionNum;
         for (int i = 0; i < divisionNum; i++)
         {
             var divisionMeteo = Instantiate(obj) as GameObject;
-            //divisionMeteo.transform.localScale *= 1 / divisionNum;
-            //divisionMeteo.GetComponent<MeteoCtrl>().size = obj.GetComponent<MeteoCtrl>().size;
-            //divisionMeteo.transform.localScale = obj.transform.localScale;
             divisionMeteo.transform.position = obj.transform.TransformPoint(directions[i] / 4);
         }
     }
@@ -108,6 +110,7 @@ public class MeteoCtrl : MonoBehaviour
     {
         if (col.gameObject.tag == "Earth")
         {
+            isHit = true;
             EarthCtrl earth = col.gameObject.GetComponent<EarthCtrl>();
             //サイズが一定以下なら加点
             if (size <= safeSize)
@@ -123,9 +126,14 @@ public class MeteoCtrl : MonoBehaviour
     {
         if (col.gameObject.tag == "Meteo" && isShot)
         {
+            isHit = true;
             isShot = false;
             Division(col.gameObject);
             Destroy(col.gameObject);
+        }
+        if(col.gameObject.tag == "stage")
+        {
+            Destroy(gameObject);
         }
     }
 }
