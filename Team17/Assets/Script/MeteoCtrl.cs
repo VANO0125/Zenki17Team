@@ -27,11 +27,10 @@ public class MeteoCtrl : MonoBehaviour
                                 };
     public bool isShot;
     public bool isCaught;
-<<<<<<< HEAD
+
     public bool isHit;
     public int hitNum;
-=======
->>>>>>> 3e5e8bb707ee0fa3c604175252096a16de7f8fa5
+
 
     // Start is called before the first frame update
     void Awake()
@@ -67,28 +66,21 @@ public class MeteoCtrl : MonoBehaviour
 
     void Move()
     {
-<<<<<<< HEAD
+
         if (isCaught) return;
         if(target.transform.position != transform.position)
         {
             transform.position = Vector3.MoveTowards(this.gameObject.transform.position, target.transform.position, speed * Time.deltaTime);
         }
-=======
+
          rb.AddForce((target.transform.position - transform.position).normalized * speed);
->>>>>>> 3e5e8bb707ee0fa3c604175252096a16de7f8fa5
+
     }
 
     //スケールとサイズを分裂数分割る
     void Division(int num)
     {
-<<<<<<< HEAD
-        Instantiate(effect, transform.position, Quaternion.identity);
-        obj.GetComponent<MeteoCtrl>().SetSize(obj.GetComponent<MeteoCtrl>().size / divisionNum);
-        for (int i = 0; i < divisionNum; i++)
-        {
-            var divisionMeteo = Instantiate(obj) as GameObject;
-            divisionMeteo.transform.position = obj.transform.TransformPoint(directions[i] / 4);
-=======
+
         //隕石をnum分分離させる
         for (int i = 0; i < num; i++)
         {
@@ -97,7 +89,7 @@ public class MeteoCtrl : MonoBehaviour
             transform.GetChild(i).GetComponent<Rigidbody2D>().isKinematic = false;
             transform.GetChild(i).GetComponent<CircleCollider2D>().isTrigger = false;
             transform.GetChild(i).parent = null;
->>>>>>> 3e5e8bb707ee0fa3c604175252096a16de7f8fa5
+
         }
     }
 
@@ -140,15 +132,12 @@ public class MeteoCtrl : MonoBehaviour
     {
         if (col.gameObject.tag == "Meteo" && col.gameObject.GetComponent<MeteoCtrl>().isShot && transform.childCount > 0)
         {
-<<<<<<< HEAD
+
             isHit = true;
             isShot = false;
-            Division(col.gameObject);
-            Destroy(col.gameObject);
-=======
             col.gameObject.GetComponent<MeteoCtrl>().isShot = false;
             Division(1);
->>>>>>> 3e5e8bb707ee0fa3c604175252096a16de7f8fa5
+
         }
         if(col.gameObject.tag == "stage")
         {

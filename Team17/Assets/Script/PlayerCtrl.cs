@@ -81,8 +81,7 @@ public class PlayerCtrl : MonoBehaviour
         catchMeteo.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         catchMeteo.GetComponent<MeteoCtrl>().isShot = true;
         catchMeteo.GetComponent<Rigidbody2D>().simulated = true;
-        
-        catchMeteo.transform.position += transform.forward * shotPower * Time.deltaTime;    
+        catchMeteo.transform.Translate(Vector3.forward * Time.deltaTime);   
         yield return new WaitForEndOfFrame();
         catchMeteo.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         catchMeteo.transform.parent = null;
