@@ -30,7 +30,7 @@ public class MeteoCtrl : MonoBehaviour
 
     public bool isHit;
     public int hitNum;
-
+    private float timer;
 
     // Start is called before the first frame update
     void Awake()
@@ -57,6 +57,12 @@ public class MeteoCtrl : MonoBehaviour
         //ColorChange();
         Move();
         Death();
+        if(isShot)        
+            timer++;
+        if (timer >= 180)
+            isShot = false;
+        if (transform.childCount == 1)
+            GetComponent<CircleCollider2D>().isTrigger = true;
     }
 
     public void SetSize(float size)
@@ -66,7 +72,7 @@ public class MeteoCtrl : MonoBehaviour
 
     void Move()
     {
-        if (isCaught) return;
+        if (isCaught&&isShot) return;
         if(target.transform.position != transform.position)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
@@ -113,7 +119,7 @@ public class MeteoCtrl : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Meteo" && isShot && transform.childCount > 0)
+        if (col.gameObject.tag == "Meteo" && col.gameObject.GetComponent<MeteoCtrl>().isShot && transform.childCount > 0)
         {
             isShot = false;
             Division(1);

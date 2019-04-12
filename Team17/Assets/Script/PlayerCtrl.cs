@@ -11,7 +11,7 @@ public class PlayerCtrl : MonoBehaviour
     public float speed;//移動スピード
     [SerializeField]
     private float shotPower;
-   public bool isShot;
+    public bool isShot;
 
     // Start is called before the first frame update
     void Start()
@@ -47,10 +47,10 @@ public class PlayerCtrl : MonoBehaviour
         RaycastHit2D meteoHit = Physics2D.Raycast(catchRay.origin, catchRay.direction, 2, layerMask);
         if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any) && catchMeteo == null && meteoHit)
         {
-            isCatch = true;      
+            isCatch = true;
             catchMeteo = meteoHit.transform.gameObject;
             catchMeteo.GetComponent<Rigidbody2D>().simulated = false;
-           
+
         }
 
         //掴んだ隕石を止める
@@ -72,24 +72,25 @@ public class PlayerCtrl : MonoBehaviour
     {
         //Bボタンを離すと前方に隕石を投げる
         if (isCatch && !GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
-        {     
+        {
             catchMeteo.GetComponent<Rigidbody2D>().isKinematic = false;
             catchMeteo.GetComponent<MeteoCtrl>().isShot = true;
             catchMeteo.GetComponent<Rigidbody2D>().simulated = true;
             catchMeteo.GetComponent<Rigidbody2D>().AddForce(transform.up * shotPower, ForceMode2D.Impulse);
-            catchMeteo.GetComponent<MeteoCtrl>().isCaught = false;
             catchMeteo.transform.parent = null;
-            StartCoroutine(MeteoThrowCoroutine());
-        }     
-        
+        isCatch = false;
+            catchMeteo.GetComponent<MeteoCtrl>().isCaught = false;
+           // StartCoroutine(MeteoThrowCoroutine());
+            catchMeteo = null;
+        }
+
     }
 
     IEnumerator MeteoThrowCoroutine()
     {
         yield return new WaitForSeconds(1.0f);
-        catchMeteo.GetComponent<Rigidbody2D>().isKinematic = true;
-        catchMeteo = null;
-        isCatch = false;
+        //  catchMeteo.GetComponent<Rigidbody2D>().isKinematic = true;
+        catchMeteo.GetComponent<MeteoCtrl>().isShot = false;
         yield break;
     }
 }
