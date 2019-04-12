@@ -49,8 +49,8 @@ public class PlayerCtrl : MonoBehaviour
         {
             isCatch = true;      
             catchMeteo = meteoHit.transform.gameObject;
-            catchMeteo.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             catchMeteo.GetComponent<Rigidbody2D>().simulated = false;
+           
         }
 
         //掴んだ隕石を止める
@@ -59,42 +59,37 @@ public class PlayerCtrl : MonoBehaviour
             catchMeteo.GetComponent<MeteoCtrl>().isCaught = true;
             catchMeteo.transform.parent = transform;
         }
-        else
-        {
-            isCatch = false;
-            rig.constraints = RigidbodyConstraints2D.None;
-            rig.constraints = RigidbodyConstraints2D.FreezeRotation;
-        }
+        //else
+        //{
+        //    //catchMeteo.GetComponent<MeteoCtrl>().isCaught = false;
+        //    isCatch = false;
+        //    rig.constraints = RigidbodyConstraints2D.None;
+        //    rig.constraints = RigidbodyConstraints2D.FreezeRotation;
+        //}
     }
 
     void MeteoThrow()
     {
         //Bボタンを離すと前方に隕石を投げる
         if (isCatch && !GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
-        {
+        {     
+            catchMeteo.GetComponent<Rigidbody2D>().isKinematic = false;
+            catchMeteo.GetComponent<MeteoCtrl>().isShot = true;
+            catchMeteo.GetComponent<Rigidbody2D>().simulated = true;
+            catchMeteo.GetComponent<Rigidbody2D>().AddForce(transform.up * shotPower, ForceMode2D.Impulse);
+            catchMeteo.GetComponent<MeteoCtrl>().isCaught = false;
+            catchMeteo.transform.parent = null;
             StartCoroutine(MeteoThrowCoroutine());
-        }
+        }     
+        
     }
 
     IEnumerator MeteoThrowCoroutine()
     {
-        catchMeteo.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        catchMeteo.GetComponent<MeteoCtrl>().isShot = true;
-        catchMeteo.GetComponent<Rigidbody2D>().simulated = true;
-        catchMeteo.transform.Translate(Vector3.forward * Time.deltaTime);   
-        yield return new WaitForEndOfFrame();
-        catchMeteo.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        catchMeteo.transform.parent = null;
+        yield return new WaitForSeconds(1.0f);
+        catchMeteo.GetComponent<Rigidbody2D>().isKinematic = true;
         catchMeteo = null;
+        isCatch = false;
         yield break;
     }
-
-    
-
-
-    public bool GetCatch()
-    {
-        return isCatch;
-    }
-
 }

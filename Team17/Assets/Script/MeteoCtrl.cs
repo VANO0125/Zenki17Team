@@ -54,7 +54,7 @@ public class MeteoCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ColorChange();
+        //ColorChange();
         Move();
         Death();
     }
@@ -66,21 +66,16 @@ public class MeteoCtrl : MonoBehaviour
 
     void Move()
     {
-
         if (isCaught) return;
         if(target.transform.position != transform.position)
         {
-            transform.position = Vector3.MoveTowards(this.gameObject.transform.position, target.transform.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
         }
-
-         rb.AddForce((target.transform.position - transform.position).normalized * speed);
-
     }
 
     //スケールとサイズを分裂数分割る
     void Division(int num)
     {
-
         //隕石をnum分分離させる
         for (int i = 0; i < num; i++)
         {
@@ -89,7 +84,6 @@ public class MeteoCtrl : MonoBehaviour
             transform.GetChild(i).GetComponent<Rigidbody2D>().isKinematic = false;
             transform.GetChild(i).GetComponent<CircleCollider2D>().isTrigger = false;
             transform.GetChild(i).parent = null;
-
         }
     }
 
@@ -114,6 +108,23 @@ public class MeteoCtrl : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Meteo" && isShot && transform.childCount > 0)
+        {
+            isShot = false;
+            Division(1);
+
+        }
+        if(col.gameObject.tag == "stage")
+        {
+            isHit = true;
+            //Destroy(gameObject);
+        }
+
         if (col.gameObject.tag == "Earth")
         {
             isHit = true;
@@ -124,23 +135,6 @@ public class MeteoCtrl : MonoBehaviour
             //一定以上ならダメージ
             else
                 earth.Damage(totalSize * damage);
-            Destroy(gameObject);
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "Meteo" && col.gameObject.GetComponent<MeteoCtrl>().isShot && transform.childCount > 0)
-        {
-
-            isHit = true;
-            isShot = false;
-            col.gameObject.GetComponent<MeteoCtrl>().isShot = false;
-            Division(1);
-
-        }
-        if(col.gameObject.tag == "stage")
-        {
             Destroy(gameObject);
         }
     }
