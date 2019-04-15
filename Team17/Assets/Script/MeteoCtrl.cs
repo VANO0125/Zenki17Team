@@ -46,6 +46,13 @@ public class MeteoCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(transform.childCount ==1)
+        {
+            var child = transform.GetChild(0).gameObject;
+                child.layer = 8;
+            child.transform.parent = null;
+
+        }
         //ColorChange();
         Move();
         Death();
