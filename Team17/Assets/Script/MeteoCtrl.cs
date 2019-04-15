@@ -22,19 +22,24 @@ public class MeteoCtrl : MonoBehaviour
 
     public bool isHit;
     private float timer;
-
+    public int hp;
+   
     // Start is called before the first frame update
     void Awake()
     {
         //子オブジェクトがあればサイズを合計
         if (transform.childCount == 0)
+        {
             totalSize = size;
+          
+        }
         else
         {
             for (int i = 0; i < transform.childCount; i++)
             {
                 totalSize += transform.GetChild(i).GetComponent<MeteoCtrl>().size;
-                transform.GetChild(i).GetComponent<Rigidbody2D>().isKinematic = true;
+                
+               // transform.GetChild(i).GetComponent<Rigidbody2D>().isKinematic = true;
             }
         }
 
@@ -62,8 +67,13 @@ public class MeteoCtrl : MonoBehaviour
         if (timer >= 180)
         {
             isShot = false;
-            gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
-        }           
+            //gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+        } 
+        //hp
+       if(hp<=0)
+        {
+            Division();
+        }
     }
 
     public void SetSize(float size)
@@ -85,7 +95,7 @@ public class MeteoCtrl : MonoBehaviour
     {
         //隕石を分離させる
         gameObject.layer = 8;
-        GetComponent<Rigidbody2D>().isKinematic = false;
+       // GetComponent<Rigidbody2D>().isKinematic = false;
         GetComponent<CapsuleCollider2D>().isTrigger = false;
         transform.parent = null;
     }
@@ -127,6 +137,7 @@ public class MeteoCtrl : MonoBehaviour
             isHit = true;
             //Destroy(gameObject);
         }
-
+        
+       
     }
 }

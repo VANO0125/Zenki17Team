@@ -8,7 +8,11 @@ public class PlayerCtrl : MonoBehaviour
     private Rigidbody2D rig;
     private bool isCatch;//隕石を掴んでいるか
     private GameObject catchMeteo;//掴んでいる隕石
+    
     public float speed;//移動スピード
+    public bool isPunch;
+    private int AttackCount;
+    public int M_AttackCount;
     [SerializeField]
     private float shotPower;
     public bool isShot;
@@ -18,6 +22,8 @@ public class PlayerCtrl : MonoBehaviour
     {
         isShot = false;
         isCatch = false;
+        isPunch = false;
+        AttackCount = 0;
         rig = GetComponent<Rigidbody2D>();
     }
 
@@ -37,6 +43,7 @@ public class PlayerCtrl : MonoBehaviour
         }
         MeteoCatch();
         MeteoThrow();
+        MeteoPunch();
     }
 
     void MeteoCatch()
@@ -84,5 +91,20 @@ public class PlayerCtrl : MonoBehaviour
         }
 
     }
+    //パンチ
+    void MeteoPunch()
+    {
+      
+        Ray2D catchRay = new Ray2D(transform.position, transform.up); //前方にRayを投射
+        int layerMask = 1 << 10; //Meteoレイヤーにだけ反応するようにする
+        RaycastHit2D meteoHit = Physics2D.Raycast(catchRay.origin, catchRay.direction, 2, layerMask);
+        if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any) && meteoHit)
+        {
+            MeteoCtrl punchMeteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
+            punchMeteo.hp--;
+
+        }
+    }
+  
 
 }

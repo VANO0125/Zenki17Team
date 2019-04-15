@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 29024341}
   - component: {fileID: 29024340}
   - component: {fileID: 29024339}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 5
   m_TagString: Meteo
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 7.7713194, y: -4.916172}
@@ -207,6 +207,7 @@ MonoBehaviour:
   isShot: 0
   isCaught: 0
   isHit: 0
+  hp: 3
 --- !u!212 &29024342
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -441,7 +442,7 @@ GameObject:
   - component: {fileID: 231602460}
   - component: {fileID: 231602459}
   - component: {fileID: 231602458}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 1
   m_TagString: Meteo
   m_Icon: {fileID: 0}
@@ -472,7 +473,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -8.220618, y: -4.648847}
@@ -523,6 +524,7 @@ MonoBehaviour:
   isShot: 0
   isCaught: 0
   isHit: 0
+  hp: 3
 --- !u!212 &231602461
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -608,7 +610,7 @@ GameObject:
   - component: {fileID: 416692489}
   - component: {fileID: 416692488}
   - component: {fileID: 416692487}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 5
   m_TagString: Meteo
   m_Icon: {fileID: 0}
@@ -639,7 +641,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 7.7713194, y: -4.916172}
@@ -690,6 +692,7 @@ MonoBehaviour:
   isShot: 0
   isCaught: 0
   isHit: 0
+  hp: 3
 --- !u!212 &416692490
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -860,7 +863,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 311
+    m_Bits: 1335
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1247,7 +1250,7 @@ GameObject:
   - component: {fileID: 755126184}
   - component: {fileID: 755126183}
   - component: {fileID: 755126182}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 2
   m_TagString: Meteo
   m_Icon: {fileID: 0}
@@ -1278,7 +1281,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -6.892741, y: 3.48185}
@@ -1329,6 +1332,7 @@ MonoBehaviour:
   isShot: 0
   isCaught: 0
   isHit: 0
+  hp: 3
 --- !u!212 &755126185
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1406,7 +1410,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.10794014, y: -0.10098602}
@@ -1457,6 +1461,7 @@ MonoBehaviour:
   isShot: 1
   isCaught: 0
   isHit: 0
+  hp: 0
 --- !u!4 &758493878
 Transform:
   m_ObjectHideFlags: 0
@@ -1979,7 +1984,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.10794014, y: -0.10098602}
@@ -2030,6 +2035,7 @@ MonoBehaviour:
   isShot: 1
   isCaught: 0
   isHit: 0
+  hp: 0
 --- !u!4 &1298156358
 Transform:
   m_ObjectHideFlags: 0
@@ -2038,7 +2044,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298156350}
   m_LocalRotation: {x: -0, y: -0, z: -0.26393682, w: 0.96453995}
-  m_LocalPosition: {x: 41.98, y: -0.2, z: 0}
+  m_LocalPosition: {x: 49.4, y: 12.4, z: 0}
   m_LocalScale: {x: 0.4542715, y: 0.4542715, z: 0.45427}
   m_Children:
   - {fileID: 231602457}
@@ -2226,7 +2232,7 @@ GameObject:
   - component: {fileID: 1453792340}
   - component: {fileID: 1453792339}
   - component: {fileID: 1453792338}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 3
   m_TagString: Meteo
   m_Icon: {fileID: 0}
@@ -2257,7 +2263,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 2.914363, y: 4.422121}
@@ -2308,6 +2314,7 @@ MonoBehaviour:
   isShot: 0
   isCaught: 0
   isHit: 0
+  hp: 3
 --- !u!212 &1453792341
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2369,7 +2376,7 @@ GameObject:
   - component: {fileID: 1702419590}
   - component: {fileID: 1702419589}
   - component: {fileID: 1702419588}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 1
   m_TagString: Meteo
   m_Icon: {fileID: 0}
@@ -2400,7 +2407,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -8.220618, y: -4.648847}
@@ -2451,6 +2458,7 @@ MonoBehaviour:
   isShot: 0
   isCaught: 0
   isHit: 0
+  hp: 3
 --- !u!212 &1702419591
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2580,6 +2588,7 @@ MonoBehaviour:
   isShot: 0
   isCaught: 0
   isHit: 0
+  hp: 0
 --- !u!212 &1722209888
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2890,7 +2899,7 @@ GameObject:
   - component: {fileID: 1890766219}
   - component: {fileID: 1890766218}
   - component: {fileID: 1890766217}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 3
   m_TagString: Meteo
   m_Icon: {fileID: 0}
@@ -2921,7 +2930,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 2.914363, y: 4.422121}
@@ -2972,6 +2981,7 @@ MonoBehaviour:
   isShot: 0
   isCaught: 0
   isHit: 0
+  hp: 3
 --- !u!212 &1890766220
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3033,7 +3043,7 @@ GameObject:
   - component: {fileID: 1942583588}
   - component: {fileID: 1942583587}
   - component: {fileID: 1942583586}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 4
   m_TagString: Meteo
   m_Icon: {fileID: 0}
@@ -3064,7 +3074,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.64272976, y: -4.5066214}
@@ -3115,6 +3125,7 @@ MonoBehaviour:
   isShot: 0
   isCaught: 0
   isHit: 0
+  hp: 3
 --- !u!212 &1942583589
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3176,7 +3187,7 @@ GameObject:
   - component: {fileID: 1954504809}
   - component: {fileID: 1954504808}
   - component: {fileID: 1954504807}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 2
   m_TagString: Meteo
   m_Icon: {fileID: 0}
@@ -3207,7 +3218,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -6.892741, y: 3.48185}
@@ -3258,6 +3269,7 @@ MonoBehaviour:
   isShot: 0
   isCaught: 0
   isHit: 0
+  hp: 3
 --- !u!212 &1954504810
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3377,7 +3389,7 @@ GameObject:
   - component: {fileID: 2111216542}
   - component: {fileID: 2111216541}
   - component: {fileID: 2111216540}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 4
   m_TagString: Meteo
   m_Icon: {fileID: 0}
@@ -3408,7 +3420,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.64272976, y: -4.5066214}
@@ -3459,6 +3471,7 @@ MonoBehaviour:
   isShot: 0
   isCaught: 0
   isHit: 0
+  hp: 3
 --- !u!212 &2111216543
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3885,6 +3898,11 @@ PrefabInstance:
         type: 3}
       propertyPath: shotPower
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6055413462914045809, guid: 44c56ea0d4be1474c98ca15b53235656,
+        type: 3}
+      propertyPath: M_AttackCount
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6055413462914045820, guid: 44c56ea0d4be1474c98ca15b53235656,
         type: 3}
