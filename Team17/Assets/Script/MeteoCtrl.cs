@@ -21,9 +21,7 @@ public class MeteoCtrl : MonoBehaviour
     public bool isCaught;
 
     public bool isHit;
-    public int hitNum;
     private float timer;
-    CapsuleCollider2D[] col;
 
     // Start is called before the first frame update
     void Awake()
@@ -33,7 +31,6 @@ public class MeteoCtrl : MonoBehaviour
             totalSize = size;
         else
         {
-            col = GetComponents<CapsuleCollider2D>();
             for (int i = 0; i < transform.childCount; i++)
             {
                 totalSize += transform.GetChild(i).GetComponent<MeteoCtrl>().size;
@@ -71,26 +68,14 @@ public class MeteoCtrl : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
         }
     }
-
-    //スケールとサイズを分裂数分割る
-    void Division(int num)
+    
+    void Division()
     {
-        //num番目の隕石を分離させる
-        GameObject divisionMeteo = transform.GetChild(num).gameObject;
-        totalSize -= divisionMeteo.GetComponent<MeteoCtrl>().size;
-        divisionMeteo.gameObject.layer = 8;
-        divisionMeteo.GetComponent<Rigidbody2D>().isKinematic = false;
-        divisionMeteo.GetComponent<CapsuleCollider2D>().enabled = true;
-        divisionMeteo.transform.parent = null;
-        //欠けた部分のコライダーを消去
-        Destroy(col[num]);
-        col[num] = null;
-        if (col[num] == null)
-        {
-            List<CapsuleCollider2D> numberList = new List<CapsuleCollider2D>(col);
-            numberList.RemoveAt(num);
-            col = numberList.ToArray();
-        }
+        //隕石を分離させる
+        gameObject.layer = 8;
+        GetComponent<Rigidbody2D>().isKinematic = false;
+        GetComponent<CapsuleCollider2D>().isTrigger = false;
+        transform.parent = null;
     }
 
     void Death()
@@ -118,12 +103,13 @@ public class MeteoCtrl : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Meteo" && col.gameObject.GetComponent<MeteoCtrl>().isShot && transform.childCount > 0)
+        if (col.gameObject.tag == "Meteo" && isShot)
         {
-            col.gameObject.GetComponent<MeteoCtrl>().isShot = false;
-            Division(0);
-
+            MeteoCtrl otherMeteo = col.gameObject.GetComponent<MeteoCtrl>();
+            otherMeteo.Division();
+            isShot = false;
         }
+
         if (col.gameObject.tag == "stage")
         {
             isHit = true;
