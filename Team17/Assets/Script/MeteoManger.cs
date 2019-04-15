@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class MeteoManger : MonoBehaviour
 {
-    public MeteoCtrl Meteo;
     private Transform train;
     [SerializeField]
     private List<GameObject> spawnPos;
+    [SerializeField]
+    private List<MeteoCtrl> meteos;
     private float timer;
     public float timermax;
-    public float meteosize;
+    private int meteoNum;
+    private int posNum;
     // Start is called before the first frame update
     void Start()
     {
+        //最初一個スポーン
+        posNum = Random.Range(0, spawnPos.Count);
+        MeteoCtrl newMeteo = Instantiate(meteos[meteoNum], train.position, Quaternion.identity) as MeteoCtrl;
         timer = 0;
-
     }
 
     // Update is called once per frame
@@ -32,15 +36,15 @@ public class MeteoManger : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= timermax)
         {
-            MeteoCtrl newMeteo = Instantiate(Meteo, train.position, Quaternion.identity)as MeteoCtrl;
-            newMeteo.SetSize(Random.Range(4, 8));
+            MeteoCtrl newMeteo = Instantiate(meteos[meteoNum], train.position, Quaternion.identity)as MeteoCtrl;
             timer = 0;
         }
     }
 
     void SpawnPos()
     {
-        int posNum = Random.Range(0, spawnPos.Count);
+        posNum = Random.Range(0, spawnPos.Count);
+        meteoNum = Random.Range(0, meteos.Count);
         train = spawnPos[posNum].transform;
     }
 }

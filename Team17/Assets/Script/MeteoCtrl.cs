@@ -9,7 +9,6 @@ public class MeteoCtrl : MonoBehaviour
     public float safeSize = 5;//地球にダメージを与えない最大の大きさ
     public float damage = 1;//基礎ダメージ
     public int point = 100;//基礎加点スコア
-    [SerializeField]
     private GameObject target;
     [SerializeField]
     private float speed;
@@ -26,6 +25,7 @@ public class MeteoCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        target = GameObject.FindGameObjectWithTag("Earth");
         //子オブジェクトがあればサイズを合計
         if (transform.childCount == 0)
             totalSize = size;
@@ -107,10 +107,6 @@ public class MeteoCtrl : MonoBehaviour
         //else
         //    color.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 0.5f);
 
-    }
-
-    void OnTriggerEnter2D(Collider2D col)
-    {
     }
 
     void OnCollisionEnter2D(Collision2D col)
