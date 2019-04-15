@@ -34,6 +34,7 @@ public class MeteoCtrl : MonoBehaviour
             for (int i = 0; i < transform.childCount; i++)
             {
                 totalSize += transform.GetChild(i).GetComponent<MeteoCtrl>().size;
+                transform.GetChild(i).GetComponent<Rigidbody2D>().isKinematic = true;
             }
         }
 
@@ -59,20 +60,24 @@ public class MeteoCtrl : MonoBehaviour
         if (isShot)
             timer++;
         if (timer >= 180)
+        {
             isShot = false;
+            gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+        }           
     }
 
     public void SetSize(float size)
     {
         this.size = size;
+        
     }
 
     void Move()
     {
-        if (isCaught && isShot) return;
-        if (target.transform.position != transform.position)
+        if (isCaught || isShot) return;
+        if (target.transform.position != transform.position && totalSize >= safeSize) 
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
         }
     }
     
