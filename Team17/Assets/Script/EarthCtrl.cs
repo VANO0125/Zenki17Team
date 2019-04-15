@@ -76,4 +76,21 @@ public class EarthCtrl : MonoBehaviour
             earthCamera.SetActive(false);
         }        
     }
+
+  void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.tag == "Meteo")
+        {
+            MeteoCtrl meteo = col.gameObject.GetComponent<MeteoCtrl>();
+                meteo.isHit = true;
+                
+                //サイズが一定以下なら加点
+                if (meteo.totalSize <= meteo.safeSize)
+                    AddScore((int)meteo.totalSize * meteo.point);
+                //一定以上ならダメージ
+                else
+                    Damage(meteo.totalSize * meteo.damage);
+                Destroy(meteo.gameObject);
+        }
+    }
 }

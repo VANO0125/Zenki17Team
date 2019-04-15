@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class MeteoCtrl : MonoBehaviour
 {
-    private float totalSize;
+    public float totalSize;
     public float size;//隕石の大きさ
     public float safeSize = 5;//地球にダメージを与えない最大の大きさ
-    public float divisionNum = 2;//分裂数
     public float damage = 1;//基礎ダメージ
     public int point = 100;//基礎加点スコア
     [SerializeField]
@@ -18,19 +17,13 @@ public class MeteoCtrl : MonoBehaviour
     private GameObject color;//色を変える部分
     [SerializeField]
     private GameObject effect;//分裂時のエフェクト
-    Rigidbody2D rb;
-    Vector2[] directions ={
-           new Vector2(1,1),
-           new Vector2(-1,1),
-           new Vector2(1,-1),
-           new Vector2(-1,-1)
-                                };
     public bool isShot;
     public bool isCaught;
 
     public bool isHit;
     public int hitNum;
     private float timer;
+    CapsuleCollider2D[] col;
 
     // Start is called before the first frame update
     void Awake()
@@ -40,15 +33,17 @@ public class MeteoCtrl : MonoBehaviour
             totalSize = size;
         else
         {
+            col = GetComponents<CapsuleCollider2D>();
             for (int i = 0; i < transform.childCount; i++)
+            {
                 totalSize += transform.GetChild(i).GetComponent<MeteoCtrl>().size;
+            }
         }
 
         //メテオキャッチ
         isCaught = false;
         isShot = false;
         isHit = false;
-        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -57,12 +52,10 @@ public class MeteoCtrl : MonoBehaviour
         //ColorChange();
         Move();
         Death();
-        if(isShot)        
+        if (isShot)
             timer++;
         if (timer >= 180)
             isShot = false;
-        if (transform.childCount == 1)
-            GetComponent<CircleCollider2D>().isTrigger = true;
     }
 
     public void SetSize(float size)
@@ -72,8 +65,8 @@ public class MeteoCtrl : MonoBehaviour
 
     void Move()
     {
-        if (isCaught&&isShot) return;
-        if(target.transform.position != transform.position)
+        if (isCaught && isShot) return;
+        if (target.transform.position != transform.position)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
         }
@@ -82,14 +75,21 @@ public class MeteoCtrl : MonoBehaviour
     //スケールとサイズを分裂数分割る
     void Division(int num)
     {
-        //隕石をnum分分離させる
-        for (int i = 0; i < num; i++)
+        //num番目の隕石を分離させる
+        GameObject divisionMeteo = transform.GetChild(num).gameObject;
+        totalSize -= divisionMeteo.GetComponent<MeteoCtrl>().size;
+        divisionMeteo.gameObject.layer = 8;
+        divisionMeteo.GetComponent<Rigidbody2D>().isKinematic = false;
+        divisionMeteo.GetComponent<CapsuleCollider2D>().enabled = true;
+        divisionMeteo.transform.parent = null;
+        //欠けた部分のコライダーを消去
+        Destroy(col[num]);
+        col[num] = null;
+        if (col[num] == null)
         {
-            totalSize -= transform.GetChild(i).GetComponent<MeteoCtrl>().size;
-            transform.GetChild(i).gameObject.layer = 8;
-            transform.GetChild(i).GetComponent<Rigidbody2D>().isKinematic = false;
-            transform.GetChild(i).GetComponent<CircleCollider2D>().isTrigger = false;
-            transform.GetChild(i).parent = null;
+            List<CapsuleCollider2D> numberList = new List<CapsuleCollider2D>(col);
+            numberList.RemoveAt(num);
+            col = numberList.ToArray();
         }
     }
 
@@ -114,34 +114,21 @@ public class MeteoCtrl : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Meteo" && col.gameObject.GetComponent<MeteoCtrl>().isShot && transform.childCount > 0)
         {
-            isShot = false;
-            Division(1);
+            col.gameObject.GetComponent<MeteoCtrl>().isShot = false;
+            Division(0);
 
         }
-        if(col.gameObject.tag == "stage")
+        if (col.gameObject.tag == "stage")
         {
             isHit = true;
             //Destroy(gameObject);
         }
 
-        if (col.gameObject.tag == "Earth")
-        {
-            isHit = true;
-            EarthCtrl earth = col.gameObject.GetComponent<EarthCtrl>();
-            //サイズが一定以下なら加点
-            if (totalSize <= safeSize)
-                earth.AddScore((int)totalSize * point);
-            //一定以上ならダメージ
-            else
-                earth.Damage(totalSize * damage);
-            Destroy(gameObject);
-        }
     }
 }
