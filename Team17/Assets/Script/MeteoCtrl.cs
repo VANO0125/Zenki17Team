@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MeteoCtrl : MonoBehaviour
 {
-    public int totalSize;
     public int size;//隕石の大きさ
     [SerializeField]
     public Rigidbody2D rig;
@@ -15,7 +14,6 @@ public class MeteoCtrl : MonoBehaviour
     private MeteoCtrl parent;//親オブジェクト
     [SerializeField]
     private MeteoCtrl[] meteos;
-    [SerializeField]
     private GameObject target;
     [SerializeField]
     private float speed;
@@ -31,6 +29,7 @@ public class MeteoCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        target = GameObject.FindGameObjectWithTag("Earth");
         //子オブジェクトがあればサイズを合計
         if (parent == null)
         {
