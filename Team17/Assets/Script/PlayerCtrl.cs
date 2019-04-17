@@ -7,8 +7,8 @@ public class PlayerCtrl : MonoBehaviour
 {
     private Rigidbody2D rig;
     private bool isCatch;//隕石を掴んでいるか
-    private GameObject catchMeteo;//掴んでいる隕石
-    
+    private MeteoCtrl catchMeteo;//掴んでいる隕石
+
     public float speed;//移動スピード
     public bool isPunch;
     private int AttackCount;
@@ -41,6 +41,7 @@ public class PlayerCtrl : MonoBehaviour
             rotation.eulerAngles = new Vector3(0, 0, angle - 90);
             transform.rotation = rotation;
         }
+
         MeteoCatch();
         MeteoThrow();
         MeteoPunch();
@@ -54,25 +55,15 @@ public class PlayerCtrl : MonoBehaviour
         RaycastHit2D meteoHit = Physics2D.Raycast(catchRay.origin, catchRay.direction, 2, layerMask);
         if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any) && catchMeteo == null && meteoHit)
         {
-            isCatch = true;
-            catchMeteo = meteoHit.transform.gameObject;
-            catchMeteo.GetComponent<Rigidbody2D>().simulated = false;
-
+            catchMeteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
+            catchMeteo.Caught(transform);
         }
 
         //掴んだ隕石を止める
         if (catchMeteo != null)
-        {
-            catchMeteo.GetComponent<MeteoCtrl>().isCaught = true;
-            catchMeteo.transform.parent = transform;
-        }
-        //else
-        //{
-        //    //catchMeteo.GetComponent<MeteoCtrl>().isCaught = false;
-        //    isCatch = false;
-        //    rig.constraints = RigidbodyConstraints2D.None;
-        //    rig.constraints = RigidbodyConstraints2D.FreezeRotation;
-        //}
+            isCatch = true;
+        else
+            isCatch = false;
     }
 
     void MeteoThrow()
@@ -80,22 +71,16 @@ public class PlayerCtrl : MonoBehaviour
         //Bボタンを離すと前方に隕石を投げる
         if (isCatch && !GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
         {
-            catchMeteo.GetComponent<Rigidbody2D>().isKinematic = false;
-            catchMeteo.GetComponent<MeteoCtrl>().isShot = true;
-            catchMeteo.GetComponent<Rigidbody2D>().simulated = true;
-            catchMeteo.GetComponent<Rigidbody2D>().AddForce(transform.up * shotPower, ForceMode2D.Impulse);
-            catchMeteo.transform.parent = null;
-        isCatch = false;
-            catchMeteo.GetComponent<MeteoCtrl>().isCaught = false;
-           // StartCoroutine(MeteoThrowCoroutine());
+            catchMeteo.ShotMeteo(transform.up, shotPower);
+            isCatch = false;
             catchMeteo = null;
         }
-
     }
+
     //パンチ
     void MeteoPunch()
     {
-      
+
         Ray2D catchRay = new Ray2D(transform.position, transform.up); //前方にRayを投射
         int layerMask = 1 << 10; //Meteoレイヤーにだけ反応するようにする
         RaycastHit2D meteoHit = Physics2D.Raycast(catchRay.origin, catchRay.direction, 2, layerMask);
@@ -103,16 +88,6 @@ public class PlayerCtrl : MonoBehaviour
         {
             MeteoCtrl punchMeteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
             punchMeteo.hp--;
-
         }
-    }
-  
-
-    IEnumerator MeteoThrowCoroutine()
-    {
-        yield return new WaitForSeconds(1.0f);
-        //  catchMeteo.GetComponent<Rigidbody2D>().isKinematic = true;
-        catchMeteo.GetComponent<MeteoCtrl>().isShot = false;
-        yield break;
     }
 }

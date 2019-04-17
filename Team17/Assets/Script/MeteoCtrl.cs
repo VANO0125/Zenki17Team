@@ -21,8 +21,8 @@ public class MeteoCtrl : MonoBehaviour
     private GameObject color;//色を変える部分
     [SerializeField]
     private GameObject effect;//分裂時のエフェクト
-    public bool isShot;
-    public bool isCaught;
+    private bool isShot;
+    private bool isCaught;
 
     private float timer;
     public int hp;
@@ -52,6 +52,7 @@ public class MeteoCtrl : MonoBehaviour
         {
             var child = transform.GetChild(0).gameObject;
             child.layer = 8;
+            child.GetComponent<Rigidbody2D>().isKinematic = false;
             child.transform.parent = null;
             Destroy(gameObject);
         }
@@ -68,7 +69,7 @@ public class MeteoCtrl : MonoBehaviour
     
        if(hp<=0)
         {
-            Division();
+         //   Division();
         }
     }
 
@@ -94,12 +95,33 @@ public class MeteoCtrl : MonoBehaviour
         meteos[number].transform.parent = null;
         meteos[number].parent = null;
         MeteoCtrl newMeteo = Instantiate(meteos[number], transform.position, Quaternion.identity) as MeteoCtrl;
-        newMeteo.ChangeRig();
+        newMeteo.SetKinematic(false);
         Destroy(meteos[number].gameObject);
     }
 
-    public void ChangeRig()
-    { rig.isKinematic = false; }
+    //プレイヤーに掴まれる処理
+    public void Caught(Transform parent)
+    {
+        rig.simulated = false;
+        isCaught = true;
+        transform.parent = parent;
+    }
+
+    //隕石射出処理
+    public void ShotMeteo(Vector2 vec,float power)
+    {
+        rig.simulated = true;
+        isShot = true;
+        isCaught = false;
+        transform.parent = null;
+        rig.AddForce(vec * power, ForceMode2D.Impulse);
+    }
+
+    public void SetKinematic(bool flag)
+    { rig.isKinematic = flag; }
+
+    public void SetSimulated(bool flag)
+    { rig.simulated = flag; }
 
     void Death()
     {
