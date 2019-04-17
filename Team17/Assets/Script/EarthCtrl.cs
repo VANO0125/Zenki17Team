@@ -5,18 +5,23 @@ using UnityEngine.UI;
 
 public class EarthCtrl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private float hp;
-    public float maxHp;
+    // Start is called before the first frame update    
+    [SerializeField]
+    private float maxHp;//最大HP
+    private float hp;//現在のHP
+    [SerializeField]
+    private int safeSize;//隕石にならないサイズ
+    [SerializeField]
+    private int defaultScore;//基礎加点数
     private int score;//スコア
-    public Number scoreNumber;//スコア描写
-    public GameObject over;
     public bool isDead;//死亡判定
 
-	public ShootingStar star;//地上視点
+    public ShootingStar star;//地上視点
     public GameObject earthCamera;//地上カメラ
     private bool isDisplay;//地上カメラが表示されているか
     public float earthTimer = 120f;//地上カメラを表示する時間
+    public Number scoreNumber;//スコア描写
+    public GameObject over;
     private float timer;
 
     void Start()
@@ -28,9 +33,9 @@ public class EarthCtrl : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-	{
+    {
         DisPlayCamera();
-       if(hp<=0)//HP0以下の時
+        if (hp <= 0)//HP0以下の時
         {
             isDead = true;
             Destroy();
@@ -44,24 +49,25 @@ public class EarthCtrl : MonoBehaviour
         over.SetActive(true);
     }
 
-    public void Damage(float damage)
+    public void AddMeteo(int meteoSize)
     {
-        //ダメージ
-        isDisplay = true;//カメラ表示
-        timer = earthTimer;//表示時間をリセット
-        hp -= damage;
-        star.FallMeteo();
+        if (meteoSize <= safeSize)
+        {
+            isDisplay = true;//カメラ表示
+            timer = earthTimer;//表示時間をリセット
+            score += (meteoSize * defaultScore);//加点
+            scoreNumber.Set(score);//スコアを更新
+            star.FallStar();
+        }
+        else
+        {  
+            //ダメージ
+            isDisplay = true;//カメラ表示
+            timer = earthTimer;//表示時間をリセット
+            hp -= meteoSize;
+            star.FallMeteo();
+        }
     }
-
-    public void AddScore(int score)
-    {
-        isDisplay = true;//カメラ表示
-        timer = earthTimer;//表示時間をリセット
-        this.score += score;//加点
-        scoreNumber.Set(this.score);//スコアを更新
-        star.FallStar();
-    }
-
     private void DisPlayCamera()
     {
         //地上カメラを一定時間表示する処理
@@ -74,23 +80,14 @@ public class EarthCtrl : MonoBehaviour
         {
             isDisplay = false;
             earthCamera.SetActive(false);
-        }        
+        }
     }
 
-  void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.tag == "Meteo")
+        if (col.gameObject.tag == "Meteo")
         {
-            MeteoCtrl meteo = col.gameObject.GetComponent<MeteoCtrl>();
-                meteo.isHit = true;
-                
-                //サイズが一定以下なら加点
-                if (meteo.totalSize <= meteo.safeSize)
-                    AddScore((int)meteo.totalSize * meteo.point);
-                //一定以上ならダメージ
-                else
-                    Damage(meteo.totalSize * meteo.damage);
-                Destroy(meteo.gameObject);
+
         }
     }
 }

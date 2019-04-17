@@ -78,11 +78,19 @@ public class PlayerCtrl : MonoBehaviour
             catchMeteo.GetComponent<Rigidbody2D>().simulated = true;
             catchMeteo.GetComponent<Rigidbody2D>().AddForce(transform.up * shotPower, ForceMode2D.Impulse);
             catchMeteo.transform.parent = null;
-            isCatch = false;
-            catchMeteo.GetComponent<MeteoCtrl>().isCaught = false;          
+        isCatch = false;
+            catchMeteo.GetComponent<MeteoCtrl>().isCaught = false;
+           // StartCoroutine(MeteoThrowCoroutine());
             catchMeteo = null;
         }
 
     }
 
+    IEnumerator MeteoThrowCoroutine()
+    {
+        yield return new WaitForSeconds(1.0f);
+        //  catchMeteo.GetComponent<Rigidbody2D>().isKinematic = true;
+        catchMeteo.GetComponent<MeteoCtrl>().isShot = false;
+        yield break;
+    }
 }
