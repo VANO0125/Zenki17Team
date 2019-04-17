@@ -25,7 +25,8 @@ public class MeteoCtrl : MonoBehaviour
     public bool isCaught;
 
     private float timer;
-
+    public int hp;
+   
     // Start is called before the first frame update
     void Awake()
     {
@@ -35,7 +36,7 @@ public class MeteoCtrl : MonoBehaviour
         {
             for (int i = 0; i < meteos.Length; i++)
             {
-                size += meteos[i].size;
+                size += meteos[i].size;                
             }
         }
 
@@ -63,6 +64,11 @@ public class MeteoCtrl : MonoBehaviour
         {
             isShot = false;
             timer = 0;
+        } 
+    
+       if(hp<=0)
+        {
+            Division();
         }
     }
 
@@ -155,6 +161,7 @@ public class MeteoCtrl : MonoBehaviour
         {
             //Destroy(gameObject);
         }
-
+        
+       
     }
 }
