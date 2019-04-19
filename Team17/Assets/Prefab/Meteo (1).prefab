@@ -58,7 +58,7 @@ MonoBehaviour:
   speed: 0
   color: {fileID: 0}
   effect: {fileID: 0}
-  hp: 0
+  hp: 3
 --- !u!50 &523915733057256669
 Rigidbody2D:
   serializedVersion: 4
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 7841184198793033975}
   - component: {fileID: 7841184198793033973}
   - component: {fileID: 7841184198793033974}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 2
   m_TagString: Meteo
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ MonoBehaviour:
   speed: 0
   color: {fileID: 0}
   effect: {fileID: 0}
-  hp: 0
+  hp: 3
 --- !u!50 &7841184198793033973
 Rigidbody2D:
   serializedVersion: 4
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 7841184199058489659}
   - component: {fileID: 7841184199058489657}
   - component: {fileID: 7841184199058489658}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 0
   m_TagString: Meteo
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ MonoBehaviour:
   speed: 0
   color: {fileID: 0}
   effect: {fileID: 0}
-  hp: 0
+  hp: 3
 --- !u!50 &7841184199058489657
 Rigidbody2D:
   serializedVersion: 4
@@ -385,7 +385,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7841184199202412586}
-  m_LocalRotation: {x: -0, y: -0, z: -0.26393682, w: 0.96453995}
+  m_LocalRotation: {x: 0, y: 0, z: -0.26394033, w: 0.964539}
   m_LocalPosition: {x: 42.28, y: -14.64, z: 0}
   m_LocalScale: {x: 0.4542715, y: 0.4542715, z: 0.45427}
   m_Children:
@@ -415,7 +415,7 @@ MonoBehaviour:
   - {fileID: 7841184199058489659}
   - {fileID: 7841184200167456009}
   - {fileID: 523915733057256659}
-  speed: 0
+  speed: 4
   color: {fileID: 0}
   effect: {fileID: 0}
   hp: 0
@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 7841184199229774172}
   - component: {fileID: 7841184199229774162}
   - component: {fileID: 7841184199229774163}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1
   m_TagString: Meteo
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ MonoBehaviour:
   speed: 0
   color: {fileID: 0}
   effect: {fileID: 0}
-  hp: 0
+  hp: 3
 --- !u!50 &7841184199229774162
 Rigidbody2D:
   serializedVersion: 4
@@ -593,7 +593,7 @@ GameObject:
   - component: {fileID: 7841184199271855902}
   - component: {fileID: 7841184199271855900}
   - component: {fileID: 7841184199271855901}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 0
   m_TagString: Meteo
   m_Icon: {fileID: 0}
@@ -682,7 +682,7 @@ MonoBehaviour:
   speed: 0
   color: {fileID: 0}
   effect: {fileID: 0}
-  hp: 0
+  hp: 3
 --- !u!50 &7841184199271855900
 Rigidbody2D:
   serializedVersion: 4
@@ -733,7 +733,7 @@ GameObject:
   - component: {fileID: 7841184200167456009}
   - component: {fileID: 7841184200167456015}
   - component: {fileID: 7841184200167456008}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1
   m_TagString: Meteo
   m_Icon: {fileID: 0}
@@ -822,7 +822,7 @@ MonoBehaviour:
   speed: 0
   color: {fileID: 0}
   effect: {fileID: 0}
-  hp: 0
+  hp: 3
 --- !u!50 &7841184200167456015
 Rigidbody2D:
   serializedVersion: 4

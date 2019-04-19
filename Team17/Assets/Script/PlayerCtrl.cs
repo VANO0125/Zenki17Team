@@ -61,7 +61,6 @@ public class PlayerCtrl : MonoBehaviour
             {
                 catchMeteo = meteo;
                 catchMeteo.Caught(transform);
-                Debug.Log("a");
             }
         else if(meteo.GetTotalSize()>=1)
             {
