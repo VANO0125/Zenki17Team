@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MeteoCtrl : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class MeteoCtrl : MonoBehaviour
 
     public bool isHit;
     private float timer;
+
+    public List<Text> text;
 
     // Start is called before the first frame update
     void Awake()
@@ -47,7 +50,9 @@ public class MeteoCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.childCount ==1)
+        CheckScreenOut(transform.position);
+
+        if (transform.childCount ==1)
         {
             var child = transform.GetChild(0).gameObject;
                 child.layer = 8;
@@ -128,5 +133,48 @@ public class MeteoCtrl : MonoBehaviour
             //Destroy(gameObject);
         }
 
+    }
+
+    void CheckScreenOut(Vector3 _pos)
+    {
+        Vector3 view_pos = Camera.main.WorldToViewportPoint(_pos);
+        if(view_pos.x <-0.0f)
+        {
+            text[0].enabled = true;
+            Invoke("TextOff", 3.5f);
+        }
+        else if (view_pos.x > 1.0f)
+        {
+            text[1].enabled = true;
+            Invoke("TextOff", 3.5f);
+        }
+        else if (view_pos.y < -0.0f)
+        {
+            text[2].enabled = true;
+            Invoke("TextOff", 3.5f);
+        }
+        else if (view_pos.y > 1.0f)
+        {
+            text[3].enabled = true;
+            Invoke("TextOff", 3.5f);
+        }
+        //if (view_pos.x < -0.0f ||
+        //   view_pos.x > 1.0f ||
+        //   view_pos.y < -0.0f ||
+        //   view_pos.y > 1.0f)
+        //{
+        //    // 範囲外 
+        //    Debug.Log("外だよ");
+        //}
+        // 範囲内 
+        return;
+    }
+
+    void TextOff()
+    {
+        for(int i=0; i<4; i++)
+        {
+            text[i].enabled = false;
+        }
     }
 }
