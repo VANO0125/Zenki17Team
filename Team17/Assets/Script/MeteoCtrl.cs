@@ -151,8 +151,23 @@ public class MeteoCtrl : MonoBehaviour
     }
 
     public MeteoCtrl GetParent()
+    { return parent; }
+
+    public MeteoCtrl GetHighest()
     {
-        return parent;
+        var p = parent;
+        MeteoCtrl hightest = null;
+        int stoper = 0;
+        while (p != null)
+        {
+            if (p != null)
+                hightest = p;
+            p = p.GetParent();
+            stoper++;
+            if (stoper >= 300)
+                break;
+        }
+        return hightest;
     }
 
     public int GetTotalSize()
@@ -183,7 +198,7 @@ public class MeteoCtrl : MonoBehaviour
                 Destroy(gameObject);
             }
             else
-                parent.TotalAddMeteo(earth);
+                GetHighest().TotalAddMeteo(earth);
             //サイズが一定以下なら加点
 
         }
