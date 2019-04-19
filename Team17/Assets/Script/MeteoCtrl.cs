@@ -26,7 +26,7 @@ public class MeteoCtrl : MonoBehaviour
 
     private float timer;
     public int hp;
-   
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -36,7 +36,7 @@ public class MeteoCtrl : MonoBehaviour
         {
             for (int i = 0; i < meteos.Length; i++)
             {
-                size += meteos[i].size;                
+                size += meteos[i].size;
             }
         }
 
@@ -65,11 +65,11 @@ public class MeteoCtrl : MonoBehaviour
         {
             isShot = false;
             timer = 0;
-        } 
-    
-       if(hp<=0)
+        }
+
+        if (hp <= 0 && parent != null)
         {
-         //   Division();
+            parent.Division(number);
         }
     }
 
@@ -108,7 +108,7 @@ public class MeteoCtrl : MonoBehaviour
     }
 
     //隕石射出処理
-    public void ShotMeteo(Vector2 vec,float power)
+    public void ShotMeteo(Vector2 vec, float power)
     {
         rig.simulated = true;
         isShot = true;
@@ -139,7 +139,6 @@ public class MeteoCtrl : MonoBehaviour
         //    color.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         //else
         //    color.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 0.5f);
-
     }
 
     //分裂しきっていない時のダメージ処理
@@ -183,7 +182,28 @@ public class MeteoCtrl : MonoBehaviour
         {
             //Destroy(gameObject);
         }
-        
-       
+
+
+    }
+    //メテオパンチサイズ
+    public MeteoCtrl GetParent()
+    {
+        return parent;
+    }
+    public int GetTotalSize()
+    {
+        var hightest = parent;
+        var totalSize = parent.size;
+        int stoper = 0;
+        while (hightest != null)
+        {
+            if (hightest != null)
+                totalSize = hightest.size;
+            hightest = hightest.GetParent();
+            stoper++;
+            if (stoper >= 300)
+                break;
+        }
+        return totalSize;
     }
 }
