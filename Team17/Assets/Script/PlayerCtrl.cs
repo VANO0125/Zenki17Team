@@ -44,7 +44,7 @@ public class PlayerCtrl : MonoBehaviour
 
         MeteoCatch();
         MeteoThrow();
-        MeteoPunch();
+        
     }
 
     void MeteoCatch()
@@ -55,9 +55,20 @@ public class PlayerCtrl : MonoBehaviour
         RaycastHit2D meteoHit = Physics2D.Raycast(catchRay.origin, catchRay.direction, 2, layerMask);
         if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any) && catchMeteo == null && meteoHit)
         {
-            catchMeteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
-            catchMeteo.Caught(transform);
+            var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
+           // Debug.Log(catchMeteo.GetTotalSize());
+        if(meteo.GetParent()==null)
+            {
+                catchMeteo = meteo;
+                catchMeteo.Caught(transform);
+                Debug.Log("a");
+            }
+        else if(meteo.GetTotalSize()>=1)
+            {
+                meteo.hp--;
+            }
         }
+        
 
         //掴んだ隕石を止める
         if (catchMeteo != null)
@@ -78,16 +89,24 @@ public class PlayerCtrl : MonoBehaviour
     }
 
     //パンチ
-    void MeteoPunch()
-    {
+    //void MeteoPunch()
+    //{
 
-        Ray2D catchRay = new Ray2D(transform.position, transform.up); //前方にRayを投射
-        int layerMask = 1 << 10; //Meteoレイヤーにだけ反応するようにする
-        RaycastHit2D meteoHit = Physics2D.Raycast(catchRay.origin, catchRay.direction, 2, layerMask);
-        if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any) && meteoHit)
-        {
-            MeteoCtrl punchMeteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
-            punchMeteo.hp--;
-        }
-    }
+    //    Ray2D catchRay = new Ray2D(transform.position, transform.up); //前方にRayを投射
+    //    Debug.DrawRay(catchRay.origin, catchRay.direction, Color.red, 2);
+    //    //  int layerMask = 1 << 0; //Meteoレイヤーにだけ反応するようにする
+    //    RaycastHit2D meteoHit = Physics2D.Raycast(catchRay.origin, catchRay.direction, 2);
+    //    if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any) && meteoHit)
+    //    {
+    //        if (meteoHit.transform.gameObject.tag != "Player")
+    //        {
+    //            MeteoCtrl punchMeteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
+
+    //        }
+    //        // MeteoCtrl punchMeteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
+
+    //        // punchMeteo.hp--;
+
+    //    }
+    //}
 }

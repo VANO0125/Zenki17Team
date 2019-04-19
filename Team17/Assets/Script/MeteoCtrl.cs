@@ -66,10 +66,9 @@ public class MeteoCtrl : MonoBehaviour
             isShot = false;
             timer = 0;
         }
-
-        if (hp <= 0)
+        if (hp <= 0 && parent != null)
         {
-            //   Division();
+            parent.Division(number);
         }
     }
 
@@ -140,7 +139,6 @@ public class MeteoCtrl : MonoBehaviour
         //    color.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         //else
         //    color.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 0.5f);
-
     }
 
     //分裂しきっていない時のダメージ処理
@@ -169,23 +167,7 @@ public class MeteoCtrl : MonoBehaviour
         }
         return hightest;
     }
-
-    public int GetTotalSize()
-    {
-        var hightest = parent;
-        var totalSize = size;
-        int stoper = 0;
-        while (hightest != null)
-        {
-            hightest = hightest.GetParent();
-            if (hightest != null)
-                totalSize = hightest.size;
-            stoper++;
-            if (stoper >= 300)
-                break;
-        }
-        return totalSize;
-    }
+    
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -238,7 +220,21 @@ public class MeteoCtrl : MonoBehaviour
         {
             //Destroy(gameObject);
         }
-
-
+    }
+    public int GetTotalSize()
+    {
+        var hightest = parent;
+        var totalSize = parent.size;
+        int stoper = 0;
+        while (hightest != null)
+        {
+            if (hightest != null)
+                totalSize = hightest.size;
+            hightest = hightest.GetParent();
+            stoper++;
+            if (stoper >= 300)
+                break;
+        }
+        return totalSize;
     }
 }
