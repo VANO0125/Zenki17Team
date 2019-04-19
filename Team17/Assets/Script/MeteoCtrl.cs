@@ -26,7 +26,7 @@ public class MeteoCtrl : MonoBehaviour
 
     private float timer;
     public int hp;
-   
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -36,7 +36,7 @@ public class MeteoCtrl : MonoBehaviour
         {
             for (int i = 0; i < meteos.Length; i++)
             {
-                size += meteos[i].size;                
+                size += meteos[i].size;
             }
         }
 
@@ -65,11 +65,11 @@ public class MeteoCtrl : MonoBehaviour
         {
             isShot = false;
             timer = 0;
-        } 
-    
-       if(hp<=0)
+        }
+
+        if (hp <= 0)
         {
-         //   Division();
+            //   Division();
         }
     }
 
@@ -94,9 +94,10 @@ public class MeteoCtrl : MonoBehaviour
         meteos[number].gameObject.layer = 8;
         meteos[number].transform.parent = null;
         meteos[number].parent = null;
-        MeteoCtrl newMeteo = Instantiate(meteos[number], transform.position, Quaternion.identity) as MeteoCtrl;
-        newMeteo.SetKinematic(false);
-        Destroy(meteos[number].gameObject);
+        //MeteoCtrl newMeteo = Instantiate(meteos[number], transform.position, Quaternion.identity) as MeteoCtrl;
+        meteos[number].SetKinematic(false);
+        meteos[number] = null;
+        //Destroy(meteos[number].gameObject);
     }
 
     //プレイヤーに掴まれる処理
@@ -108,7 +109,7 @@ public class MeteoCtrl : MonoBehaviour
     }
 
     //隕石射出処理
-    public void ShotMeteo(Vector2 vec,float power)
+    public void ShotMeteo(Vector2 vec, float power)
     {
         rig.simulated = true;
         isShot = true;
@@ -149,6 +150,28 @@ public class MeteoCtrl : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public MeteoCtrl GetParent()
+    {
+        return parent;
+    }
+
+    public int GetTotalSize()
+    {
+        var hightest = parent;
+        var totalSize = size;
+        int stoper = 0;
+        while (hightest != null)
+        {
+            hightest = hightest.GetParent();
+            if (hightest != null)
+                totalSize = hightest.size;
+            stoper++;
+            if (stoper >= 300)
+                break;
+        }
+        return totalSize;
+    }
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Earth")
@@ -173,8 +196,25 @@ public class MeteoCtrl : MonoBehaviour
             var otherMeteo = col.gameObject.GetComponent<MeteoCtrl>();
             if (otherMeteo.isShot)
             {
-                //MeteoCtrl otherMeteo = ;
-                parent.Division(number);
+                var hightest = parent;
+                var no2 = parent;
+                var hMeteo = parent;
+                var divNum = number;
+                int stoper = 0;
+                while (hightest != null)
+                {
+                    no2 = hightest;
+                    hightest = hightest.GetParent();
+                    if (hightest != null)
+                    {
+                        hMeteo = hightest;
+                        divNum = no2.number;
+                    }
+                    stoper++;
+                    if (stoper >= 300)
+                        break;
+                }
+                hMeteo.Division(divNum);
                 otherMeteo.isShot = false;
             }
         }
@@ -183,7 +223,7 @@ public class MeteoCtrl : MonoBehaviour
         {
             //Destroy(gameObject);
         }
-        
-       
+
+
     }
 }
