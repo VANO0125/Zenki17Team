@@ -212,5 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  shotPower: 100
-  isShot: 0
+  shotPower: 1000
+  catchPos: {fileID: 0}
+  trail: {fileID: 0}
+  meteo: {fileID: 1004868371321564924, guid: 779d7121dc83e914aa0118e90d5f087e, type: 3}
