@@ -14,6 +14,11 @@ public class PlayerCtrl : MonoBehaviour
     private float shotPower;
     [SerializeField]
     private Transform catchPos;
+    [SerializeField]
+    private GameObject trail;
+    [SerializeField]
+    private MeteoCtrl meteo;
+    private int meteoCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -52,8 +57,8 @@ public class PlayerCtrl : MonoBehaviour
             var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
             if (meteo.GetParent() == null)
             {
-                catchMeteo = meteo;
-                catchMeteo.Caught(transform);
+              //  catchMeteo = meteo;
+              //  catchMeteo.Caught(transform);
             }
             else if (meteo.GetTotalSize() >= 1)
                 meteo.Damage(1);
@@ -69,11 +74,27 @@ public class PlayerCtrl : MonoBehaviour
     void MeteoThrow()
     {
         //Bボタンを離すと前方に隕石を投げる
-        if (isCatch && !GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
+        if (meteoCounter > 0 && GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any))
         {
-            catchMeteo.ShotMeteo(transform.up, shotPower);
-            isCatch = false;
-            catchMeteo = null;
+            // catchMeteo.ShotMeteo(transform.up, shotPower, trail);
+            // isCatch = false;
+            //  catchMeteo = null;
+            meteoCounter--;
+            MeteoCtrl shotMeteo = Instantiate(meteo, transform.position+transform.up, Quaternion.identity);
+            shotMeteo.ShotMeteo(transform.up, shotPower, transform);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Meteo")
+        {
+            MeteoCtrl meteo = col.gameObject.GetComponent<MeteoCtrl>();
+            if (!meteo.isShot && meteo.GetTotalSize() <= 1)
+            {
+                Destroy(col.gameObject);
+                meteoCounter++;
+            }
         }
     }
 }

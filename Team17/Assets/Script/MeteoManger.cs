@@ -17,6 +17,7 @@ public class MeteoManger : MonoBehaviour
     void Start()
     {
         //最初一個スポーン
+        SpawnPos();
         posNum = Random.Range(0, spawnPos.Count);
         MeteoCtrl newMeteo = Instantiate(meteos[meteoNum], train.position, Quaternion.identity) as MeteoCtrl;
         timer = 0;
@@ -27,7 +28,6 @@ public class MeteoManger : MonoBehaviour
     {
         SpawnPos();
         Spawn();
-
     }
 
     void Spawn()

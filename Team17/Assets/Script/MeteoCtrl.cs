@@ -21,13 +21,14 @@ public class MeteoCtrl : MonoBehaviour
     private GameObject color;//色を変える部分
     [SerializeField]
     private GameObject effect;//分裂時のエフェクト
-    private bool isShot;
+    public bool isShot;
     private bool isCaught;
     public bool isCore;
 
     private Vector2 shotVec;
     private Transform playerPos;
     private bool isRefect;
+    private GameObject shotEffect;
 
     private float timer, rTimer;
     public int hp;
@@ -68,6 +69,7 @@ public class MeteoCtrl : MonoBehaviour
             timer++;
         else
             timer = 0;
+
         if (isRefect)
         {
             rTimer++;
@@ -100,8 +102,8 @@ public class MeteoCtrl : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, shotVec + (Vector2)transform.position, 50 * Time.deltaTime);
         else if (isRefect)
             transform.position = Vector3.MoveTowards(transform.position, playerPos.position, 50 * Time.deltaTime);
-        else if (target != null)
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        else if (target != null && parent == null && size != 0)
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed / size * Time.deltaTime);
     }
 
     void Division(int number)
@@ -127,6 +129,7 @@ public class MeteoCtrl : MonoBehaviour
                 meteos[i] = null;
             }
         }
+        Destroy(gameObject);
     }
 
     //プレイヤーに掴まれる処理
@@ -140,13 +143,16 @@ public class MeteoCtrl : MonoBehaviour
     }
 
     //隕石射出処理
-    public void ShotMeteo(Vector2 vec, float power)
+    public void ShotMeteo(Vector2 vec, float power,Transform player)
     {
         shotVec = vec;
-        rig.simulated = true;
+        //  shotEffect = Instantiate(trail, transform.position, Quaternion.identity) as GameObject;
+        //  shotEffect.transform.parent = transform;
+        //rig.simulated = true;
         isShot = true;
-        isCaught = false;
-        transform.parent = null;
+        playerPos = player;
+        //isCaught = false;
+        //transform.parent = null;
     }
 
     public void SetKinematic(bool flag)
@@ -250,7 +256,7 @@ public class MeteoCtrl : MonoBehaviour
             var otherMeteo = col.gameObject.GetComponent<MeteoCtrl>();
             if (otherMeteo.isShot)
             {
-                Damage(10);
+                Damage(5);
                 //GetHighest().Division(GetDivNumber());
                 otherMeteo.isShot = false;
                 otherMeteo.isRefect = true;
@@ -265,7 +271,7 @@ public class MeteoCtrl : MonoBehaviour
     public int GetTotalSize()
     {
         var hightest = parent;
-        var totalSize = parent.size;
+        var totalSize = size;
         int stoper = 0;
         while (hightest != null)
         {
