@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using GamepadInput;
 
 public class PlayerCtrl : MonoBehaviour
@@ -16,8 +17,11 @@ public class PlayerCtrl : MonoBehaviour
     private Transform catchPos;
     [SerializeField]
     private GameObject trail;
+
     [SerializeField]
     private MeteoCtrl meteo;
+    [SerializeField]
+    private Text meteoText;
     private int meteoCounter;
 
     // Start is called before the first frame update
@@ -42,6 +46,7 @@ public class PlayerCtrl : MonoBehaviour
             transform.rotation = rotation;
         }
 
+        meteoText.text = "×" + meteoCounter;
         MeteoCatch();
         MeteoThrow();
 
@@ -85,7 +90,7 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionStay2D(Collision2D col)
     {
         if (col.gameObject.tag == "Meteo")
         {

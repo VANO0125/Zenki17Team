@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Meteo
   - Earth
+  - Catcher
   layers:
   - Default
   - TransparentFX

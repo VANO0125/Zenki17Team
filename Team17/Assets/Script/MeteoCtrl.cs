@@ -14,9 +14,8 @@ public class MeteoCtrl : MonoBehaviour
     private MeteoCtrl parent;//親オブジェクト
     [SerializeField]
     private MeteoCtrl[] meteos;
-    private GameObject target;
-    [SerializeField]
-    private float speed;
+    public Transform target;
+    public float speed;
     [SerializeField]
     private GameObject color;//色を変える部分
     [SerializeField]
@@ -36,7 +35,8 @@ public class MeteoCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        target = GameObject.FindGameObjectWithTag("Earth");
+        target = GameObject.FindGameObjectWithTag("Earth").transform;
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         //子オブジェクトがあればサイズを合計
         if (parent == null)
         {
@@ -97,13 +97,14 @@ public class MeteoCtrl : MonoBehaviour
 
     void Move()
     {
-        if (isCaught) return;
         if (isShot)
             transform.position = Vector3.MoveTowards(transform.position, shotVec + (Vector2)transform.position, 50 * Time.deltaTime);
+        else if (isCaught)
+            rig.AddForce((playerPos.position-transform.position).normalized * 200);
         else if (isRefect)
             transform.position = Vector3.MoveTowards(transform.position, playerPos.position, 50 * Time.deltaTime);
         else if (target != null && parent == null && size != 0)
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed / size * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target.position, speed / size * Time.deltaTime);
     }
 
     void Division(int number)
@@ -143,7 +144,7 @@ public class MeteoCtrl : MonoBehaviour
     }
 
     //隕石射出処理
-    public void ShotMeteo(Vector2 vec, float power,Transform player)
+    public void ShotMeteo(Vector2 vec, float power, Transform player)
     {
         shotVec = vec;
         //  shotEffect = Instantiate(trail, transform.position, Quaternion.identity) as GameObject;
@@ -245,7 +246,6 @@ public class MeteoCtrl : MonoBehaviour
             else
                 GetHighest().TotalAddMeteo(earth);
             //サイズが一定以下なら加点
-
         }
     }
 
@@ -268,6 +268,21 @@ public class MeteoCtrl : MonoBehaviour
             isRefect = false;
         }
     }
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Catcher")
+        {
+            isCaught = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Catcher")
+            isCaught = false;
+    }
+
     public int GetTotalSize()
     {
         var hightest = parent;
