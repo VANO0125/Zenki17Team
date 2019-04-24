@@ -7,17 +7,17 @@ using GamepadInput;
 public class PlayerCtrl : MonoBehaviour
 {
     private Rigidbody2D rig;
-    private bool isCatch;//隕石を掴んでいるか
-    private MeteoCtrl catchMeteo;//掴んでいる隕石
-    private int layerMask = 1 << 8; //Meteoレイヤーにだけ反応するようにする
     public float speed;//移動スピード
+    public int level;
+    public int exp;
+    [SerializeField]
+    private Text levelText;
+    [SerializeField]
+    private Slider expSlider;
+    public int expTable = 10;
+
     [SerializeField]
     private float shotPower;
-    [SerializeField]
-    private Transform catchPos;
-    [SerializeField]
-    private GameObject trail;
-
     [SerializeField]
     private MeteoCtrl meteo;
     [SerializeField]
@@ -25,12 +25,13 @@ public class PlayerCtrl : MonoBehaviour
     private int meteoCounter;
     private float rushTimer;
     public float rushInterval = 10;
+    private int layerMask = 1 << 8; //Meteoレイヤーにだけ反応するようにする
 
     // Start is called before the first frame update
     void Start()
     {
-        isCatch = false;
         rig = GetComponent<Rigidbody2D>();
+        expSlider.maxValue = expTable;
     }
 
     // Update is called once per frame
@@ -48,10 +49,29 @@ public class PlayerCtrl : MonoBehaviour
             transform.rotation = rotation;
         }
 
-        meteoText.text = "×" + meteoCounter;
+        if (exp >= expTable)
+        {
+            int remainder = exp - expTable;
+            level++;
+            expTable *= 2;
+            expSlider.maxValue = expTable;
+            exp = 0;
+            exp += remainder;
+        }
+        Debug.Log(exp);
         MeteoCatch();
         MeteoThrow();
+        SetUI();
+    }
 
+    public void AddExp(int exp)
+    { this.exp += exp; }
+
+    void SetUI()
+    {
+        meteoText.text = "×" + meteoCounter;
+        levelText.text = "Lv." + level;
+        expSlider.value = exp;
     }
 
     void MeteoCatch()
@@ -59,7 +79,7 @@ public class PlayerCtrl : MonoBehaviour
         //Bボタンで前方の隕石を掴む
         Ray2D catchRay = new Ray2D(transform.position, transform.up); //前方にRayを投射
         RaycastHit2D meteoHit = Physics2D.Raycast(catchRay.origin, catchRay.direction, 4, layerMask);
-        if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any) && catchMeteo == null && meteoHit)
+        if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any) && meteoHit)
         {
             var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
             if (meteo.GetParent() == null)
@@ -70,12 +90,6 @@ public class PlayerCtrl : MonoBehaviour
             else if (meteo.GetTotalSize() >= 1)
                 meteo.Damage(1);
         }
-
-        //掴んだ隕石を止める
-        if (catchMeteo != null)
-            isCatch = true;
-        else
-            isCatch = false;
     }
 
     void MeteoThrow()

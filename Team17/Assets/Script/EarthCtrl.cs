@@ -17,6 +17,11 @@ public class EarthCtrl : MonoBehaviour
     private int pulsScore;
     public bool isDead;//死亡判定
 
+    [SerializeField]
+    private PlayerCtrl player;
+    public int exp;//追加される経験値
+    private int pulsExp;
+
     public ShootingStar star;//地上視点
     public GameObject earthCamera;//地上カメラ
     private bool isDisplay;//地上カメラが表示されているか
@@ -42,6 +47,12 @@ public class EarthCtrl : MonoBehaviour
             scoreNumber.Set(score);//スコアを更新
         }
 
+        if (pulsExp != 0)
+        {
+            pulsExp--;
+            player.AddExp(1);
+        }
+
         DisPlayCamera();
         if (hp <= 0)//HP0以下の時
         {
@@ -64,11 +75,11 @@ public class EarthCtrl : MonoBehaviour
             isDisplay = true;//カメラ表示
             timer = earthTimer;//表示時間をリセット
             pulsScore += meteoSize * defaultScore;
-            //score += (meteoSize * defaultScore);//加点
+            pulsExp = exp;
             star.FallStar();
         }
         else
-        {  
+        {
             //ダメージ
             isDisplay = true;//カメラ表示
             timer = earthTimer;//表示時間をリセット
