@@ -26,6 +26,8 @@ public class PlayerCtrl : MonoBehaviour
     private float rushTimer;
     public float rushInterval = 10;
     private int layerMask = 1 << 8; //Meteoレイヤーにだけ反応するようにする
+    public Number scoreNumber;//スコア描写
+    public int score;
 
     // Start is called before the first frame update
     void Start()
@@ -37,8 +39,11 @@ public class PlayerCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         Vector3 vec = GamePad.GetAxis(GamePad.Axis.LeftStick, GamePad.Index.Any);
+        float axis = Input.GetAxis("R_XAxis_0");
         rig.velocity = vec * speed;//スティックでプレイヤー移動
+
         //移動方向を向く処理
         if (vec != Vector3.zero)
         {
@@ -47,6 +52,10 @@ public class PlayerCtrl : MonoBehaviour
             Quaternion rotation = new Quaternion();
             rotation.eulerAngles = new Vector3(0, 0, angle - 90);
             transform.rotation = rotation;
+        }
+        if (axis != 0)
+        {
+            transform.Rotate(0, 0, -axis * 1.5f);
         }
 
         if (exp >= expTable)
@@ -58,7 +67,6 @@ public class PlayerCtrl : MonoBehaviour
             exp = 0;
             exp += remainder;
         }
-        Debug.Log(exp);
         MeteoCatch();
         MeteoThrow();
         SetUI();
@@ -134,3 +142,4 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 }
+
