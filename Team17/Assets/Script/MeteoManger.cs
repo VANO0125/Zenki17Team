@@ -13,6 +13,8 @@ public class MeteoManger : MonoBehaviour
     public float timermax;
     private int meteoNum;
     private int posNum;
+    [SerializeField]
+    private EarthCtrl earth;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +28,12 @@ public class MeteoManger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SpawnPos();
-        Spawn();
+        if(!earth.isDead)
+        {
+            SpawnPos();
+            Spawn();
+        }
+       
     }
 
     void Spawn()
