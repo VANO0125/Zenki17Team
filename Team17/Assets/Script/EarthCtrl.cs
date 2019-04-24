@@ -14,6 +14,7 @@ public class EarthCtrl : MonoBehaviour
     [SerializeField]
     private int defaultScore;//基礎加点数
     private int score;//スコア
+    private int pulsScore;
     public bool isDead;//死亡判定
 
     public ShootingStar star;//地上視点
@@ -34,6 +35,13 @@ public class EarthCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (pulsScore != 0)
+        {
+            score++;
+            pulsScore--;
+            scoreNumber.Set(score);//スコアを更新
+        }
+
         DisPlayCamera();
         if (hp <= 0)//HP0以下の時
         {
@@ -55,8 +63,8 @@ public class EarthCtrl : MonoBehaviour
         {
             isDisplay = true;//カメラ表示
             timer = earthTimer;//表示時間をリセット
-            score += (meteoSize * defaultScore);//加点
-            scoreNumber.Set(score);//スコアを更新
+            pulsScore += meteoSize * defaultScore;
+            //score += (meteoSize * defaultScore);//加点
             star.FallStar();
         }
         else

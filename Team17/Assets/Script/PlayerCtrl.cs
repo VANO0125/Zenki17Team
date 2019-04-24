@@ -23,6 +23,8 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField]
     private Text meteoText;
     private int meteoCounter;
+    private float rushTimer;
+    public float rushInterval = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -62,8 +64,8 @@ public class PlayerCtrl : MonoBehaviour
             var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
             if (meteo.GetParent() == null)
             {
-              //  catchMeteo = meteo;
-              //  catchMeteo.Caught(transform);
+                //  catchMeteo = meteo;
+                //  catchMeteo.Caught(transform);
             }
             else if (meteo.GetTotalSize() >= 1)
                 meteo.Damage(1);
@@ -79,14 +81,29 @@ public class PlayerCtrl : MonoBehaviour
     void MeteoThrow()
     {
         //Bボタンを離すと前方に隕石を投げる
-        if (meteoCounter > 0 && GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any))
+        if (meteoCounter > 0)
         {
-            // catchMeteo.ShotMeteo(transform.up, shotPower, trail);
-            // isCatch = false;
-            //  catchMeteo = null;
-            meteoCounter--;
-            MeteoCtrl shotMeteo = Instantiate(meteo, transform.position+transform.up, Quaternion.identity);
-            shotMeteo.ShotMeteo(transform.up, shotPower, transform);
+            if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any))
+            {
+                meteoCounter--;
+                MeteoCtrl shotMeteo = Instantiate(meteo, transform.position + transform.up * 3, Quaternion.identity);
+                shotMeteo.ShotMeteo(transform.up, shotPower, transform);
+            }
+            else if (GamePad.GetButton(GamePad.Button.RightShoulder, GamePad.Index.Any))
+            {
+                rushTimer++;
+                if (rushTimer > rushInterval)
+                {
+                    meteoCounter--;
+                    MeteoCtrl shotMeteo = Instantiate(meteo, transform.position + transform.up * 2, Quaternion.identity);
+                    shotMeteo.ShotMeteo(transform.up, shotPower, transform);
+                    rushTimer = 0;
+                    rushInterval--;
+                    if (rushInterval >= 5)
+                        rushInterval = 5;
+                }
+                else rushInterval = 10;
+            }
         }
     }
 

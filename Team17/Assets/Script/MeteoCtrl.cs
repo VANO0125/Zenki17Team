@@ -258,8 +258,9 @@ public class MeteoCtrl : MonoBehaviour
             {
                 Damage(5);
                 //GetHighest().Division(GetDivNumber());
-                otherMeteo.isShot = false;
-                otherMeteo.isRefect = true;
+                //otherMeteo.isShot = false;
+                //otherMeteo.isRefect = true;
+                Destroy(otherMeteo.gameObject);
             }
         }
 

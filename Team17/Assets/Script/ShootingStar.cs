@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class ShootingStar : MonoBehaviour
 {
-    public GameObject ryusei,meteo;
+    public GameObject ryusei, meteo;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void FallStar()
