@@ -20,6 +20,9 @@ public class MeteoCtrl : MonoBehaviour
     private GameObject color;//色を変える部分
     [SerializeField]
     private GameObject effect;//分裂時のエフェクト
+    [SerializeField]
+    private GameObject damageEffect;//パンチされたときのエフェクト
+   
     public bool isShot;
     private bool isCaught;
     public bool isCore;
@@ -27,10 +30,10 @@ public class MeteoCtrl : MonoBehaviour
     private Vector2 shotVec;
     private Transform playerPos;
     private bool isRefect;
-    private GameObject shotEffect;
-
+   
     private float timer, rTimer;
     public int hp;
+    TrailRenderer shotEffect;
 
     // Start is called before the first frame update
     void Awake()
@@ -49,6 +52,7 @@ public class MeteoCtrl : MonoBehaviour
         //メテオキャッチ
         isCaught = false;
         isShot = false;
+        shotEffect = GetComponent<TrailRenderer>();
     }
 
     // Update is called once per frame
@@ -65,6 +69,7 @@ public class MeteoCtrl : MonoBehaviour
         //ColorChange();
         Move();
         Death();
+        ShotEffect();
         if (isShot)
             timer++;
         else
@@ -156,6 +161,19 @@ public class MeteoCtrl : MonoBehaviour
         //transform.parent = null;
     }
 
+    void ShotEffect()
+    {
+        if (number != 0 ) return;
+        if(isShot)
+        {
+            shotEffect.enabled = true;
+        }
+        else
+        {
+            shotEffect.enabled = false;
+        }
+    }
+
     public void SetKinematic(bool flag)
     { rig.isKinematic = flag; }
 
@@ -231,7 +249,19 @@ public class MeteoCtrl : MonoBehaviour
     }
 
     public void Damage(int damage)
-    { hp -= damage; }
+    {      
+        hp -= damage;
+        DamageEffect();
+    }
+
+    void DamageEffect()
+    {
+        if (parent == null) return;             
+        var obj = Instantiate(damageEffect,transform)as GameObject;
+        obj.transform.parent = transform;
+        obj.transform.position = transform.position;
+        Destroy(obj,0.5f);
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {
