@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8069218534313699867
+--- !u!1 &37215300
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,36 +8,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8069218534313699869}
-  - component: {fileID: 8069218534313699866}
+  - component: {fileID: 37215301}
+  - component: {fileID: 37215302}
   m_Layer: 0
-  m_Name: Meteoera1 (4)
+  m_Name: Meteoera1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8069218534313699869
+  m_IsActive: 0
+--- !u!4 &37215301
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8069218534313699867}
+  m_GameObject: {fileID: 37215300}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 71.9, y: -39.8, z: 0.84612095}
+  m_LocalPosition: {x: -16.2, y: -39.5, z: 0.84612095}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8069218535585446199}
-  m_RootOrder: 3
+  m_Father: {fileID: 1882780669}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8069218534313699866
+--- !u!212 &37215302
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8069218534313699867}
+  m_GameObject: {fileID: 37215300}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &8069218534888447900
+--- !u!1 &232376622
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,8 +87,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8069218534888447902}
-  - component: {fileID: 8069218534888447903}
+  - component: {fileID: 232376624}
+  - component: {fileID: 232376623}
   m_Layer: 0
   m_Name: Meteoera1
   m_TagString: Untagged
@@ -96,27 +96,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8069218534888447902
+--- !u!4 &232376624
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8069218534888447900}
+  m_GameObject: {fileID: 232376622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -16, y: 33.9, z: 0.84612095}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8069218535585446199}
+  m_Father: {fileID: 1882780669}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8069218534888447903
+--- !u!212 &232376623
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8069218534888447900}
+  m_GameObject: {fileID: 232376622}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -158,7 +158,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &8069218535058753703
+--- !u!1 &1170197512
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,36 +166,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8069218535058753721}
-  - component: {fileID: 8069218535058753702}
+  - component: {fileID: 1170197513}
+  - component: {fileID: 1170197514}
   m_Layer: 0
-  m_Name: Meteoera1 (3)
+  m_Name: Meteoera1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8069218535058753721
+  m_IsActive: 0
+--- !u!4 &1170197513
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8069218535058753703}
+  m_GameObject: {fileID: 1170197512}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 71.7, y: 32.7, z: 0.84612095}
+  m_LocalPosition: {x: 71.9, y: -39.8, z: 0.84612095}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8069218535585446199}
-  m_RootOrder: 2
+  m_Father: {fileID: 1882780669}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8069218535058753702
+--- !u!212 &1170197514
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8069218535058753703}
+  m_GameObject: {fileID: 1170197512}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -237,7 +237,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &8069218535096964929
+--- !u!1 &1882780667
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,87 +245,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8069218535096964931}
-  - component: {fileID: 8069218535096964928}
-  m_Layer: 0
-  m_Name: Meteoera1 (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8069218535096964931
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8069218535096964929}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.2, y: -39.5, z: 0.84612095}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8069218535585446199}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8069218535096964928
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8069218535096964929}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2.59, y: 1.94}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!1 &8069218535585446197
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8069218535585446199}
-  - component: {fileID: 8069218535585446196}
+  - component: {fileID: 1882780669}
+  - component: {fileID: 1882780668}
   m_Layer: 0
   m_Name: 'Meteoera '
   m_TagString: Untagged
@@ -333,56 +254,121 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8069218535585446199
+--- !u!4 &1882780669
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8069218535585446197}
+  m_GameObject: {fileID: 1882780667}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -25.821459, y: 3.9020298, z: -0.84612095}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8069218534888447902}
-  - {fileID: 8069218535096964931}
-  - {fileID: 8069218535058753721}
-  - {fileID: 8069218534313699869}
+  - {fileID: 232376624}
+  - {fileID: 37215301}
+  - {fileID: 2020576698}
+  - {fileID: 1170197513}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8069218535585446196
+--- !u!114 &1882780668
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8069218535585446197}
+  m_GameObject: {fileID: 1882780667}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e828f39261146f43835267280f654a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPos:
-  - {fileID: 8069218534888447900}
-  - {fileID: 8069218535096964929}
-  - {fileID: 8069218535058753703}
-  - {fileID: 8069218534313699867}
+  - {fileID: 232376622}
+  - {fileID: 232376622}
+  - {fileID: 2020576696}
+  - {fileID: 2020576696}
   meteos:
-  - {fileID: 8329901913175930626, guid: 77c7100ecf454e945b20716a0736e656, type: 3}
-  - {fileID: 7393977399032424098, guid: 90cb6cc2a7d6633498dee6a39d5ba940, type: 3}
-  - {fileID: 6499520612425579121, guid: a5f224117b218fa40b118fc7c834ba09, type: 3}
-  - {fileID: 8780339342868938035, guid: 631f6b2d27847fa4fb0953b1c1fac12b, type: 3}
-  - {fileID: 3218799592923125633, guid: 2591f0c08fcfe9043b818e53a5da513a, type: 3}
-  - {fileID: 1296809454970760843, guid: 833076e8a8d7759469f205a5ef0c9410, type: 3}
-  - {fileID: 4204026432557085309, guid: f6395b335b14c0e4a89a6ac3b40da6fa, type: 3}
-  - {fileID: 9048399772599999587, guid: e74bb2fb78d2108418c67ca3f61b2b88, type: 3}
-  - {fileID: 83917569407556160, guid: 7d10b1e01da87b34c9112db1dd0a4045, type: 3}
-  - {fileID: 3303726882061888477, guid: 09e3a7485a9d5ef4190f12e7335b4caa, type: 3}
-  - {fileID: 3021288936291237503, guid: b34b3b3ba2c6cd14597cf72d2e642cfc, type: 3}
-  - {fileID: 3735285342962134440, guid: 19db532f9532894498eaef25ad619932, type: 3}
-  - {fileID: 4132833015213476232, guid: 982f736f0f7806e48b049026710a54fb, type: 3}
-  - {fileID: 3379545038605533827, guid: 2a0c1b3a630f0124a9e51cf2de1a84e7, type: 3}
-  - {fileID: 1912618326100169726, guid: 954395d6e8436e04492f71cfaccfb99d, type: 3}
-  - {fileID: 8299437887168896838, guid: f128e2563fc748b449e3061f62bbda54, type: 3}
-  timermax: 10
+  - {fileID: 5492832592138463774, guid: e9ba413d55621d74c8a980fac5899182, type: 3}
+  timermax: 15
+  earth: {fileID: 7186988539121719486, guid: 32abf45a15ceb3c4095ac028951e4d98, type: 3}
+--- !u!1 &2020576696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2020576698}
+  - component: {fileID: 2020576697}
+  m_Layer: 0
+  m_Name: Meteoera1 (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2020576698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020576696}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 71.7, y: 32.7, z: 0.84612095}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1882780669}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2020576697
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020576696}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.59, y: 1.94}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
