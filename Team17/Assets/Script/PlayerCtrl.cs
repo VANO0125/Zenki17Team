@@ -19,19 +19,24 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField]
     private MeteoCtrl meteo;
     private int meteoCounter;
-
+    public Number scoreNumber;//スコア描写
+    public int score;
     // Start is called before the first frame update
     void Start()
     {
         isCatch = false;
         rig = GetComponent<Rigidbody2D>();
+      
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         Vector3 vec = GamePad.GetAxis(GamePad.Axis.LeftStick, GamePad.Index.Any);
+        float axis = Input.GetAxis("R_XAxis_0");
         rig.velocity = vec * speed;//スティックでプレイヤー移動
+  
         //移動方向を向く処理
         if (vec != Vector3.zero)
         {
@@ -41,10 +46,14 @@ public class PlayerCtrl : MonoBehaviour
             rotation.eulerAngles = new Vector3(0, 0, angle - 90);
             transform.rotation = rotation;
         }
+        if (axis != 0)
+        {
+            transform.Rotate(0, 0, -axis*1.5f);
+        }
 
         MeteoCatch();
         MeteoThrow();
-
+        
     }
 
     void MeteoCatch()
@@ -63,7 +72,7 @@ public class PlayerCtrl : MonoBehaviour
             else if (meteo.GetTotalSize() >= 1)
                 meteo.Damage(1);
         }
-
+       
         //掴んだ隕石を止める
         if (catchMeteo != null)
             isCatch = true;
@@ -94,7 +103,10 @@ public class PlayerCtrl : MonoBehaviour
             {
                 Destroy(col.gameObject);
                 meteoCounter++;
+                
+            }
+          
             }
         }
     }
-}
+
