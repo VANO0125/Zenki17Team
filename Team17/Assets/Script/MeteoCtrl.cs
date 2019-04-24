@@ -256,10 +256,10 @@ public class MeteoCtrl : MonoBehaviour
 
     void DamageEffect()
     {
-        if (parent == null) return;             
-        var obj = Instantiate(damageEffect,transform)as GameObject;
-        obj.transform.parent = transform;
-        obj.transform.position = transform.position;
+        //if (parent == null) return;             
+        var obj = Instantiate(damageEffect,transform.position,Quaternion.identity);
+        //obj.transform.parent = transform;
+        //obj.transform.position = transform.position;
         Destroy(obj,0.5f);
     }
 
