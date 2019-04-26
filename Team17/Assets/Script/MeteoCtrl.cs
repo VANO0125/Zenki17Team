@@ -22,7 +22,9 @@ public class MeteoCtrl : MonoBehaviour
     private GameObject effect;//分裂時のエフェクト
     [SerializeField]
     private GameObject damageEffect;//パンチされたときのエフェクト
-   
+    [SerializeField]
+    private MeteoCtrl meteo;//死亡時生成する隕石
+
     public bool isShot;
     private bool isCaught;
     public bool isCore;
@@ -30,7 +32,7 @@ public class MeteoCtrl : MonoBehaviour
     private Vector2 shotVec;
     private Transform playerPos;
     private bool isRefect;
-   
+
     private float timer, rTimer;
     public int hp;
     TrailRenderer shotEffect;
@@ -41,13 +43,10 @@ public class MeteoCtrl : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Earth").transform;
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         //子オブジェクトがあればサイズを合計
-        if (parent == null)
-        {
             for (int i = 0; i < meteos.Length; i++)
             {
                 size += meteos[i].size;
             }
-        }
 
         //メテオキャッチ
         isCaught = false;
@@ -58,14 +57,14 @@ public class MeteoCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.childCount == 1)
-        {
-            var child = transform.GetChild(0).gameObject;
-            child.layer = 8;
-            child.GetComponent<Rigidbody2D>().isKinematic = false;
-            child.transform.parent = null;
-            Destroy(gameObject);
-        }
+        //if (transform.childCount == 1)
+        //{
+        //    var child = transform.GetChild(0).gameObject;
+        //    child.layer = 8;
+        //    child.GetComponent<Rigidbody2D>().isKinematic = false;
+        //    child.transform.parent = null;
+        //    Destroy(gameObject);
+        //}
         //ColorChange();
         Move();
         Death();
@@ -105,7 +104,7 @@ public class MeteoCtrl : MonoBehaviour
         if (isShot)
             transform.position = Vector3.MoveTowards(transform.position, shotVec + (Vector2)transform.position, 50 * Time.deltaTime);
         else if (isCaught)
-            rig.AddForce((playerPos.position-transform.position).normalized * 200);
+            rig.AddForce((playerPos.position - transform.position).normalized * 200);
         else if (isRefect)
             transform.position = Vector3.MoveTowards(transform.position, playerPos.position, 50 * Time.deltaTime);
         else if (target != null && parent == null && size != 0)
@@ -124,18 +123,22 @@ public class MeteoCtrl : MonoBehaviour
 
     void DivisionAll()
     {
-        //隕石を分離させる
-        for (int i = 0; i < meteos.Length; i++)
+        if (parent != null)
         {
-            if (meteos[i] != null)
-            {
-                meteos[i].transform.parent = null;
-                meteos[i].parent = null;
-                meteos[i].SetKinematic(false);
-                meteos[i] = null;
-            }
+            transform.parent = null;
+            parent = null;
+            SetKinematic(false);
         }
-        Destroy(gameObject);
+        else
+        {
+            //隕石を分離させる
+            for (int i = 0; i < meteos.Length; i++)
+            {
+                if (meteos[i] != null)
+                    meteos[i].hp = 0;
+            }
+            //    Destroy(gameObject);
+        }
     }
 
     //プレイヤーに掴まれる処理
@@ -163,8 +166,8 @@ public class MeteoCtrl : MonoBehaviour
 
     void ShotEffect()
     {
-        if (number != 0 ) return;
-        if(isShot)
+        if (number != 0) return;
+        if (isShot)
         {
             shotEffect.enabled = true;
         }
@@ -182,15 +185,30 @@ public class MeteoCtrl : MonoBehaviour
 
     void Death()
     {
-        //if (size < 0.25)
-        //{
-        //    Destroy(gameObject, 2f);
-        //}
-        if (hp <= 0 && parent != null)
+        if (parent == null)
+        {
+            for (int i = 0; i < meteos.Length; i++)
+            {
+                if (meteos[i] != null)
+                    hp += meteos[i].hp;
+            }
+        }
+        if (hp <= 0)
+        {
+            hp = 0;
             if (isCore)
+            {
                 GetUnitMeteo().DivisionAll();
-            else
-                parent.Division(number);
+            }
+           
+            {
+                for (int i = 0; i < size; i++)
+                    if (meteo != null)
+                        Instantiate(meteo, transform.position+(-transform.right*-i), Quaternion.identity);
+                Instantiate(effect, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+        }
     }
 
     void ColorChange()
@@ -234,13 +252,16 @@ public class MeteoCtrl : MonoBehaviour
     public MeteoCtrl GetUnitMeteo()
     {
         var hightest = parent;
+        var t = parent;
         var no2 = parent;
         int stoper = 0;
 
         while (hightest != null)
         {
-            no2 = hightest;
+            t = hightest;
             hightest = hightest.GetParent();
+            if (hightest != null)
+                no2 = t;
             stoper++;
             if (stoper >= 300)
                 break;
@@ -249,7 +270,7 @@ public class MeteoCtrl : MonoBehaviour
     }
 
     public void Damage(int damage)
-    {      
+    {
         hp -= damage;
         DamageEffect();
     }
@@ -257,10 +278,10 @@ public class MeteoCtrl : MonoBehaviour
     void DamageEffect()
     {
         //if (parent == null) return;             
-        var obj = Instantiate(damageEffect,transform.position,Quaternion.identity);
+        var obj = Instantiate(damageEffect, transform.position, Quaternion.identity);
         //obj.transform.parent = transform;
         //obj.transform.position = transform.position;
-        Destroy(obj,0.5f);
+        Destroy(obj, 0.5f);
     }
 
     void OnTriggerEnter2D(Collider2D col)
