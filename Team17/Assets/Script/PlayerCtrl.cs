@@ -28,12 +28,16 @@ public class PlayerCtrl : MonoBehaviour
     private int layerMask = 1 << 8; //Meteoレイヤーにだけ反応するようにする
     public Number scoreNumber;//スコア描写
     public int score;
-
+    public AudioClip Sethrow;
+    public AudioClip Secatch;
+    public AudioClip Sepunch;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         expSlider.maxValue = expTable;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -88,15 +92,19 @@ public class PlayerCtrl : MonoBehaviour
         Ray2D catchRay = new Ray2D(transform.position, transform.up); //前方にRayを投射
         RaycastHit2D meteoHit = Physics2D.Raycast(catchRay.origin, catchRay.direction, 4, layerMask);
         if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any) && meteoHit)
-        {
+        { 
             var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
             if (meteo.GetParent() == null)
             {
                 //  catchMeteo = meteo;
                 //  catchMeteo.Caught(transform);
+
             }
             else if (meteo.GetTotalSize() >= 1)
+            {
                 meteo.Damage(1);
+                audioSource.PlayOneShot(Sepunch);
+            }
         }
     }
 
@@ -110,6 +118,7 @@ public class PlayerCtrl : MonoBehaviour
                 meteoCounter--;
                 MeteoCtrl shotMeteo = Instantiate(meteo, transform.position + transform.up * 3, Quaternion.identity);
                 shotMeteo.ShotMeteo(transform.up, shotPower, transform);
+                audioSource.PlayOneShot(Sethrow);
             }
             else if (GamePad.GetButton(GamePad.Button.RightShoulder, GamePad.Index.Any))
             {
@@ -138,7 +147,9 @@ public class PlayerCtrl : MonoBehaviour
             {
                 Destroy(col.gameObject);
                 meteoCounter++;
+                audioSource.PlayOneShot(Secatch);
             }
+
         }
     }
 }

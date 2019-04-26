@@ -36,7 +36,10 @@ public class MeteoCtrl : MonoBehaviour
     private float timer, rTimer;
     public int hp;
     TrailRenderer shotEffect;
-
+    public AudioClip Sebreak;
+    public AudioClip Seattck;
+    AudioSource audioSource;
+  
     // Start is called before the first frame update
     void Awake()
     {
@@ -52,6 +55,7 @@ public class MeteoCtrl : MonoBehaviour
         isCaught = false;
         isShot = false;
         shotEffect = GetComponent<TrailRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -92,6 +96,7 @@ public class MeteoCtrl : MonoBehaviour
             isRefect = false;
             rig.isKinematic = false;
         }
+      
     }
 
     public void SetSize(int size)
@@ -117,6 +122,7 @@ public class MeteoCtrl : MonoBehaviour
         meteos[number].parent = null;
         meteos[number].SetKinematic(false);
         meteos[number] = null;
+        audioSource.PlayOneShot(Sebreak);
     }
 
     void DivisionAll()
@@ -134,6 +140,7 @@ public class MeteoCtrl : MonoBehaviour
             {
                 if (meteos[i] != null)
                     meteos[i].hp = 0;
+                audioSource.PlayOneShot(Sebreak);
             }
             //    Destroy(gameObject);
         }
@@ -194,6 +201,11 @@ public class MeteoCtrl : MonoBehaviour
         if (hp <= 0)
         {
             hp = 0;
+      
+        //if (size < 0.25)
+        //{
+        //    Destroy(gameObject, 2f);
+        //}
             if (isCore)
             {
                 GetUnitMeteo().DivisionAll();
@@ -302,15 +314,19 @@ public class MeteoCtrl : MonoBehaviour
     {
         if (col.gameObject.tag == "Meteo")
         {
+            
             var otherMeteo = col.gameObject.GetComponent<MeteoCtrl>();
             if (otherMeteo.isShot)
-            {
-                Damage(5);
+            {  
+                Damage(5); 
                 //GetHighest().Division(GetDivNumber());
                 //otherMeteo.isShot = false;
-                //otherMeteo.isRefect = true;
+                //otherMeteo.isRefect = true;                
                 Destroy(otherMeteo.gameObject);
+           
+
             }
+        
         }
 
         if (col.gameObject.tag == "Player")
