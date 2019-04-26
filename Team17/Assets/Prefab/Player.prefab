@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2075655257}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.327, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 6055413462914045821}
@@ -212,7 +212,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  level: 0
+  exp: 0
+  levelText: {fileID: 0}
+  expSlider: {fileID: 0}
+  expTable: 10
   shotPower: 1000
-  catchPos: {fileID: 0}
-  trail: {fileID: 0}
   meteo: {fileID: 1004868371321564924, guid: 779d7121dc83e914aa0118e90d5f087e, type: 3}
+  meteoText: {fileID: 0}
+  rushInterval: 10
+  scoreNumber: {fileID: 0}
+  score: 0
+  Sethrow: {fileID: 0}
+  Secatch: {fileID: 0}
+  Sepunch: {fileID: 0}

@@ -108,6 +108,9 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   hp: 10
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
+  atttrckon: {fileID: 0}
 --- !u!50 &5492832590795082762
 Rigidbody2D:
   serializedVersion: 4
@@ -253,6 +256,9 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   hp: 10
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
+  atttrckon: {fileID: 0}
 --- !u!50 &5492832591594394185
 Rigidbody2D:
   serializedVersion: 4
@@ -399,6 +405,9 @@ MonoBehaviour:
   isShot: 0
   isCore: 1
   hp: 10
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
+  atttrckon: {fileID: 0}
 --- !u!50 &5492832591917594160
 Rigidbody2D:
   serializedVersion: 4
@@ -639,6 +648,9 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   hp: 10
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
+  atttrckon: {fileID: 0}
 --- !u!50 &5492832591931866786
 Rigidbody2D:
   serializedVersion: 4
@@ -784,6 +796,9 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   hp: 10
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
+  atttrckon: {fileID: 0}
 --- !u!50 &5492832592082526513
 Rigidbody2D:
   serializedVersion: 4
@@ -833,6 +848,7 @@ GameObject:
   - component: {fileID: 5492832592138463774}
   - component: {fileID: 5492832592138463772}
   - component: {fileID: 1306867418558356614}
+  - component: {fileID: 7652853400278151367}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -893,6 +909,10 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   hp: 0
+  Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
+  Seattck: {fileID: 8300000, guid: 57a2db0d62f1e534988b512e523d1f3b, type: 3}
+  atttrckon: {fileID: 3815914283264128965, guid: b2ee4e79d0fbe2d4ab2c6fcbdebe6e6b,
+    type: 3}
 --- !u!50 &5492832592138463772
 Rigidbody2D:
   serializedVersion: 4
@@ -1009,6 +1029,102 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!82 &7652853400278151367
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5492832592138463769}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5492832592226354027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,6 +1233,9 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   hp: 10
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
+  atttrckon: {fileID: 0}
 --- !u!50 &5492832592226354025
 Rigidbody2D:
   serializedVersion: 4
@@ -1262,6 +1381,9 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   hp: 10
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
+  atttrckon: {fileID: 0}
 --- !u!50 &5492832592409694845
 Rigidbody2D:
   serializedVersion: 4
