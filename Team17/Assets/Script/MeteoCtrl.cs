@@ -105,9 +105,7 @@ public class MeteoCtrl : MonoBehaviour
         if (isShot)
             transform.position = Vector3.MoveTowards(transform.position, shotVec + (Vector2)transform.position, 50 * Time.deltaTime);
         else if (isCaught)
-            rig.AddForce((playerPos.position-transform.position).normalized * 200);
-        else if (isRefect)
-            transform.position = Vector3.MoveTowards(transform.position, playerPos.position, 50 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, playerPos.position, 30 * Time.deltaTime);
         else if (target != null && parent == null && size != 0)
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed / size * Time.deltaTime);
     }
@@ -302,7 +300,7 @@ public class MeteoCtrl : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Catcher")
+        if (col.gameObject.tag == "Catcher" && transform.parent ==null)
         {
             isCaught = true;
         }
@@ -310,7 +308,7 @@ public class MeteoCtrl : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Catcher")
+        if (col.gameObject.tag == "Catcher" )
             isCaught = false;
     }
 
