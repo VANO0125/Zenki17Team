@@ -19,6 +19,8 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField]
     private float shotPower;
     [SerializeField]
+    private float power;//投げた隕石の威力
+    [SerializeField]
     private MeteoCtrl meteo;
     [SerializeField]
     private Text meteoText;
@@ -28,10 +30,12 @@ public class PlayerCtrl : MonoBehaviour
     private int layerMask = 1 << 8; //Meteoレイヤーにだけ反応するようにする
     public Number scoreNumber;//スコア描写
     public int score;
+
     public AudioClip Sethrow;
     public AudioClip Secatch;
     public AudioClip Sepunch;
     AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +70,7 @@ public class PlayerCtrl : MonoBehaviour
         {
             int remainder = exp - expTable;
             level++;
+            power += 5;
             expTable *= 2;
             expSlider.maxValue = expTable;
             exp = 0;
@@ -92,7 +97,7 @@ public class PlayerCtrl : MonoBehaviour
         Ray2D catchRay = new Ray2D(transform.position, transform.up); //前方にRayを投射
         RaycastHit2D meteoHit = Physics2D.Raycast(catchRay.origin, catchRay.direction, 4, layerMask);
         if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any) && meteoHit)
-        { 
+        {
             var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
             if (meteo.GetParent() == null)
             {
@@ -102,7 +107,7 @@ public class PlayerCtrl : MonoBehaviour
             }
             else if (meteo.GetTotalSize() >= 1)
             {
-                meteo.Damage(1);
+                meteo.Damage(power * 0.1f);
                 meteo.DamageEffect(meteoHit.point);
                 audioSource.PlayOneShot(Sepunch);
             }
@@ -118,7 +123,7 @@ public class PlayerCtrl : MonoBehaviour
             {
                 meteoCounter--;
                 MeteoCtrl shotMeteo = Instantiate(meteo, transform.position + transform.up * 3, Quaternion.identity);
-                shotMeteo.ShotMeteo(transform.up, shotPower, transform);
+                shotMeteo.ShotMeteo(transform.up, shotPower, power, transform);
                 audioSource.PlayOneShot(Sethrow);
             }
             else if (GamePad.GetButton(GamePad.Button.RightShoulder, GamePad.Index.Any))
@@ -128,11 +133,11 @@ public class PlayerCtrl : MonoBehaviour
                 {
                     meteoCounter--;
                     MeteoCtrl shotMeteo = Instantiate(meteo, transform.position + transform.up * 2, Quaternion.identity);
-                    shotMeteo.ShotMeteo(transform.up, shotPower, transform);
+                    shotMeteo.ShotMeteo(transform.up, shotPower, power, transform);
                     rushTimer = 0;
                     rushInterval--;
-                    if (rushInterval >= 5)
-                        rushInterval = 5;
+                    if (rushInterval <= 0)
+                        rushInterval = 0;
                 }
                 else rushInterval = 10;
             }

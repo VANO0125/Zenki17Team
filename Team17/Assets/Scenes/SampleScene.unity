@@ -3116,7 +3116,7 @@ PrefabInstance:
     - target: {fileID: 6055413462914045809, guid: 44c56ea0d4be1474c98ca15b53235656,
         type: 3}
       propertyPath: expTable
-      value: 100
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6055413462914045809, guid: 44c56ea0d4be1474c98ca15b53235656,
         type: 3}
@@ -3132,6 +3132,16 @@ PrefabInstance:
         type: 3}
       propertyPath: meteoCounter
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6055413462914045809, guid: 44c56ea0d4be1474c98ca15b53235656,
+        type: 3}
+      propertyPath: power
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6055413462914045809, guid: 44c56ea0d4be1474c98ca15b53235656,
+        type: 3}
+      propertyPath: shotPower
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2075655258, guid: 44c56ea0d4be1474c98ca15b53235656, type: 3}
       propertyPath: m_LocalPosition.y

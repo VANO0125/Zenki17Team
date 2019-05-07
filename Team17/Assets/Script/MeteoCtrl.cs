@@ -17,21 +17,25 @@ public class MeteoCtrl : MonoBehaviour
     public Transform target;
     public float speed;
     [SerializeField]
+    private MeteoCtrl meteo;//死亡時生成する隕石
+
+    [SerializeField]
     private GameObject effect;//分裂時のエフェクト
     [SerializeField]
     private GameObject damageEffect;//パンチされたときのエフェクト
-    [SerializeField]
-    private MeteoCtrl meteo;//死亡時生成する隕石
 
+    [SerializeField]
+    private float power;
     public bool isShot;
     private bool isCaught;
     public bool isCore;
-
+    
+    private float shotPower;
     private Vector2 shotVec;
     private Transform playerPos;
 
     private float timer;
-    public int hp;
+    public float hp;
     TrailRenderer shotEffect;
     public AudioClip Sebreak;
     public AudioClip Seattck;
@@ -90,7 +94,7 @@ public class MeteoCtrl : MonoBehaviour
     void Move()
     {
         if (isShot)
-            transform.position = Vector3.MoveTowards(transform.position, shotVec + (Vector2)transform.position, 50 * Time.deltaTime);
+            rig.velocity = (transform.position - playerPos.position).normalized * shotPower;
         else if (isCaught)
             transform.position = Vector3.MoveTowards(transform.position, playerPos.position, 30 * Time.deltaTime);
         else if (target != null && parent == null && size != 0)
@@ -142,9 +146,11 @@ public class MeteoCtrl : MonoBehaviour
     }
 
     //隕石射出処理
-    public void ShotMeteo(Vector2 vec, float power, Transform player)
+    public void ShotMeteo(Vector2 vec,float shotPower, float power, Transform player)
     {
         shotVec = vec;
+        this.shotPower = shotPower;
+        this.power = power;
         isShot = true;
         playerPos = player;
     }
@@ -246,7 +252,7 @@ public class MeteoCtrl : MonoBehaviour
         return no2;
     }
 
-    public void Damage(int damage)
+    public void Damage(float damage)
     {
         hp -= damage;
         //  DamageEffect();
@@ -277,18 +283,9 @@ public class MeteoCtrl : MonoBehaviour
             var otherMeteo = col.gameObject.GetComponent<MeteoCtrl>();
             if (otherMeteo.isShot)
             {
-                Damage(5);
+                Damage(otherMeteo.power);
                 Destroy(otherMeteo.gameObject);
             }
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "Meteo")
-        {
-            foreach (ContactPoint2D point in col.contacts)
-                DamageEffect(point.point);
         }
     }
 
