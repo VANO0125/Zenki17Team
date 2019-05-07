@@ -67,13 +67,15 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 0
   color: {fileID: 0}
-  effect: {fileID: 0}
+  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   damageEffect: {fileID: 8115069356428489702, guid: 60327e7287d1b814eb19eb763e866f41,
     type: 3}
   meteo: {fileID: 0}
   isShot: 0
   isCore: 0
   hp: 8
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
 --- !u!50 &7429618691514800384
 Rigidbody2D:
   serializedVersion: 4
@@ -310,6 +312,8 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   hp: 80
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
 --- !u!50 &7429618691516096162
 Rigidbody2D:
   serializedVersion: 4
@@ -668,6 +672,8 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   hp: 80
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
 --- !u!50 &7429618691565209287
 Rigidbody2D:
   serializedVersion: 4
@@ -1000,6 +1006,8 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   hp: 80
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
 --- !u!50 &7429618691670108089
 Rigidbody2D:
   serializedVersion: 4
@@ -1346,6 +1354,8 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   hp: 80
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
 --- !u!50 &7429618692029206782
 Rigidbody2D:
   serializedVersion: 4
@@ -1688,6 +1698,8 @@ MonoBehaviour:
   isShot: 0
   isCore: 1
   hp: 12
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
 --- !u!50 &7429618692059984154
 Rigidbody2D:
   serializedVersion: 4
@@ -2026,6 +2038,8 @@ MonoBehaviour:
   isShot: 0
   isCore: 1
   hp: 12
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
 --- !u!50 &7429618692142270595
 Rigidbody2D:
   serializedVersion: 4
@@ -2346,6 +2360,8 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   hp: 80
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
 --- !u!50 &7429618692167798884
 Rigidbody2D:
   serializedVersion: 4
@@ -2685,6 +2701,8 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   hp: 80
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
 --- !u!50 &7429618692583889523
 Rigidbody2D:
   serializedVersion: 4
@@ -3027,6 +3045,8 @@ MonoBehaviour:
   isShot: 0
   isCore: 1
   hp: 80
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
 --- !u!50 &7429618692680459943
 Rigidbody2D:
   serializedVersion: 4
@@ -3293,13 +3313,15 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 3
   color: {fileID: 0}
-  effect: {fileID: 0}
-  damageEffect: {fileID: 8115069356428489702, guid: 60327e7287d1b814eb19eb763e866f41,
+  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   meteo: {fileID: 0}
   isShot: 0
   isCore: 0
   hp: 0
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
 --- !u!50 &7429618692911743891
 Rigidbody2D:
   serializedVersion: 4
@@ -3537,6 +3559,8 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   hp: 8
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
 --- !u!50 &7429618693010420849
 Rigidbody2D:
   serializedVersion: 4
@@ -3888,6 +3912,8 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   hp: 80
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
 --- !u!50 &7429618693064494623
 Rigidbody2D:
   serializedVersion: 4
@@ -4229,6 +4255,8 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   hp: 80
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
 --- !u!50 &7429618693151925111
 Rigidbody2D:
   serializedVersion: 4

@@ -43,6 +43,7 @@ public class MeteoManger : MonoBehaviour
         if (timer >= timermax)
         {
             MeteoCtrl newMeteo = Instantiate(meteos[meteoNum], train.position, Quaternion.identity)as MeteoCtrl;
+            newMeteo.SetTarget(earth.transform);
             timer = 0;
         }
     }

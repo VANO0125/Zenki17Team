@@ -7,6 +7,7 @@ TagManager:
   - Meteo
   - Earth
   - Catcher
+  - Effect
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - 
   - Meteo
   - Grand
-  - N_Meteo
+  - S_Meteo
   - 
   - 
   - 

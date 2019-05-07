@@ -22,7 +22,7 @@ public class PlayerCtrl : MonoBehaviour
     private MeteoCtrl meteo;
     [SerializeField]
     private Text meteoText;
-    private int meteoCounter;
+    public int meteoCounter;
     private float rushTimer;
     public float rushInterval = 10;
     private int layerMask = 1 << 8; //Meteoレイヤーにだけ反応するようにする
@@ -103,6 +103,7 @@ public class PlayerCtrl : MonoBehaviour
             else if (meteo.GetTotalSize() >= 1)
             {
                 meteo.Damage(1);
+                meteo.DamageEffect(meteoHit.point);
                 audioSource.PlayOneShot(Sepunch);
             }
         }
@@ -138,7 +139,7 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
-    void OnCollisionStay2D(Collision2D col)
+    void OnTriggerStay2D(Collider2D col)
     {
         if (col.gameObject.tag == "Meteo")
         {
@@ -149,7 +150,6 @@ public class PlayerCtrl : MonoBehaviour
                 meteoCounter++;
                 audioSource.PlayOneShot(Secatch);
             }
-
         }
     }
 }

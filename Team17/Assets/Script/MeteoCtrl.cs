@@ -17,8 +17,6 @@ public class MeteoCtrl : MonoBehaviour
     public Transform target;
     public float speed;
     [SerializeField]
-    private GameObject color;//色を変える部分
-    [SerializeField]
     private GameObject effect;//分裂時のエフェクト
     [SerializeField]
     private GameObject damageEffect;//パンチされたときのエフェクト
@@ -31,25 +29,24 @@ public class MeteoCtrl : MonoBehaviour
 
     private Vector2 shotVec;
     private Transform playerPos;
-    private bool isRefect;
 
-    private float timer, rTimer;
+    private float timer;
     public int hp;
     TrailRenderer shotEffect;
     public AudioClip Sebreak;
     public AudioClip Seattck;
     AudioSource audioSource;
-  
+
     // Start is called before the first frame update
     void Awake()
     {
-        target = GameObject.FindGameObjectWithTag("Earth").transform;
+        // target = GameObject.FindGameObjectWithTag("Earth").transform;
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         //子オブジェクトがあればサイズを合計
-            for (int i = 0; i < meteos.Length; i++)
-            {
-                size += meteos[i].size;
-            }
+        for (int i = 0; i < meteos.Length; i++)
+        {
+            size += meteos[i].size;
+        }
 
         //メテオキャッチ
         isCaught = false;
@@ -78,25 +75,11 @@ public class MeteoCtrl : MonoBehaviour
         else
             timer = 0;
 
-        if (isRefect)
-        {
-            rTimer++;
-            if (Mathf.Abs((transform.position - playerPos.position).magnitude) < 0.5)
-                isRefect = false;
-        }
-        else
-            rTimer = 0;
         if (timer >= 180)
         {
             isShot = false;
             rig.isKinematic = false;
         }
-        if (rTimer >= 180)
-        {
-            isRefect = false;
-            rig.isKinematic = false;
-        }
-      
     }
 
     public void SetSize(int size)
@@ -142,9 +125,11 @@ public class MeteoCtrl : MonoBehaviour
                     meteos[i].hp = 0;
                 audioSource.PlayOneShot(Sebreak);
             }
-            //    Destroy(gameObject);
         }
     }
+
+    public void SetTarget(Transform target)
+    { this.target = target; }
 
     //プレイヤーに掴まれる処理
     public void Caught(Transform parent)
@@ -160,13 +145,8 @@ public class MeteoCtrl : MonoBehaviour
     public void ShotMeteo(Vector2 vec, float power, Transform player)
     {
         shotVec = vec;
-        //  shotEffect = Instantiate(trail, transform.position, Quaternion.identity) as GameObject;
-        //  shotEffect.transform.parent = transform;
-        //rig.simulated = true;
         isShot = true;
         playerPos = player;
-        //isCaught = false;
-        //transform.parent = null;
     }
 
     void ShotEffect()
@@ -201,36 +181,23 @@ public class MeteoCtrl : MonoBehaviour
         if (hp <= 0)
         {
             hp = 0;
-      
-        //if (size < 0.25)
-        //{
-        //    Destroy(gameObject, 2f);
-        //}
             if (isCore)
-            {
                 GetUnitMeteo().DivisionAll();
-            }
-           
+
+
+            for (int i = 0; i < size; i++)
             {
-                for (int i = 0; i < size; i++)
-                    if (meteo != null)
-                        Instantiate(meteo, transform.position+(-transform.right*-i), Quaternion.identity);
-                Instantiate(effect, transform.position, Quaternion.identity);
-                Destroy(gameObject);
+                if (meteo != null)
+                {
+                    Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+                    MeteoCtrl newMeteo = Instantiate(meteo, new Vector2(transform.position.x + i, transform.position.y + i), Quaternion.identity);
+                    newMeteo.SetTarget(player);
+                }
             }
+            Instantiate(effect, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
-
-    void ColorChange()
-    {
-        //if (size > safeSize)
-        //    color.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0.5f);
-        //else if (size < 0.25)
-        //    color.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
-        //else
-        //    color.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 0.5f);
-    }
-
 
     //分裂しきっていない時のダメージ処理
     public void TotalAddMeteo(EarthCtrl earth)
@@ -282,16 +249,12 @@ public class MeteoCtrl : MonoBehaviour
     public void Damage(int damage)
     {
         hp -= damage;
-        DamageEffect();
+        //  DamageEffect();
     }
 
-    void DamageEffect()
-    {
-        //if (parent == null) return;             
-        var obj = Instantiate(damageEffect, transform.position, Quaternion.identity);
-        //obj.transform.parent = transform;
-        //obj.transform.position = transform.position;
-        Destroy(obj, 0.5f);
+    public void DamageEffect(Vector2 position)
+    {       
+        var obj = Instantiate(damageEffect, position, Quaternion.identity);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -308,36 +271,30 @@ public class MeteoCtrl : MonoBehaviour
                 GetHighest().TotalAddMeteo(earth);
             //サイズが一定以下なら加点
         }
+
+        if (col.gameObject.tag == "Meteo")
+        {
+            var otherMeteo = col.gameObject.GetComponent<MeteoCtrl>();
+            if (otherMeteo.isShot)
+            {
+                Damage(5);
+                Destroy(otherMeteo.gameObject);
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Meteo")
         {
-            
-            var otherMeteo = col.gameObject.GetComponent<MeteoCtrl>();
-            if (otherMeteo.isShot)
-            {  
-                Damage(5); 
-                //GetHighest().Division(GetDivNumber());
-                //otherMeteo.isShot = false;
-                //otherMeteo.isRefect = true;                
-                Destroy(otherMeteo.gameObject);
-           
-
-            }
-        
-        }
-
-        if (col.gameObject.tag == "Player")
-        {
-            isRefect = false;
+            foreach (ContactPoint2D point in col.contacts)
+                DamageEffect(point.point);
         }
     }
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Catcher" && transform.parent ==null)
+        if (col.gameObject.tag == "Catcher" && transform.parent == null)
         {
             isCaught = true;
         }
@@ -345,7 +302,7 @@ public class MeteoCtrl : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Catcher" )
+        if (col.gameObject.tag == "Catcher")
             isCaught = false;
     }
 

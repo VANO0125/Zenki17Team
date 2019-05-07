@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1004868371321564925}
   - component: {fileID: 1004868371321564926}
   - component: {fileID: 3894924623446749632}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: 0
   m_TagString: Meteo
   m_Icon: {fileID: 0}
@@ -100,14 +100,17 @@ MonoBehaviour:
   number: 0
   parent: {fileID: 0}
   meteos: []
+  target: {fileID: 0}
   speed: 14
-  color: {fileID: 0}
-  effect: {fileID: 0}
-  damageEffect: {fileID: 8115069356428489702, guid: 60327e7287d1b814eb19eb763e866f41,
+  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  meteo: {fileID: 0}
   isShot: 0
   isCore: 0
   hp: 10
+  Sebreak: {fileID: 0}
+  Seattck: {fileID: 0}
 --- !u!50 &1004868371321564925
 Rigidbody2D:
   serializedVersion: 4
@@ -139,7 +142,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.63095474, y: 0.7132578}
