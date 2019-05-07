@@ -284,7 +284,7 @@ public class MeteoCtrl : MonoBehaviour
             if (otherMeteo.isShot)
             {
                 Damage(otherMeteo.power);
-                Destroy(otherMeteo.gameObject);
+                otherMeteo.hp = 0;
             }
         }
     }

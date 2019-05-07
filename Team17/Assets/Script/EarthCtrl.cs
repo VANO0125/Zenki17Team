@@ -74,7 +74,8 @@ public class EarthCtrl : MonoBehaviour
         {
             isDisplay = true;//カメラ表示
             timer = earthTimer;//表示時間をリセット
-            pulsScore += meteoSize * defaultScore;
+            score += meteoSize * defaultScore;
+            scoreNumber.Set(score);//スコアを更新
             pulsExp = exp;
             star.FallStar();
         }
