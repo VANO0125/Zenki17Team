@@ -104,7 +104,6 @@ MonoBehaviour:
   effect: {fileID: 0}
   isShot: 0
   isCore: 0
-  playerPos: {fileID: 0}
   hp: 10
 --- !u!50 &5492832590795082762
 Rigidbody2D:
@@ -247,7 +246,6 @@ MonoBehaviour:
   effect: {fileID: 0}
   isShot: 0
   isCore: 0
-  playerPos: {fileID: 0}
   hp: 10
 --- !u!50 &5492832591594394185
 Rigidbody2D:
@@ -390,7 +388,6 @@ MonoBehaviour:
   effect: {fileID: 0}
   isShot: 0
   isCore: 1
-  playerPos: {fileID: 0}
   hp: 10
 --- !u!50 &5492832591917594160
 Rigidbody2D:
@@ -533,7 +530,6 @@ MonoBehaviour:
   effect: {fileID: 0}
   isShot: 0
   isCore: 0
-  playerPos: {fileID: 0}
   hp: 10
 --- !u!50 &5492832591931866786
 Rigidbody2D:
@@ -676,7 +672,6 @@ MonoBehaviour:
   effect: {fileID: 0}
   isShot: 0
   isCore: 0
-  playerPos: {fileID: 0}
   hp: 10
 --- !u!50 &5492832592082526513
 Rigidbody2D:
@@ -725,6 +720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5492832592138463775}
   - component: {fileID: 5492832592138463774}
+  - component: {fileID: 2039869863650397341}
   - component: {fileID: 5492832592138463772}
   m_Layer: 0
   m_Name: GameObject
@@ -783,8 +779,25 @@ MonoBehaviour:
   effect: {fileID: 0}
   isShot: 0
   isCore: 0
-  playerPos: {fileID: 0}
   hp: 0
+--- !u!114 &2039869863650397341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5492832592138463769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ed255355e7af4cb55189e359f8e2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waring:
+  - {fileID: 765692962276789284, guid: ceb9ba2f2df4bf642b17931bd20695c2, type: 3}
+  - {fileID: 1917017816846732227, guid: da448394ebd952743991110376f5482e, type: 3}
+  - {fileID: 3948521327669311044, guid: ed03e2425075d5d4f8446bb246726d96, type: 3}
+  canvasRectTfm: {fileID: 5395231487381945945, guid: 04f6f322d561b634bb106a82ecca3d28,
+    type: 3}
 --- !u!50 &5492832592138463772
 Rigidbody2D:
   serializedVersion: 4
@@ -910,7 +923,6 @@ MonoBehaviour:
   effect: {fileID: 0}
   isShot: 0
   isCore: 0
-  playerPos: {fileID: 0}
   hp: 10
 --- !u!50 &5492832592226354025
 Rigidbody2D:
@@ -1053,7 +1065,6 @@ MonoBehaviour:
   effect: {fileID: 0}
   isShot: 0
   isCore: 0
-  playerPos: {fileID: 0}
   hp: 10
 --- !u!50 &5492832592409694845
 Rigidbody2D:
