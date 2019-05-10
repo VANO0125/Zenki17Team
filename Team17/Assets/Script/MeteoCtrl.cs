@@ -18,6 +18,8 @@ public class MeteoCtrl : MonoBehaviour
     public float speed;
     [SerializeField]
     private MeteoCtrl meteo;//死亡時生成する隕石
+    
+    private EarthCtrl earth;//地球
 
     [SerializeField]
     private GameObject effect;//分裂時のエフェクト
@@ -44,7 +46,7 @@ public class MeteoCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        // target = GameObject.FindGameObjectWithTag("Earth").transform;
+        earth = GameObject.FindGameObjectWithTag("Earth").GetComponent<EarthCtrl>();
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         //子オブジェクトがあればサイズを合計
         for (int i = 0; i < meteos.Length; i++)
@@ -93,12 +95,11 @@ public class MeteoCtrl : MonoBehaviour
 
     void Move()
     {
-        if (isShot)
-            rig.velocity = (transform.position - playerPos.position).normalized * shotPower;
+        if (isShot) return;
         else if (isCaught)
             transform.position = Vector3.MoveTowards(transform.position, playerPos.position, 30 * Time.deltaTime);
-        else if (target != null && parent == null && size != 0)
-            transform.position = Vector3.MoveTowards(transform.position, target.position, speed / size * Time.deltaTime);
+        else if (target != null && parent == null && size != 0) //rig.velocity =((target.position-transform.position).normalized*speed);
+            transform.position = Vector3.MoveTowards(transform.position, target.position, speed *  Time.deltaTime);
     }
 
     void Division(int number)
@@ -148,11 +149,14 @@ public class MeteoCtrl : MonoBehaviour
     //隕石射出処理
     public void ShotMeteo(Vector2 vec,float shotPower, float power, Transform player)
     {
+        rig.simulated = true;
+        transform.parent = null;
         shotVec = vec;
         this.shotPower = shotPower;
         this.power = power;
         isShot = true;
         playerPos = player;
+        rig.AddForce(vec * shotPower, ForceMode2D.Impulse);
     }
 
     void ShotEffect()
@@ -188,20 +192,24 @@ public class MeteoCtrl : MonoBehaviour
         {
             hp = 0;
             if (isCore)
-                GetUnitMeteo().DivisionAll();
-
-
-            for (int i = 0; i < size; i++)
             {
-                if (meteo != null)
-                {
-                    Transform player = GameObject.FindGameObjectWithTag("Player").transform;
-                    MeteoCtrl newMeteo = Instantiate(meteo, new Vector2(transform.position.x + i, transform.position.y + i), Quaternion.identity);
-                    newMeteo.SetTarget(player);
-                }
+                GetUnitMeteo().DivisionAll();
+                isCore = false;
             }
-            Instantiate(effect, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            if (parent != null) 
+            parent.Division(number);
+            //for (int i = 0; i < size; i++)
+            //{
+            //    if (meteo != null)
+            //    {
+            //        //  Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+            //        int x = Random.Range(-5, 6); int y = Random.Range(-5, 6);
+            //        MeteoCtrl newMeteo = Instantiate(meteo, new Vector2(transform.position.x+x,transform.position.y+y), Quaternion.identity);
+            //        //newMeteo.SetTarget(earth.transform);
+            //    }
+            //}
+           // Instantiate(effect, transform.position, Quaternion.identity);
+          //  Destroy(gameObject);
         }
     }
 
@@ -267,7 +275,7 @@ public class MeteoCtrl : MonoBehaviour
     {
         if (col.gameObject.tag == "Earth")
         {
-            EarthCtrl earth = col.gameObject.GetComponent<EarthCtrl>();
+          //  EarthCtrl earth = col.gameObject.GetComponent<EarthCtrl>();
             if (parent == null)
             {
                 earth.AddMeteo(size);
@@ -276,31 +284,39 @@ public class MeteoCtrl : MonoBehaviour
             else
                 GetHighest().TotalAddMeteo(earth);
             //サイズが一定以下なら加点
-        }
+        }    
+    }
 
+    void OnCollisionEnter2D(Collision2D col)
+    {
         if (col.gameObject.tag == "Meteo")
         {
             var otherMeteo = col.gameObject.GetComponent<MeteoCtrl>();
             if (otherMeteo.isShot)
             {
-                Damage(otherMeteo.power);
-                otherMeteo.hp = 0;
+                if (GetTotalSize() > 1)
+                {
+                    Damage(otherMeteo.power);
+                    otherMeteo.hp = 0;
+                    otherMeteo.isShot = false;
+                }
+                else isShot = transform;
             }
         }
     }
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Catcher" && transform.parent == null)
-        {
-            isCaught = true;
-        }
+        //if (col.gameObject.tag == "Catcher" && transform.parent == null)
+        //{
+        //    isCaught = true;
+        //}
     }
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Catcher")
-            isCaught = false;
+        //if (col.gameObject.tag == "Catcher")
+        //    isCaught = false;
     }
 
     public int GetTotalSize()

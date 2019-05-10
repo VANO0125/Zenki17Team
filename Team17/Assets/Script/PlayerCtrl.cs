@@ -22,8 +22,7 @@ public class PlayerCtrl : MonoBehaviour
     private float power;//投げた隕石の威力
     [SerializeField]
     private int meteoValue;//持てる隕石の数
-    [SerializeField]
-    private MeteoCtrl meteo;
+    private MeteoCtrl catchMeteo;
     [SerializeField]
     private Text meteoText;
     public int meteoCounter;
@@ -104,9 +103,9 @@ public class PlayerCtrl : MonoBehaviour
             var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
             if (meteo.GetParent() == null)
             {
-                //  catchMeteo = meteo;
-                //  catchMeteo.Caught(transform);
-
+                catchMeteo = meteo;
+                meteo.transform.parent = transform;
+                meteo.GetComponent<Rigidbody2D>().simulated = false;
             }
             else if (meteo.GetTotalSize() >= 1)
             {
@@ -120,34 +119,40 @@ public class PlayerCtrl : MonoBehaviour
     void MeteoThrow()
     {
         //Bボタンを離すと前方に隕石を投げる
-        if (meteoCounter > 0)
+        //if (meteoCounter > 0)
+        //{
+        //    if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any))
+        //    {
+        //        meteoCounter--;
+        //        MeteoCtrl shotMeteo = Instantiate(meteo, transform.position + transform.up * 3, Quaternion.identity);
+        //        shotMeteo.ShotMeteo(transform.up, shotPower, power, transform);
+        //        audioSource.PlayOneShot(throwSE);
+        //    }
+        //else if (GamePad.GetButton(GamePad.Button.RightShoulder, GamePad.Index.Any))
+        //{
+        //    rushTimer++;
+        //    if (rushTimer > rushInterval)
+        //    {
+        //        meteoCounter--;
+        //        MeteoCtrl shotMeteo = Instantiate(meteo, transform.position + transform.up * 2, Quaternion.identity);
+        //        shotMeteo.ShotMeteo(transform.up, shotPower, power, transform);
+        //        audioSource.PlayOneShot(throwSE);
+        //        rushTimer = 0;
+        //        rushInterval--;
+        //        if (rushInterval <= 0)
+        //            rushInterval = 0;
+        //    }
+        //}
+        //else rushInterval = 10;
+        //}
+        if (catchMeteo !=null&&!GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
         {
-            if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any))
-            {
-                meteoCounter--;
-                MeteoCtrl shotMeteo = Instantiate(meteo, transform.position + transform.up * 3, Quaternion.identity);
-                shotMeteo.ShotMeteo(transform.up, shotPower, power, transform);
-                audioSource.PlayOneShot(throwSE);
-            }
-            else if (GamePad.GetButton(GamePad.Button.RightShoulder, GamePad.Index.Any))
-            {
-                rushTimer++;
-                if (rushTimer > rushInterval)
-                {
-                    meteoCounter--;
-                    MeteoCtrl shotMeteo = Instantiate(meteo, transform.position + transform.up * 2, Quaternion.identity);
-                    shotMeteo.ShotMeteo(transform.up, shotPower, power, transform);
-                    rushTimer = 0;
-                    rushInterval--;
-                    if (rushInterval <= 0)
-                        rushInterval = 0;
-                }
-            }
-            else rushInterval = 10;
+            catchMeteo.ShotMeteo(transform.up,shotPower,power,transform);            
+            catchMeteo = null;
         }
     }
 
-    void OnTriggerStay2D(Collider2D col)
+    void OnCollisionStay2D(Collision2D col)
     {
         if (col.gameObject.tag == "Meteo")
         {

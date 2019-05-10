@@ -28,11 +28,11 @@ public class MeteoManger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(!earth.isDead)
-        //{
+        if(!earth.isDead)
+        {
             SpawnPos();
             Spawn();
-        //}
+        }
        
     }
 
