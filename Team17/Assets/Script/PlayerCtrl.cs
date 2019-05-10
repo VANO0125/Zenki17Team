@@ -8,13 +8,18 @@ public class PlayerCtrl : MonoBehaviour
 {
     private Rigidbody2D rig;
     public float speed;//移動スピード
-    public int level;
-    public int exp;
+    public int level;  // レベル
+    public int exp; // 経験値
+    public int nextExpBase; // 次のレベルまでに必要な経験値の基本値
+    public int nextExpInterval; // 次のレベルまでに必要な経験値の増加値
+    public int prevNeedExp; // 前のレベルに必要だった経験値
+    public int needExp; // 次のレベルに必要な経験値
+    public int expTable = 10;
     [SerializeField]
     private Text levelText;
     [SerializeField]
     private Slider expSlider;
-    public int expTable = 10;
+    
 
     [SerializeField]
     private float shotPower;
@@ -43,7 +48,9 @@ public class PlayerCtrl : MonoBehaviour
     {
         rig = GetComponent<Rigidbody2D>();
         expSlider.maxValue = expTable;
+        expTable = GetComponent<ExpList>().expList[0];
         audioSource = GetComponent<AudioSource>();
+       
     }
 
     // Update is called once per frame
@@ -70,24 +77,30 @@ public class PlayerCtrl : MonoBehaviour
 
         if (exp >= expTable)
         {
+            
             int remainder = exp - expTable;
-            level++;
+            exp += remainder;
             power += 5;
-            meteoValue += 10;
-            expTable *= 2;
-            expSlider.maxValue = expTable;
+            meteoValue = 0;
             exp = 0;
             exp += remainder;
+            expTable = GetComponent<ExpList>().expList[level];
+            expSlider.maxValue = expTable;
+            level++;
         }
+        
         MeteoCatch();
         MeteoThrow();
         SetUI();
     }
 
     public void AddExp(int exp)
-    { this.exp += exp; }
-
-    void SetUI()
+    {
+        this.exp += exp;
+       
+    }
+   
+        void SetUI()
     {
         meteoText.text = "×" + meteoCounter + "/" + meteoValue;
         levelText.text = "Lv." + level;

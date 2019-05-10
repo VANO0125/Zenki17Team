@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 6055413462914045811}
   - component: {fileID: 6055413462914045810}
   - component: {fileID: 6055413462914045809}
+  - component: {fileID: 4026410390526199935}
   - component: {fileID: 7422734234366316914}
   m_Layer: 0
   m_Name: Player
@@ -215,18 +216,38 @@ MonoBehaviour:
   speed: 15
   level: 0
   exp: 0
+  nextExpBase: 0
+  nextExpInterval: 0
+  prevNeedExp: 0
+  needExp: 0
+  expTable: 10
   levelText: {fileID: 0}
   expSlider: {fileID: 0}
-  expTable: 10
   shotPower: 1000
+  power: 0
+  meteoValue: 0
   meteo: {fileID: 1004868371321564924, guid: 779d7121dc83e914aa0118e90d5f087e, type: 3}
   meteoText: {fileID: 0}
+  meteoCounter: 0
   rushInterval: 10
   scoreNumber: {fileID: 0}
   score: 0
-  Sethrow: {fileID: 8300000, guid: a2099654fba7a674da28d8cfc8e8ce2e, type: 3}
-  Secatch: {fileID: 8300000, guid: 0cfaed8d0e3b8e24a9a74fc8989babdb, type: 3}
-  Sepunch: {fileID: 8300000, guid: 57a2db0d62f1e534988b512e523d1f3b, type: 3}
+  throwSE: {fileID: 0}
+  catchSE: {fileID: 0}
+  punchSE: {fileID: 0}
+--- !u!114 &4026410390526199935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6055413462914045808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd29761e4a8a1714aa3052bbc1bc1d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expList: 
 --- !u!82 &7422734234366316914
 AudioSource:
   m_ObjectHideFlags: 0
