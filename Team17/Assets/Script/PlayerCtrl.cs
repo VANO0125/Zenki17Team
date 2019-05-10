@@ -20,12 +20,7 @@ public class PlayerCtrl : MonoBehaviour
     private float shotPower;
     [SerializeField]
     private float power;//投げた隕石の威力
-    [SerializeField]
-    private int meteoValue;//持てる隕石の数
     private MeteoCtrl catchMeteo;
-    [SerializeField]
-    private Text meteoText;
-    public int meteoCounter;
     private float rushTimer;
     public float rushInterval = 10;
     private int layerMask = 1 << 8; //Meteoレイヤーにだけ反応するようにする
@@ -72,7 +67,6 @@ public class PlayerCtrl : MonoBehaviour
             int remainder = exp - expTable;
             level++;
             power += 5;
-            meteoValue += 10;
             expTable *= 2;
             expSlider.maxValue = expTable;
             exp = 0;
@@ -88,7 +82,6 @@ public class PlayerCtrl : MonoBehaviour
 
     void SetUI()
     {
-        meteoText.text = "×" + meteoCounter + "/" + meteoValue;
         levelText.text = "Lv." + level;
         expSlider.value = exp;
     }
@@ -160,8 +153,6 @@ public class PlayerCtrl : MonoBehaviour
             if (!meteo.isShot && meteo.GetTotalSize() <= 1)
             {
                 Destroy(col.gameObject);
-                if (meteoCounter <= meteoValue)
-                    meteoCounter++;
                 audioSource.PlayOneShot(catchSE);
             }
         }
