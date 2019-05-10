@@ -138,7 +138,7 @@ public class PlayerCtrl : MonoBehaviour
         //}
         //else rushInterval = 10;
         //}
-        if (catchMeteo !=null&&!GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
+        if (catchMeteo !=null && !GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
         {
             catchMeteo.ShotMeteo(transform.up,shotPower,power,transform);            
             catchMeteo = null;

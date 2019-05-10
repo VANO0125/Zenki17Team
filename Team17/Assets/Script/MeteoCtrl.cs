@@ -60,6 +60,7 @@ public class MeteoCtrl : MonoBehaviour
         isShot = false;
         shotEffect = GetComponent<TrailRenderer>();
         audioSource = GetComponent<AudioSource>();
+        shotEffect.enabled = false;
     }
 
     // Update is called once per frame
@@ -85,7 +86,7 @@ public class MeteoCtrl : MonoBehaviour
         if (timer >= 180)
         {
             isShot = false;
-            rig.isKinematic = false;
+            //rig.isKinematic = false;
         }
     }
 
@@ -301,7 +302,12 @@ public class MeteoCtrl : MonoBehaviour
                     otherMeteo.hp = 0;
                     otherMeteo.isShot = false;
                 }
-                else isShot = transform;
+                else
+                {
+                    isShot = true;
+                    foreach (ContactPoint2D point in col.contacts)
+                        rig.AddForceAtPosition((transform.position-col.transform.position).normalized*shotPower,point.point);
+                }
             }
         }
     }
