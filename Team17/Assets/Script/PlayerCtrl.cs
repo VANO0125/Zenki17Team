@@ -8,7 +8,7 @@ public class PlayerCtrl : MonoBehaviour
 {
     private Rigidbody2D rig;
     public float speed;//移動スピード
-    private float plusAnle;
+    private Vector2 moveAngle;
     public int level;  // レベル
     public int exp; // 経験値
     public int nextExpBase; // 次のレベルまでに必要な経験値の基本値
@@ -86,10 +86,11 @@ public class PlayerCtrl : MonoBehaviour
     void Rotate()
     {
         Vector2 vec = GamePad.GetAxis(GamePad.Axis.LeftStick, GamePad.Index.Any);
-        //移動方向を向く処理
         if (vec != Vector2.zero)
+            moveAngle = vec;
+        //移動方向を向く処理
         {
-            float angle = Mathf.Atan2(vec.x, vec.y) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(moveAngle.x, moveAngle.y) * Mathf.Rad2Deg;
             Quaternion rotation = new Quaternion();
             rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, -angle), 10f);
             //rotation.eulerAngles = new Vector3(0, 0, angle - 90);
