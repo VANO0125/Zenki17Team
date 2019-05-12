@@ -8,6 +8,7 @@ public class PlayerCtrl : MonoBehaviour
 {
     private Rigidbody2D rig;
     public float speed;//移動スピード
+    private float plusAnle;
     public int level;  // レベル
     public int exp; // 経験値
     public int nextExpBase; // 次のレベルまでに必要な経験値の基本値
@@ -19,7 +20,7 @@ public class PlayerCtrl : MonoBehaviour
     private Text levelText;
     [SerializeField]
     private Slider expSlider;
-    
+
 
     [SerializeField]
     private float shotPower;
@@ -44,26 +45,20 @@ public class PlayerCtrl : MonoBehaviour
         expSlider.maxValue = expTable;
         expTable = GetComponent<ExpList>().expList[0];
         audioSource = GetComponent<AudioSource>();
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        Vector3 vec = GamePad.GetAxis(GamePad.Axis.LeftStick, GamePad.Index.Any);
+        Vector2 vec = GamePad.GetAxis(GamePad.Axis.LeftStick, GamePad.Index.Any);
         float axis = Input.GetAxis("R_XAxis_0");
-        rig.velocity = vec * speed;//スティックでプレイヤー移動
+        //rig.velocity = vec * speed;//スティックでプレイヤー移動
+        if (rig.velocity.magnitude >= speed && vec != Vector2.zero)
+            rig.velocity = rig.velocity.normalized * speed;
 
-        //移動方向を向く処理
-        if (vec != Vector3.zero)
-        {
-            Vector3 pos = rig.velocity;
-            float angle = Mathf.Atan2(pos.y, pos.x) * Mathf.Rad2Deg;
-            Quaternion rotation = new Quaternion();
-            rotation.eulerAngles = new Vector3(0, 0, angle - 90);
-            transform.rotation = rotation;
-        }
+        rig.AddForce(vec * speed);
+        
         if (axis != 0)
         {
             transform.Rotate(0, 0, -axis * 1.5f);
@@ -71,7 +66,6 @@ public class PlayerCtrl : MonoBehaviour
 
         if (exp >= expTable)
         {
-            
             int remainder = exp - expTable;
             exp += remainder;
             power += 5;
@@ -83,19 +77,33 @@ public class PlayerCtrl : MonoBehaviour
             expSlider.maxValue = expTable;
             level++;
         }
-        
+        Rotate();
         MeteoCatch();
         MeteoThrow();
         SetUI();
     }
 
+    void Rotate()
+    {
+        Vector2 vec = GamePad.GetAxis(GamePad.Axis.LeftStick, GamePad.Index.Any);
+        //移動方向を向く処理
+        if (vec != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(vec.x, vec.y) * Mathf.Rad2Deg;
+            Quaternion rotation = new Quaternion();
+            rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, -angle), 10f);
+            //rotation.eulerAngles = new Vector3(0, 0, angle - 90);
+            transform.rotation = rotation;
+        }
+    }
+
     public void AddExp(int exp)
     {
         this.exp += exp;
-       
+
     }
-   
-        void SetUI()
+
+    void SetUI()
     {
         levelText.text = "Lv." + level;
         expSlider.value = exp;
@@ -111,9 +119,10 @@ public class PlayerCtrl : MonoBehaviour
             var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
             if (meteo.GetParent() == null)
             {
+                Debug.Log("true");
                 catchMeteo = meteo;
                 meteo.transform.parent = transform;
-                meteo.GetComponent<Rigidbody2D>().simulated = false;
+                catchMeteo.GetComponent<Rigidbody2D>().simulated = false;
             }
             else if (meteo.GetTotalSize() >= 1)
             {
@@ -153,23 +162,10 @@ public class PlayerCtrl : MonoBehaviour
         //}
         //else rushInterval = 10;
         //}
-        if (catchMeteo !=null && !GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
+        if (catchMeteo != null && !GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
         {
-            catchMeteo.ShotMeteo(transform.up,shotPower,power,transform);            
+            catchMeteo.ShotMeteo(transform.up, shotPower, power, transform);
             catchMeteo = null;
-        }
-    }
-
-    void OnCollisionStay2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "Meteo")
-        {
-            MeteoCtrl meteo = col.gameObject.GetComponent<MeteoCtrl>();
-            if (!meteo.isShot && meteo.GetTotalSize() <= 1)
-            {
-                Destroy(col.gameObject);
-                audioSource.PlayOneShot(catchSE);
-            }
         }
     }
 }

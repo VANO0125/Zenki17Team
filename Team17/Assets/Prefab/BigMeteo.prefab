@@ -57,23 +57,18 @@ MonoBehaviour:
   rig: {fileID: 7429618691514800384}
   number: 0
   parent: {fileID: 7429618692911743884}
-  meteos:
-  - {fileID: 7429618693010420851}
-  - {fileID: 7429618693151925105}
-  - {fileID: 7429618692167798886}
-  - {fileID: 7429618692142270653}
-  - {fileID: 7429618692680459937}
-  - {fileID: 7429618693064494617}
-  - {fileID: 7429618691565209286}
   target: {fileID: 0}
   speed: 0
   meteo: {fileID: 0}
+  earth: {fileID: 0}
   effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   power: 0
   isShot: 0
   isCore: 0
+  isParent: 1
+  playerPos: {fileID: 0}
   hp: 8
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: c8ef52bf7a883b244a3751aafc25a00a, type: 3}
@@ -399,16 +394,18 @@ MonoBehaviour:
   rig: {fileID: 7429618691516096162}
   number: 3
   parent: {fileID: 7429618692911743884}
-  meteos: []
   target: {fileID: 0}
   speed: 0
   meteo: {fileID: 1004868371321564924, guid: 779d7121dc83e914aa0118e90d5f087e, type: 3}
+  earth: {fileID: 0}
   effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   power: 0
   isShot: 0
   isCore: 0
+  isParent: 0
+  playerPos: {fileID: 0}
   hp: 80
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: c8ef52bf7a883b244a3751aafc25a00a, type: 3}
@@ -856,16 +853,18 @@ MonoBehaviour:
   rig: {fileID: 7429618691565209287}
   number: 6
   parent: {fileID: 7429618691514800390}
-  meteos: []
   target: {fileID: 0}
   speed: 0
   meteo: {fileID: 1004868371321564924, guid: 779d7121dc83e914aa0118e90d5f087e, type: 3}
+  earth: {fileID: 0}
   effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   power: 0
   isShot: 0
   isCore: 0
+  isParent: 0
+  playerPos: {fileID: 0}
   hp: 80
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: c8ef52bf7a883b244a3751aafc25a00a, type: 3}
@@ -1287,16 +1286,18 @@ MonoBehaviour:
   rig: {fileID: 7429618691670108089}
   number: 2
   parent: {fileID: 7429618692911743884}
-  meteos: []
   target: {fileID: 0}
   speed: 0
   meteo: {fileID: 1004868371321564924, guid: 779d7121dc83e914aa0118e90d5f087e, type: 3}
+  earth: {fileID: 0}
   effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   power: 0
   isShot: 0
   isCore: 0
+  isParent: 0
+  playerPos: {fileID: 0}
   hp: 80
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: c8ef52bf7a883b244a3751aafc25a00a, type: 3}
@@ -1732,16 +1733,18 @@ MonoBehaviour:
   rig: {fileID: 7429618692029206782}
   number: 1
   parent: {fileID: 7429618692911743884}
-  meteos: []
   target: {fileID: 0}
   speed: 0
   meteo: {fileID: 1004868371321564924, guid: 779d7121dc83e914aa0118e90d5f087e, type: 3}
+  earth: {fileID: 0}
   effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   power: 0
   isShot: 0
   isCore: 0
+  isParent: 0
+  playerPos: {fileID: 0}
   hp: 80
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: c8ef52bf7a883b244a3751aafc25a00a, type: 3}
@@ -2173,16 +2176,18 @@ MonoBehaviour:
   rig: {fileID: 7429618692059984154}
   number: 4
   parent: {fileID: 7429618692911743884}
-  meteos: []
   target: {fileID: 0}
   speed: 0
   meteo: {fileID: 1004868371321564924, guid: 779d7121dc83e914aa0118e90d5f087e, type: 3}
+  earth: {fileID: 0}
   effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   power: 0
   isShot: 0
   isCore: 1
+  isParent: 0
+  playerPos: {fileID: 0}
   hp: 12
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: c8ef52bf7a883b244a3751aafc25a00a, type: 3}
@@ -2610,16 +2615,18 @@ MonoBehaviour:
   rig: {fileID: 7429618692142270595}
   number: 3
   parent: {fileID: 7429618691514800390}
-  meteos: []
   target: {fileID: 0}
   speed: 0
   meteo: {fileID: 1004868371321564924, guid: 779d7121dc83e914aa0118e90d5f087e, type: 3}
+  earth: {fileID: 0}
   effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   power: 0
   isShot: 0
   isCore: 1
+  isParent: 0
+  playerPos: {fileID: 0}
   hp: 12
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: c8ef52bf7a883b244a3751aafc25a00a, type: 3}
@@ -3029,16 +3036,18 @@ MonoBehaviour:
   rig: {fileID: 7429618692167798884}
   number: 2
   parent: {fileID: 7429618691514800390}
-  meteos: []
   target: {fileID: 0}
   speed: 0
   meteo: {fileID: 1004868371321564924, guid: 779d7121dc83e914aa0118e90d5f087e, type: 3}
+  earth: {fileID: 0}
   effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   power: 0
   isShot: 0
   isCore: 0
+  isParent: 0
+  playerPos: {fileID: 0}
   hp: 80
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: c8ef52bf7a883b244a3751aafc25a00a, type: 3}
@@ -3467,16 +3476,18 @@ MonoBehaviour:
   rig: {fileID: 7429618692583889523}
   number: 0
   parent: {fileID: 7429618692911743884}
-  meteos: []
   target: {fileID: 0}
   speed: 0
   meteo: {fileID: 1004868371321564924, guid: 779d7121dc83e914aa0118e90d5f087e, type: 3}
+  earth: {fileID: 0}
   effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   power: 0
   isShot: 0
   isCore: 0
+  isParent: 0
+  playerPos: {fileID: 0}
   hp: 80
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: c8ef52bf7a883b244a3751aafc25a00a, type: 3}
@@ -3908,16 +3919,18 @@ MonoBehaviour:
   rig: {fileID: 7429618692680459943}
   number: 4
   parent: {fileID: 7429618691514800390}
-  meteos: []
   target: {fileID: 0}
   speed: 0
   meteo: {fileID: 1004868371321564924, guid: 779d7121dc83e914aa0118e90d5f087e, type: 3}
+  earth: {fileID: 0}
   effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   power: 0
   isShot: 0
   isCore: 1
+  isParent: 0
+  playerPos: {fileID: 0}
   hp: 80
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: c8ef52bf7a883b244a3751aafc25a00a, type: 3}
@@ -4274,22 +4287,18 @@ MonoBehaviour:
   rig: {fileID: 7429618691514800384}
   number: 0
   parent: {fileID: 0}
-  meteos:
-  - {fileID: 7429618692583889522}
-  - {fileID: 7429618692029206781}
-  - {fileID: 7429618691670108088}
-  - {fileID: 7429618691516096161}
-  - {fileID: 7429618692059984153}
-  - {fileID: 7429618691514800390}
   target: {fileID: 0}
   speed: 3
   meteo: {fileID: 0}
+  earth: {fileID: 0}
   effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   power: 0
   isShot: 0
   isCore: 0
+  isParent: 1
+  playerPos: {fileID: 0}
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: c8ef52bf7a883b244a3751aafc25a00a, type: 3}
@@ -4616,16 +4625,18 @@ MonoBehaviour:
   rig: {fileID: 7429618693010420849}
   number: 0
   parent: {fileID: 7429618691514800390}
-  meteos: []
   target: {fileID: 0}
   speed: 0
   meteo: {fileID: 1004868371321564924, guid: 779d7121dc83e914aa0118e90d5f087e, type: 3}
+  earth: {fileID: 0}
   effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   power: 0
   isShot: 0
   isCore: 0
+  isParent: 0
+  playerPos: {fileID: 0}
   hp: 8
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: c8ef52bf7a883b244a3751aafc25a00a, type: 3}
@@ -5066,16 +5077,18 @@ MonoBehaviour:
   rig: {fileID: 7429618693064494623}
   number: 5
   parent: {fileID: 7429618691514800390}
-  meteos: []
   target: {fileID: 0}
   speed: 0
   meteo: {fileID: 1004868371321564924, guid: 779d7121dc83e914aa0118e90d5f087e, type: 3}
+  earth: {fileID: 0}
   effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   power: 0
   isShot: 0
   isCore: 0
+  isParent: 0
+  playerPos: {fileID: 0}
   hp: 80
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: c8ef52bf7a883b244a3751aafc25a00a, type: 3}
@@ -5506,16 +5519,18 @@ MonoBehaviour:
   rig: {fileID: 7429618693151925111}
   number: 1
   parent: {fileID: 7429618691514800390}
-  meteos: []
   target: {fileID: 0}
   speed: 0
   meteo: {fileID: 1004868371321564924, guid: 779d7121dc83e914aa0118e90d5f087e, type: 3}
+  earth: {fileID: 0}
   effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   power: 0
   isShot: 0
   isCore: 0
+  isParent: 0
+  playerPos: {fileID: 0}
   hp: 80
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: c8ef52bf7a883b244a3751aafc25a00a, type: 3}

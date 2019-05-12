@@ -13,13 +13,12 @@ public class MeteoCtrl : MonoBehaviour
     private int number;//子供の番号
     [SerializeField]
     private MeteoCtrl parent;//親オブジェクト
-    [SerializeField]
     private MeteoCtrl[] meteos;
     public Transform target;
     public float speed;
     [SerializeField]
     private MeteoCtrl meteo;//死亡時生成する隕石
-    
+    [SerializeField]
     private EarthCtrl earth;//地球
 
     [SerializeField]
@@ -31,10 +30,11 @@ public class MeteoCtrl : MonoBehaviour
     private float power;
     public bool isShot;
     private bool isCaught;
-    public bool isCore;
+    public bool isCore,isParent;
     
     private float shotPower;
     private Vector2 shotVec;
+    [SerializeField]
     private Transform playerPos;
 
     private float timer;
@@ -47,17 +47,21 @@ public class MeteoCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        earth = GameObject.FindGameObjectWithTag("Earth").GetComponent<EarthCtrl>();
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         //子オブジェクトがあればサイズを合計
-        for (int i = 0; i < meteos.Length; i++)
+        if (isParent)
         {
-            size += meteos[i].size;
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                meteos = new MeteoCtrl[transform.childCount];
+                meteos[i] = transform.GetChild(0).GetComponent<MeteoCtrl>();
+                size += meteos[i].size;
+            }
         }
-
-        //メテオキャッチ
-        isCaught = false;
-        isShot = false;
+        else
+        {
+            if(transform.parent != null)
+            parent = transform.parent.GetComponent<MeteoCtrl>();
+        }
         shotEffect = GetComponent<TrailRenderer>();
         audioSource = GetComponent<AudioSource>();
         shotEffect.enabled = false;
@@ -108,11 +112,12 @@ public class MeteoCtrl : MonoBehaviour
     {
         if (meteos[number] == null) return;
         //隕石を分離させる
-        meteos[number].transform.parent = null;
-        meteos[number].parent = null;
-        meteos[number].SetKinematic(false);
-        meteos[number] = null;
-        audioSource.PlayOneShot(Sebreak);
+        //meteos[number].transform.parent = null;
+        //meteos[number].parent = null;
+        //meteos[number].SetKinematic(false);
+        //meteos[number].rig.AddForce((meteos[number].transform.position - transform.position).normalized * 10, ForceMode2D.Impulse);
+        //meteos[number] = null;
+        //audioSource.PlayOneShot(Sebreak);
     }
 
     void DivisionAll()
@@ -182,7 +187,7 @@ public class MeteoCtrl : MonoBehaviour
 
     void Death()
     {
-        if (parent == null)
+        if (isParent)
         {
             for (int i = 0; i < meteos.Length; i++)
             {
@@ -198,20 +203,14 @@ public class MeteoCtrl : MonoBehaviour
                 GetUnitMeteo().DivisionAll();
                 isCore = false;
             }
-            if (parent != null) 
-            parent.Division(number);
-            //for (int i = 0; i < size; i++)
-            //{
-            //    if (meteo != null)
-            //    {
-            //        //  Transform player = GameObject.FindGameObjectWithTag("Player").transform;
-            //        int x = Random.Range(-5, 6); int y = Random.Range(-5, 6);
-            //        MeteoCtrl newMeteo = Instantiate(meteo, new Vector2(transform.position.x+x,transform.position.y+y), Quaternion.identity);
-            //        //newMeteo.SetTarget(earth.transform);
-            //    }
-            //}
-           // Instantiate(effect, transform.position, Quaternion.identity);
-          //  Destroy(gameObject);
+            if (!isParent)
+            {
+                hp = 20;
+                transform.parent = null;
+                parent = null;
+                SetKinematic(false);      
+                audioSource.PlayOneShot(Sebreak);
+            }
         }
     }
 
@@ -301,6 +300,8 @@ public class MeteoCtrl : MonoBehaviour
                     Damage(otherMeteo.power);
                     otherMeteo.hp = 0;
                     otherMeteo.isShot = false;
+                    foreach (ContactPoint2D point in col.contacts)
+                        DamageEffect(point.point);
                 }
                 else
                 {
