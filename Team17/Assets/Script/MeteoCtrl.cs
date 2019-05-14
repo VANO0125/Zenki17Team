@@ -30,8 +30,8 @@ public class MeteoCtrl : MonoBehaviour
     private float power;
     public bool isShot;
     private bool isCaught;
-    public bool isCore,isParent;
-    
+    public bool isCore, isParent;
+
     private float shotPower;
     private Vector2 shotVec;
     [SerializeField]
@@ -59,8 +59,8 @@ public class MeteoCtrl : MonoBehaviour
         }
         else
         {
-            if(transform.parent != null)
-            parent = transform.parent.GetComponent<MeteoCtrl>();
+            if (transform.parent != null)
+                parent = transform.parent.GetComponent<MeteoCtrl>();
         }
         shotEffect = GetComponent<TrailRenderer>();
         audioSource = GetComponent<AudioSource>();
@@ -103,9 +103,11 @@ public class MeteoCtrl : MonoBehaviour
     {
         if (isShot) return;
         else if (isCaught)
-            transform.position = Vector3.MoveTowards(transform.position, playerPos.position, 30 * Time.deltaTime);
-        else if (target != null && parent == null && size != 0) //rig.velocity =((target.position-transform.position).normalized*speed);
-            transform.position = Vector3.MoveTowards(transform.position, target.position, speed *  Time.deltaTime);
+        {
+            return;
+        }
+        else if (target != null && parent == null && size != 0)
+            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
 
     void Division(int number)
@@ -146,23 +148,25 @@ public class MeteoCtrl : MonoBehaviour
     //プレイヤーに掴まれる処理
     public void Caught(Transform parent)
     {
-        rig.simulated = false;
         isCaught = true;
         isShot = false;
         transform.parent = parent;
         playerPos = parent;
+        rig.simulated = false;
     }
 
     //隕石射出処理
-    public void ShotMeteo(Vector2 vec,float shotPower, float power, Transform player)
+    public void ShotMeteo(Vector2 vec, float shotPower, float power, Transform player)
     {
         rig.simulated = true;
         transform.parent = null;
+        isCaught = false;
         shotVec = vec;
         this.shotPower = shotPower;
         this.power = power;
         isShot = true;
         playerPos = player;
+        rig.mass = 10f;
         rig.AddForce(vec * shotPower, ForceMode2D.Impulse);
     }
 
@@ -208,7 +212,7 @@ public class MeteoCtrl : MonoBehaviour
                 hp = 20;
                 transform.parent = null;
                 parent = null;
-                SetKinematic(false);      
+                SetKinematic(false);
                 audioSource.PlayOneShot(Sebreak);
             }
         }
@@ -268,7 +272,7 @@ public class MeteoCtrl : MonoBehaviour
     }
 
     public void DamageEffect(Vector2 position)
-    {       
+    {
         var obj = Instantiate(damageEffect, position, Quaternion.identity);
     }
 
@@ -276,7 +280,7 @@ public class MeteoCtrl : MonoBehaviour
     {
         if (col.gameObject.tag == "Earth")
         {
-          //  EarthCtrl earth = col.gameObject.GetComponent<EarthCtrl>();
+            //  EarthCtrl earth = col.gameObject.GetComponent<EarthCtrl>();
             if (parent == null)
             {
                 earth.AddMeteo(size);
@@ -285,7 +289,7 @@ public class MeteoCtrl : MonoBehaviour
             else
                 GetHighest().TotalAddMeteo(earth);
             //サイズが一定以下なら加点
-        }    
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -307,7 +311,7 @@ public class MeteoCtrl : MonoBehaviour
                 {
                     isShot = true;
                     foreach (ContactPoint2D point in col.contacts)
-                        rig.AddForceAtPosition((transform.position-col.transform.position).normalized*shotPower,point.point);
+                        rig.AddForceAtPosition((transform.position - col.transform.position).normalized * shotPower, point.point);
                 }
             }
         }

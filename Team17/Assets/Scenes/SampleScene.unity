@@ -998,6 +998,16 @@ PrefabInstance:
       propertyPath: playerPos
       value: 
       objectReference: {fileID: 1017879065}
+    - target: {fileID: 7429618693010420849, guid: 9c0c633600ea0b34ba59263003f7f45f,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429618693010420849, guid: 9c0c633600ea0b34ba59263003f7f45f,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c0c633600ea0b34ba59263003f7f45f, type: 3}
 --- !u!1 &610047159

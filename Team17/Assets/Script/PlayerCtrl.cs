@@ -58,12 +58,13 @@ public class PlayerCtrl : MonoBehaviour
             rig.velocity = rig.velocity.normalized * speed;
 
         rig.AddForce(vec * speed);
-        
+
         if (axis != 0)
         {
             transform.Rotate(0, 0, -axis * 1.5f);
         }
 
+        //レベルアップ処理
         if (exp >= expTable)
         {
             int remainder = exp - expTable;
@@ -85,14 +86,15 @@ public class PlayerCtrl : MonoBehaviour
 
     void Rotate()
     {
+        //移動方向を向く処理
         Vector2 vec = GamePad.GetAxis(GamePad.Axis.LeftStick, GamePad.Index.Any);
         if (vec != Vector2.zero)
             moveAngle = vec;
-        //移動方向を向く処理
         {
             float angle = Mathf.Atan2(moveAngle.x, moveAngle.y) * Mathf.Rad2Deg;
             Quaternion rotation = new Quaternion();
-            rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, -angle), 10f);
+            int rate = catchMeteo != null ? (catchMeteo.size)/2 : 1;//隕石が大きいほど振り返る速度を遅く
+            rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, -angle), 10f / rate);
             //rotation.eulerAngles = new Vector3(0, 0, angle - 90);
             transform.rotation = rotation;
         }
@@ -120,10 +122,8 @@ public class PlayerCtrl : MonoBehaviour
             var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
             if (meteo.GetParent() == null)
             {
-                Debug.Log("true");
+                meteo.Caught(transform);
                 catchMeteo = meteo;
-                meteo.transform.parent = transform;
-                catchMeteo.GetComponent<Rigidbody2D>().simulated = false;
             }
             else if (meteo.GetTotalSize() >= 1)
             {
