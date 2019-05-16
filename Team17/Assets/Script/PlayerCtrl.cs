@@ -8,13 +8,10 @@ public class PlayerCtrl : MonoBehaviour
 {
     private Rigidbody2D rig;
     public float speed;//移動スピード
-    private Vector2 moveAngle;
+    private Vector2 moveAngle;//回転ベクトル
+    private float rateTimer;//振り返りのラグ
     public int level;  // レベル
     public int exp; // 経験値
-    public int nextExpBase; // 次のレベルまでに必要な経験値の基本値
-    public int nextExpInterval; // 次のレベルまでに必要な経験値の増加値
-    public int prevNeedExp; // 前のレベルに必要だった経験値
-    public int needExp; // 次のレベルに必要な経験値
     public int expTable = 10;
     [SerializeField]
     private Text levelText;
@@ -89,15 +86,26 @@ public class PlayerCtrl : MonoBehaviour
         //移動方向を向く処理
         Vector2 vec = GamePad.GetAxis(GamePad.Axis.LeftStick, GamePad.Index.Any);
         if (vec != Vector2.zero)
-            moveAngle = vec;
         {
-            float angle = Mathf.Atan2(moveAngle.x, moveAngle.y) * Mathf.Rad2Deg;
-            Quaternion rotation = new Quaternion();
-            int rate = catchMeteo != null ? (catchMeteo.size)/2 : 1;//隕石が大きいほど振り返る速度を遅く
-            rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, -angle), 10f / rate);
-            //rotation.eulerAngles = new Vector3(0, 0, angle - 90);
+            moveAngle = vec;
+            if (Vector2.Angle(transform.up, vec) <= 170)
+                rateTimer = 100000;
+        }
+
+        float angle = Mathf.Atan2(moveAngle.x, moveAngle.y) * Mathf.Rad2Deg;
+        Quaternion rad = Quaternion.Euler(0, 0, -angle);
+
+        int rate = catchMeteo != null ? (catchMeteo.size) / 2 : 0;//隕石が大きいほど振り返る速度を遅く
+        rateTimer++;
+
+        if (rateTimer >= rate * 10)
+        {
+            Quaternion rotation = Quaternion.RotateTowards(transform.rotation, rad, 10f);
             transform.rotation = rotation;
         }
+
+        if (transform.rotation == Quaternion.Euler(0, 0, -angle))
+            rateTimer = 0;
     }
 
     public void AddExp(int exp)
@@ -136,36 +144,10 @@ public class PlayerCtrl : MonoBehaviour
 
     void MeteoThrow()
     {
-        //Bボタンを離すと前方に隕石を投げる
-        //if (meteoCounter > 0)
-        //{
-        //    if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any))
-        //    {
-        //        meteoCounter--;
-        //        MeteoCtrl shotMeteo = Instantiate(meteo, transform.position + transform.up * 3, Quaternion.identity);
-        //        shotMeteo.ShotMeteo(transform.up, shotPower, power, transform);
-        //        audioSource.PlayOneShot(throwSE);
-        //    }
-        //else if (GamePad.GetButton(GamePad.Button.RightShoulder, GamePad.Index.Any))
-        //{
-        //    rushTimer++;
-        //    if (rushTimer > rushInterval)
-        //    {
-        //        meteoCounter--;
-        //        MeteoCtrl shotMeteo = Instantiate(meteo, transform.position + transform.up * 2, Quaternion.identity);
-        //        shotMeteo.ShotMeteo(transform.up, shotPower, power, transform);
-        //        audioSource.PlayOneShot(throwSE);
-        //        rushTimer = 0;
-        //        rushInterval--;
-        //        if (rushInterval <= 0)
-        //            rushInterval = 0;
-        //    }
-        //}
-        //else rushInterval = 10;
-        //}
+        //Bボタンを離すと前方に隕石を投げる     
         if (catchMeteo != null && !GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
         {
-            catchMeteo.ShotMeteo(transform.up, shotPower, power, transform);
+            catchMeteo.ShotMeteo(transform.up, 0, power, transform);
             catchMeteo = null;
         }
     }
