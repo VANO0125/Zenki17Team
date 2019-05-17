@@ -15,6 +15,8 @@ public class MeteoManger : MonoBehaviour
     private int posNum;
     [SerializeField]
     private EarthCtrl earth;
+    [SerializeField]
+    private Waring warning;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,12 +30,12 @@ public class MeteoManger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!earth.isDead)
+        if (!earth.isDead)
         {
             SpawnPos();
             Spawn();
         }
-       
+
     }
 
     void Spawn()
@@ -42,9 +44,10 @@ public class MeteoManger : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= timermax)
         {
-            MeteoCtrl newMeteo = Instantiate(meteos[meteoNum], train.position, Quaternion.identity)as MeteoCtrl;
+            MeteoCtrl newMeteo = Instantiate(meteos[meteoNum], train.position, Quaternion.identity) as MeteoCtrl;
             newMeteo.earth = earth;
             newMeteo.SetTarget(earth.transform);
+            warning.CreateLineRendererObject(newMeteo.transform);
             timer = 0;
         }
     }

@@ -7,13 +7,29 @@ public class Waring : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> waring;
+    //[SerializeField]
+    //private RectTransform canvasRectTfm;
+
+    [SerializeField, Tooltip("放物線のマテリアル")]
+    private Material arcMaterial;
+    /// <summary>
+    /// 放物線の幅
+    /// </summary>
+    [SerializeField, Tooltip("放物線の幅")]
+    private float arcWidth;
     [SerializeField]
-    private RectTransform canvasRectTfm;
+    GameObject panel;
+    Transform meteo;
+    /// <summary>
+    /// 放物線を構成するLineRenderer
+    /// </summary>
+    private LineRenderer lineRenderer;
+  //  RectTransform panelRect = panel.GetComponent<RectTransform>();
 
     // Start is called before the first frame update
     void Start()
     {
-        CheckScreenOut(transform.position);
+        //CheckScreenOut(transform.position);
     }
 
     // Update is called once per frame
@@ -58,6 +74,38 @@ public class Waring : MonoBehaviour
         //}
         // 範囲内 
         return;
+    }
+
+    public void CreateLineRendererObject(Transform meteo)
+    {
+        this.meteo = meteo;
+        // 親オブジェクトを作り、LineRendererを持つ子オブジェクトを作る
+        GameObject arcObjectsParent = Instantiate(panel);
+
+        lineRenderer = new LineRenderer();
+
+        GameObject newObject = new GameObject("LineRenderer_");
+        newObject.transform.SetParent(panel.transform);
+        lineRenderer = newObject.AddComponent<LineRenderer>();
+
+        // 光源関連を使用しない
+        lineRenderer.receiveShadows = false;
+        lineRenderer.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
+        lineRenderer.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
+        lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+
+        // 線の幅とマテリアル
+        lineRenderer.material = arcMaterial;
+        lineRenderer.startWidth = arcWidth;
+        lineRenderer.endWidth = arcWidth;
+        lineRenderer.numCapVertices = 5;
+        lineRenderer.textureMode = LineTextureMode.Tile;
+       // lineRenderer.enabled = false;
+
+        lineRenderer.SetPosition(0, (Vector2)meteo.position);
+        Vector2 center = Vector3.zero;
+        lineRenderer.SetPosition(1, Camera.main.WorldToViewportPoint(Vector3.zero));
+        Destroy(lineRenderer.gameObject,3f);
     }
 
     IEnumerator TextOff(int i)

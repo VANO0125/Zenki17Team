@@ -93,6 +93,7 @@ public class MeteoCtrl : MonoBehaviour
         if (timer >= 180)
         {
             isShot = false;
+            rig.velocity = Vector2.zero;
             //rig.isKinematic = false;
         }
     }
@@ -109,8 +110,8 @@ public class MeteoCtrl : MonoBehaviour
         {
             return;
         }
-        else if (target != null && parent == null && size != 0)
-            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        else if (target != null && transform.parent == null)
+            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime / size);
     }
 
     void Division(int number)
@@ -224,7 +225,7 @@ public class MeteoCtrl : MonoBehaviour
     public MeteoCtrl GetHighest()
     {
         var p = parent;
-        MeteoCtrl hightest = null;
+        MeteoCtrl hightest = this;
         int stoper = 0;
         while (p != null)
         {
@@ -270,13 +271,7 @@ public class MeteoCtrl : MonoBehaviour
     {
         if (col.gameObject.tag == "Earth")
         {
-            if (!isParent)
-            {
-                earth.AddMeteo(size);
-                Destroy(gameObject);
-            }
-            else
-                GetHighest().TotalAddMeteo(earth);
+            GetHighest().TotalAddMeteo(earth);
             //サイズが一定以下なら加点
         }
     }
