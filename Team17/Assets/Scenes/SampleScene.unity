@@ -2909,6 +2909,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7926851147943706104, guid: 32abf45a15ceb3c4095ac028951e4d98,
+        type: 3}
+      propertyPath: star
+      value: 
+      objectReference: {fileID: 202750368}
+    - target: {fileID: 7926851147943706104, guid: 32abf45a15ceb3c4095ac028951e4d98,
+        type: 3}
+      propertyPath: earthCamera
+      value: 
+      objectReference: {fileID: 1815562136}
+    - target: {fileID: 7926851147943706104, guid: 32abf45a15ceb3c4095ac028951e4d98,
+        type: 3}
+      propertyPath: scoreNumber
+      value: 
+      objectReference: {fileID: 404478252}
+    - target: {fileID: 7926851147943706104, guid: 32abf45a15ceb3c4095ac028951e4d98,
+        type: 3}
+      propertyPath: over
+      value: 
+      objectReference: {fileID: 881446349}
+    - target: {fileID: 7926851147943706104, guid: 32abf45a15ceb3c4095ac028951e4d98,
+        type: 3}
+      propertyPath: exp
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926851147943706104, guid: 32abf45a15ceb3c4095ac028951e4d98,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1563274205}
     - target: {fileID: 8430242958819441254, guid: 32abf45a15ceb3c4095ac028951e4d98,
         type: 3}
       propertyPath: m_Name
@@ -2969,36 +2999,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7926851147943706104, guid: 32abf45a15ceb3c4095ac028951e4d98,
-        type: 3}
-      propertyPath: star
-      value: 
-      objectReference: {fileID: 202750368}
-    - target: {fileID: 7926851147943706104, guid: 32abf45a15ceb3c4095ac028951e4d98,
-        type: 3}
-      propertyPath: earthCamera
-      value: 
-      objectReference: {fileID: 1815562136}
-    - target: {fileID: 7926851147943706104, guid: 32abf45a15ceb3c4095ac028951e4d98,
-        type: 3}
-      propertyPath: scoreNumber
-      value: 
-      objectReference: {fileID: 404478252}
-    - target: {fileID: 7926851147943706104, guid: 32abf45a15ceb3c4095ac028951e4d98,
-        type: 3}
-      propertyPath: over
-      value: 
-      objectReference: {fileID: 881446349}
-    - target: {fileID: 7926851147943706104, guid: 32abf45a15ceb3c4095ac028951e4d98,
-        type: 3}
-      propertyPath: exp
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926851147943706104, guid: 32abf45a15ceb3c4095ac028951e4d98,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1563274205}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32abf45a15ceb3c4095ac028951e4d98, type: 3}
 --- !u!1001 &1982211824558255907
@@ -3232,6 +3232,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5465109222938640011, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: earth
+      value: 
+      objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 5465109222938640006, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
       propertyPath: m_Name
@@ -3240,17 +3245,17 @@ PrefabInstance:
     - target: {fileID: 5465109222938640006, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5465109222938640010, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.32
+      value: 48.32
       objectReference: {fileID: 0}
     - target: {fileID: 5465109222938640010, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.13
+      value: 12.54
       objectReference: {fileID: 0}
     - target: {fileID: 5465109222938640010, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
@@ -3297,17 +3302,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5465109222938640011, guid: 7b72462fb6027774baf1d75b9b97f843,
+    - target: {fileID: 5465109223015402126, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: earth
+      value: 
+      objectReference: {fileID: 7186988538431724158}
+    - target: {fileID: 5465109223687237605, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: earth
+      value: 
+      objectReference: {fileID: 7186988538431724158}
+    - target: {fileID: 5465109223816706942, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: earth
+      value: 
+      objectReference: {fileID: 7186988538431724158}
+    - target: {fileID: 5465109223833482489, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 5465109223850883018, guid: 7b72462fb6027774baf1d75b9b97f843,
-        type: 3}
-      propertyPath: earth
-      value: 
-      objectReference: {fileID: 7186988538431724158}
-    - target: {fileID: 5465109224843628484, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
       propertyPath: earth
       value: 
@@ -3322,22 +3337,7 @@ PrefabInstance:
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
-    - target: {fileID: 5465109223015402126, guid: 7b72462fb6027774baf1d75b9b97f843,
-        type: 3}
-      propertyPath: earth
-      value: 
-      objectReference: {fileID: 7186988538431724158}
-    - target: {fileID: 5465109223833482489, guid: 7b72462fb6027774baf1d75b9b97f843,
-        type: 3}
-      propertyPath: earth
-      value: 
-      objectReference: {fileID: 7186988538431724158}
-    - target: {fileID: 5465109223687237605, guid: 7b72462fb6027774baf1d75b9b97f843,
-        type: 3}
-      propertyPath: earth
-      value: 
-      objectReference: {fileID: 7186988538431724158}
-    - target: {fileID: 5465109223816706942, guid: 7b72462fb6027774baf1d75b9b97f843,
+    - target: {fileID: 5465109224843628484, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
       propertyPath: earth
       value: 

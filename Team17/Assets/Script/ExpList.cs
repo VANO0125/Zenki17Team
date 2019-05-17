@@ -9,14 +9,18 @@ public class ExpList : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        expList = new List<int>(6)
+        expList = new List<int>(10)
         {
-            1,
-            3,
+            15,
+            30,
             50,
             100,
             120,
-            150
+            150,
+            190,
+            240,
+            300,
+            360
         };
         
     }

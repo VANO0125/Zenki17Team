@@ -132,6 +132,7 @@ public class MeteoCtrl : MonoBehaviour
         {
             if (isParent)
                 meteos[i].hp = 0;
+            rig.AddForce(meteos[i].transform.forward);
         }
         audioSource.PlayOneShot(Sebreak);
     }
@@ -161,6 +162,7 @@ public class MeteoCtrl : MonoBehaviour
         isShot = true;
         playerPos = player;
         rig.AddForce(vec * shotPower, ForceMode2D.Impulse);
+
     }
 
     void ShotEffect()
@@ -191,7 +193,7 @@ public class MeteoCtrl : MonoBehaviour
                 for (int i = 0; i < meteos.Length; i++)
                 {
                     //if (meteos[i] != null)
-                    //  hp += meteos[i].hp;
+                    //    hp += meteos[i].hp;
                 }
             }
             else
@@ -270,14 +272,17 @@ public class MeteoCtrl : MonoBehaviour
     {
         if (col.gameObject.tag == "Earth")
         {
-            if (!isParent)
+            if (!isParent)//親じゃないとき
             {
                 earth.AddMeteo(size);
                 Destroy(gameObject);
             }
-            else
-                GetHighest().TotalAddMeteo(earth);
+            else//親の時
+            {
+                GetHighest().TotalAddMeteo(earth); 
+            }
             //サイズが一定以下なら加点
+
         }
     }
 
