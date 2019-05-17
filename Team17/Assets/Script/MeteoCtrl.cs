@@ -133,6 +133,7 @@ public class MeteoCtrl : MonoBehaviour
         {
             if (isParent)
                 meteos[i].hp = 0;
+            rig.AddForce(meteos[i].transform.forward);
         }
         audioSource.PlayOneShot(Sebreak);
     }
@@ -162,6 +163,7 @@ public class MeteoCtrl : MonoBehaviour
         isShot = true;
         playerPos = player;
         rig.AddForce(vec * shotPower, ForceMode2D.Impulse);
+
     }
 
     void ShotEffect()
@@ -192,7 +194,7 @@ public class MeteoCtrl : MonoBehaviour
                 for (int i = 0; i < meteos.Length; i++)
                 {
                     //if (meteos[i] != null)
-                    //  hp += meteos[i].hp;
+                    //    hp += meteos[i].hp;
                 }
             }
             else
