@@ -109,10 +109,7 @@ public class PlayerCtrl : MonoBehaviour
     }
 
     public void AddExp(int exp)
-    {
-        this.exp += exp;
-
-    }
+    { this.exp += exp; }
 
     void SetUI()
     {
@@ -128,7 +125,7 @@ public class PlayerCtrl : MonoBehaviour
         if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any) && meteoHit)
         {
             var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
-            if (meteo.GetParent() == null)
+            if (meteo.transform.parent==null)
             {
                 meteo.Caught(transform);
                 catchMeteo = meteo;
@@ -147,7 +144,7 @@ public class PlayerCtrl : MonoBehaviour
         //Bボタンを離すと前方に隕石を投げる     
         if (catchMeteo != null && !GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
         {
-            catchMeteo.ShotMeteo(transform.up, 0, power, transform);
+            catchMeteo.ShotMeteo(transform.up, shotPower, power, transform);
             catchMeteo = null;
         }
     }

@@ -132,8 +132,9 @@ MonoBehaviour:
   - {fileID: 149770808986607169}
   - {fileID: 149770808986607169}
   meteos:
-  - {fileID: 5492832592138463774, guid: e9ba413d55621d74c8a980fac5899182, type: 3}
+  - {fileID: 5465109222938640011, guid: 7b72462fb6027774baf1d75b9b97f843, type: 3}
   timermax: 15
+  earth: {fileID: 0}
 --- !u!1 &149770808296686268
 GameObject:
   m_ObjectHideFlags: 0

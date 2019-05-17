@@ -19,10 +19,10 @@ public class MeteoManger : MonoBehaviour
     void Start()
     {
         //最初一個スポーン
-        SpawnPos();
-        posNum = Random.Range(0, spawnPos.Count);
-        MeteoCtrl newMeteo = Instantiate(meteos[meteoNum], train.position, Quaternion.identity) as MeteoCtrl;
-        timer = 0;
+        //SpawnPos();
+        //posNum = Random.Range(0, spawnPos.Count);
+        //MeteoCtrl newMeteo = Instantiate(meteos[meteoNum], train.position, Quaternion.identity) as MeteoCtrl;
+        //timer = 0;
     }
 
     // Update is called once per frame
@@ -43,6 +43,7 @@ public class MeteoManger : MonoBehaviour
         if (timer >= timermax)
         {
             MeteoCtrl newMeteo = Instantiate(meteos[meteoNum], train.position, Quaternion.identity)as MeteoCtrl;
+            newMeteo.earth = earth;
             newMeteo.SetTarget(earth.transform);
             timer = 0;
         }

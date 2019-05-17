@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class MeteoCtrl : MonoBehaviour
 {
     public int size;//隕石の大きさ
-    [SerializeField]
     public Rigidbody2D rig;
     private bool isDead;
 
@@ -15,18 +14,18 @@ public class MeteoCtrl : MonoBehaviour
     [SerializeField]
     private MeteoCtrl parent;//親オブジェクト
     private MeteoCtrl[] meteos;
-    public Transform target;
     public float speed;
     [SerializeField]
-    private EarthCtrl earth;//地球
+    private float power;
+
+    public Transform target;
+    public EarthCtrl earth;//地球
 
     [SerializeField]
     private GameObject effect;//分裂時のエフェクト
     [SerializeField]
     private GameObject damageEffect;//パンチされたときのエフェクト
 
-    [SerializeField]
-    private float power;
     public bool isShot;
     private bool isCaught;
     public bool isCore, isParent;
@@ -44,8 +43,9 @@ public class MeteoCtrl : MonoBehaviour
     AudioSource audioSource;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
+        rig = GetComponent<Rigidbody2D>();
         //子オブジェクトがあればサイズを合計
         if (isParent)
         {
@@ -57,7 +57,11 @@ public class MeteoCtrl : MonoBehaviour
             }
         }
         else
+        {
             parent = transform.parent.GetComponent<MeteoCtrl>();
+            earth = parent.earth;
+            speed = parent.speed;
+        }
 
         shotEffect = GetComponent<TrailRenderer>();
         audioSource = GetComponent<AudioSource>();
@@ -75,14 +79,16 @@ public class MeteoCtrl : MonoBehaviour
         //    child.transform.parent = null;
         //    Destroy(gameObject);
         //}
-        //ColorChange();
         Move();
         Death();
         ShotEffect();
         if (isShot)
             timer++;
         else
+        {
+            target = earth.transform;
             timer = 0;
+        }
 
         if (timer >= 180)
         {
@@ -154,7 +160,6 @@ public class MeteoCtrl : MonoBehaviour
         this.power = power;
         isShot = true;
         playerPos = player;
-        rig.mass = 10f;
         rig.AddForce(vec * shotPower, ForceMode2D.Impulse);
     }
 
@@ -198,11 +203,11 @@ public class MeteoCtrl : MonoBehaviour
                 }
                 transform.parent = null;
                 parent = null;
-                SetKinematic(false);
-                audioSource.PlayOneShot(Sebreak);
             }
             hp = 0;
             isDead = true;
+            SetKinematic(false);
+            audioSource.PlayOneShot(Sebreak);
         }
     }
 
@@ -265,7 +270,7 @@ public class MeteoCtrl : MonoBehaviour
     {
         if (col.gameObject.tag == "Earth")
         {
-            if (parent == null)
+            if (!isParent)
             {
                 earth.AddMeteo(size);
                 Destroy(gameObject);
