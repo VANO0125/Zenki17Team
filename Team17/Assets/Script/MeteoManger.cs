@@ -63,8 +63,9 @@ public class MeteoManger : MonoBehaviour
                 spawnNum++;
             }
             meteoCnt++;
-           // newMeteo.earth = earth;
-           // newMeteo.SetTarget(earth.transform);
+            timer = 0;
+            newMeteo.earth = earth;
+            newMeteo.SetTarget(earth.transform);
             waring.CreateLineRendererObject(newMeteo.transform);
         }
 
