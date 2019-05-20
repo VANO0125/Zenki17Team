@@ -30,6 +30,9 @@ public class Waring : MonoBehaviour
     void Start()
     {
         //CheckScreenOut(transform.position);
+        //lineRenderer.SetPosition(0, (Vector2)meteo.position);
+        //Vector2 center = Vector3.zero;
+        //lineRenderer.SetPosition(1, (new Vector2(500,100)));
     }
 
     // Update is called once per frame
@@ -80,13 +83,13 @@ public class Waring : MonoBehaviour
     {
         this.meteo = meteo;
         // 親オブジェクトを作り、LineRendererを持つ子オブジェクトを作る
-        GameObject arcObjectsParent = Instantiate(panel);
+        GameObject arcObjectsParent = Instantiate(new GameObject());
 
         lineRenderer = new LineRenderer();
 
-        GameObject newObject = new GameObject("LineRenderer_");
-        newObject.transform.SetParent(panel.transform);
-        lineRenderer = newObject.AddComponent<LineRenderer>();
+        //GameObject newObject = new GameObject("LineRenderer_");
+        //arcObjectsParent.transform.SetParent(transform);
+        lineRenderer = arcObjectsParent.AddComponent<LineRenderer>();
 
         // 光源関連を使用しない
         lineRenderer.receiveShadows = false;
@@ -103,8 +106,7 @@ public class Waring : MonoBehaviour
        // lineRenderer.enabled = false;
 
         lineRenderer.SetPosition(0, (Vector2)meteo.position);
-        Vector2 center = Vector3.zero;
-        lineRenderer.SetPosition(1, Camera.main.WorldToViewportPoint(Vector3.zero));
+        lineRenderer.SetPosition(1, Vector2.zero);
         Destroy(lineRenderer.gameObject,3f);
     }
 

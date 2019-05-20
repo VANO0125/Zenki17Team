@@ -86,6 +86,7 @@ public class MeteoCtrl : MonoBehaviour
             timer++;
         else
         {
+            if(earth != null)
             target = earth.transform;
             timer = 0;
         }
@@ -168,7 +169,6 @@ public class MeteoCtrl : MonoBehaviour
 
     void ShotEffect()
     {
-        if (number != 0) return;
         if (isShot)
         {
             shotEffect.enabled = true;
