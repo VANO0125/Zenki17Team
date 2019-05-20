@@ -68,8 +68,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 1
-  playerPos: {fileID: 0}
-  hp: 10
+  maxHp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109222938640004
@@ -457,8 +456,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
-  hp: 10
+  maxHp: 20
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109223015402127
@@ -848,8 +846,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
-  hp: 10
+  maxHp: 20
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109223687237606
@@ -1235,8 +1232,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
-  hp: 10
+  maxHp: 20
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109223816706943
@@ -1625,8 +1621,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
-  hp: 10
+  maxHp: 20
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109223833482490
@@ -2015,8 +2010,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 1
   isParent: 0
-  playerPos: {fileID: 0}
-  hp: 10
+  maxHp: 20
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109223850883019
@@ -2412,8 +2406,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
-  hp: 10
+  maxHp: 20
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109224030563430
@@ -2793,8 +2786,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
-  hp: 10
+  maxHp: 20
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109224242015552
@@ -3188,8 +3180,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
-  hp: 10
+  maxHp: 20
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109224843628485

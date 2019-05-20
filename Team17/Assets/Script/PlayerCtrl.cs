@@ -95,17 +95,17 @@ public class PlayerCtrl : MonoBehaviour
         float angle = Mathf.Atan2(moveAngle.x, moveAngle.y) * Mathf.Rad2Deg;
         Quaternion rad = Quaternion.Euler(0, 0, -angle);
 
-        int rate = catchMeteo != null ? (catchMeteo.size) / 2 : 0;//隕石が大きいほど振り返る速度を遅く
-        rateTimer++;
+      //  int rate = catchMeteo != null ? (catchMeteo.size) / 2 : 0;//隕石が大きいほど振り返る速度を遅く
+       // rateTimer++;
 
-        if (rateTimer >= rate * 10)
-        {
+        //if (rateTimer >= rate * 10)
+        //{ 
             Quaternion rotation = Quaternion.RotateTowards(transform.rotation, rad, 10f);
             transform.rotation = rotation;
-        }
+        //}
 
-        if (transform.rotation == Quaternion.Euler(0, 0, -angle))
-            rateTimer = 0;
+        //if (transform.rotation == Quaternion.Euler(0, 0, -angle))
+        //    rateTimer = 0;
     }
 
     public void AddExp(int exp)
@@ -127,7 +127,7 @@ public class PlayerCtrl : MonoBehaviour
             var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
             if (meteo.transform.parent==null)
             {
-                meteo.Caught(transform);
+                meteo.Caught(transform,rig);
                 catchMeteo = meteo;
             }
             else if (meteo.GetTotalSize() >= 1)
