@@ -41,6 +41,8 @@ public class MeteoCtrl : MonoBehaviour
     public AudioClip Sebreak;
     public AudioClip Seattck;
     AudioSource audioSource;
+    [SerializeField]
+    private int meteoID = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -71,14 +73,7 @@ public class MeteoCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (transform.childCount == 1)
-        //{
-        //    var child = transform.GetChild(0).gameObject;
-        //    child.layer = 8;
-        //    child.GetComponent<Rigidbody2D>().isKinematic = false;
-        //    child.transform.parent = null;
-        //    Destroy(gameObject);
-        //}
+ 
         Move();
         Death();
         ShotEffect();
@@ -93,7 +88,6 @@ public class MeteoCtrl : MonoBehaviour
         if (timer >= 180)
         {
             isShot = false;
-            //rig.isKinematic = false;
         }
     }
 
@@ -131,7 +125,10 @@ public class MeteoCtrl : MonoBehaviour
         for (int i = 0; i < meteos.Length; i++)
         {
             if (isParent)
+            {
                 meteos[i].hp = 0;
+            }
+                
         }
         audioSource.PlayOneShot(Sebreak);
     }
@@ -140,13 +137,13 @@ public class MeteoCtrl : MonoBehaviour
     { this.target = target; }
 
     //プレイヤーに掴まれる処理
-    public void Caught(Transform parent)
+    public void Caught(GameObject parent,Vector3 catchPos)
     {
         isCaught = true;
         isShot = false;
-        transform.parent = parent;
-        playerPos = parent;
-        rig.simulated = false;
+        transform.parent = parent.transform;
+        SetSimulated(false);
+        
     }
 
     //隕石射出処理
@@ -188,11 +185,7 @@ public class MeteoCtrl : MonoBehaviour
         {
             if (isParent)
             {
-                for (int i = 0; i < meteos.Length; i++)
-                {
-                    //if (meteos[i] != null)
-                    //  hp += meteos[i].hp;
-                }
+               
             }
             else
             {
@@ -321,5 +314,10 @@ public class MeteoCtrl : MonoBehaviour
                 break;
         }
         return totalSize;
+    }
+
+    public int GetMeteoID()
+    {
+        return meteoID;
     }
 }

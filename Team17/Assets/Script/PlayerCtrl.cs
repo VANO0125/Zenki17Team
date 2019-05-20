@@ -127,7 +127,7 @@ public class PlayerCtrl : MonoBehaviour
             var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
             if (meteo.transform.parent==null)
             {
-                meteo.Caught(transform);
+                meteo.Caught(gameObject,meteoHit.point);
                 catchMeteo = meteo;
             }
             else if (meteo.GetTotalSize() >= 1)

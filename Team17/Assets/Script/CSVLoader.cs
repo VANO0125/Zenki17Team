@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System.Reflection;
+using System.IO;
 
-public class CSVLoder<T> where T : MasterBase, new()
+public class CSVLoader<T> where T : MasterBase, new()
 {
     protected List<T> masters;
     public List<T> All { get { return masters; } }
@@ -56,6 +57,7 @@ public class MasterBase
         if (propertyInfo.PropertyType == typeof(int)) propertyInfo.SetValue(this, int.Parse(value), null);
         else if (propertyInfo.PropertyType == typeof(string)) propertyInfo.SetValue(this, value, null);
         else if (propertyInfo.PropertyType == typeof(double)) propertyInfo.SetValue(this, double.Parse(value), null);
+        else if (propertyInfo.PropertyType == typeof(float)) propertyInfo.SetValue(this, float.Parse(value), null);
+        // 他の型にも対応させたいときには適当にここに。enumとかもどうにかなりそう。
     }
 }
-
