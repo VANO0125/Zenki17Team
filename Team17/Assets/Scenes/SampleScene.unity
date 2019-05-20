@@ -1989,6 +1989,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1330094088881906100, guid: 04f6f322d561b634bb106a82ecca3d28,
+        type: 3}
+      propertyPath: panel
+      value: 
+      objectReference: {fileID: 8888306278845358883, guid: 05c496fde4123d94fa2595a7aabba170,
+        type: 3}
     - target: {fileID: 1330094087652793919, guid: 04f6f322d561b634bb106a82ecca3d28,
         type: 3}
       propertyPath: m_AnchorMax.y

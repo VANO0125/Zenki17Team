@@ -51,7 +51,6 @@ public class MeteoCtrl : MonoBehaviour
         {
             hp = maxHp;
             parent = transform.parent.GetComponent<MeteoCtrl>();
-            //earth = parent.earth;
             speed = parent.speed;
         }
         //子オブジェクトがあればサイズを合計
@@ -83,6 +82,8 @@ public class MeteoCtrl : MonoBehaviour
                 hp += meteos[i].hp;
             }
         }
+        else
+        earth = parent.earth;
     }
 
     // Update is called once per frame

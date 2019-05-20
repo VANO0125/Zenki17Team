@@ -83,13 +83,13 @@ public class Waring : MonoBehaviour
     {
         this.meteo = meteo;
         // 親オブジェクトを作り、LineRendererを持つ子オブジェクトを作る
-        GameObject arcObjectsParent = Instantiate(new GameObject());
+      //  GameObject arcObjectsParent = Instantiate(panel);
 
-        lineRenderer = new LineRenderer();
+      //  lineRenderer = new LineRenderer();
 
-        //GameObject newObject = new GameObject("LineRenderer_");
-        //arcObjectsParent.transform.SetParent(transform);
-        lineRenderer = arcObjectsParent.AddComponent<LineRenderer>();
+        GameObject newObject = new GameObject("LineRenderer_");
+       // newObject.transform.SetParent(panel.transform);
+        lineRenderer = newObject.AddComponent<LineRenderer>();
 
         // 光源関連を使用しない
         lineRenderer.receiveShadows = false;
@@ -107,7 +107,7 @@ public class Waring : MonoBehaviour
 
         lineRenderer.SetPosition(0, (Vector2)meteo.position);
         lineRenderer.SetPosition(1, Vector2.zero);
-        Destroy(lineRenderer.gameObject,3f);
+        Destroy(newObject,3f);
     }
 
     IEnumerator TextOff(int i)
