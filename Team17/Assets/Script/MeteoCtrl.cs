@@ -76,7 +76,7 @@ public class MeteoCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
- 
+
         Move();
         Death();
         ShotEffect();
@@ -85,8 +85,8 @@ public class MeteoCtrl : MonoBehaviour
             timer++;
         else
         {
-            if(earth != null)
-            target = earth.transform;
+            if (earth != null)
+                target = earth.transform;
             timer = 0;
         }
 
@@ -94,7 +94,7 @@ public class MeteoCtrl : MonoBehaviour
         {
             isShot = false;
         }
-         
+
         if (!isCaught)
             rig.mass = 10;
     }
@@ -133,7 +133,7 @@ public class MeteoCtrl : MonoBehaviour
         //隕石を分離させる
         for (int i = 0; i < meteos.Length; i++)
         {
-            if (isParent && meteos[1] != null)
+            if (isParent && meteos[i] != null)
             {
                 meteos[i].hp = 0;
             }
@@ -154,7 +154,7 @@ public class MeteoCtrl : MonoBehaviour
         playerRig = rig;
         SetSimulated(true);
     }
-    public void Caught(GameObject parent,Vector3 catchPos)
+    public void Caught(GameObject parent, Vector3 catchPos)
     {
         isCaught = true;
         isShot = false;
