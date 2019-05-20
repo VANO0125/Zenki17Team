@@ -266,7 +266,7 @@ public class MeteoCtrl : MonoBehaviour
     {
         var hightest = parent;
         var t = parent;
-        var no2 = this;
+        var no2 = parent;
         int stoper = 0;
 
         while (hightest != null)
@@ -279,6 +279,9 @@ public class MeteoCtrl : MonoBehaviour
             if (stoper >= 300)
                 break;
         }
+        if (no2 == null)
+            return this;
+        else
         return no2;
     }
 
