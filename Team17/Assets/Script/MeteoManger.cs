@@ -15,14 +15,16 @@ public class MeteoManger : MonoBehaviour
     private int posNum;
     [SerializeField]
     private EarthCtrl earth;
-    [SerializeField]
-    private Waring warning;
     MeteoTable meteoTable;
     int meteoCnt = 0;
     int spawnNum;
     private List<float> spawnTime = new List<float>();
+    private Dictionary<int, MeteoCtrl> meteoType = new Dictionary<int, MeteoCtrl>();
+    private List<int> meteoID = new List<int>();
 
-    
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,13 +34,15 @@ public class MeteoManger : MonoBehaviour
         foreach (var enemyMaster in meteoTable.All)
         {
             spawnTime.Add(enemyMaster.TIME);
+            meteoID.Add(enemyMaster.ID);
         }
+        AddMeteo();
 
     }
 
     // Update is called once per frame
     void Update()
-    {      
+    {
         if (!earth.isDead)
         {
             SpawnPos();
@@ -51,15 +55,11 @@ public class MeteoManger : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= spawnTime[spawnNum])
         {
-            MeteoCtrl newMeteo = Instantiate(meteos[meteoNum], train.position, Quaternion.identity) as MeteoCtrl;
-            newMeteo.earth = earth;
-            newMeteo.SetTarget(earth.transform);
-            warning.CreateLineRendererObject(newMeteo.transform);
-            timer = 0;
+            MeteoCtrl newMeteo = Instantiate(meteoType[meteoID[spawnNum]], train.position, Quaternion.identity) as MeteoCtrl;
             if (spawnNum < spawnTime.Count)
             {
                 spawnNum++;
-            }         
+            }
             meteoCnt++;
             Debug.Log("メテオ" + meteoCnt);
             newMeteo.earth = earth;
@@ -73,5 +73,13 @@ public class MeteoManger : MonoBehaviour
         posNum = Random.Range(0, spawnPos.Count);
         meteoNum = Random.Range(0, meteos.Count);
         train = spawnPos[posNum].transform;
+    }
+
+    void AddMeteo()
+    {
+        for (int i = 0; i < meteos.Count; i++)
+        {
+            meteoType.Add(i, meteos[i]);
+        }
     }
 }
