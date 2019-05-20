@@ -132,9 +132,10 @@ public class MeteoCtrl : MonoBehaviour
         //隕石を分離させる
         for (int i = 0; i < meteos.Length; i++)
         {
-            if (isParent)
+            if (isParent&&meteos[1]!=null)
+            {
                 meteos[i].hp = 0;
-            rig.AddForce(meteos[i].transform.forward);
+            }
         }
         audioSource.PlayOneShot(Sebreak);
     }
@@ -207,6 +208,7 @@ public class MeteoCtrl : MonoBehaviour
                 transform.parent = null;
                 parent = null;
             }
+            DamageEffect(transform.position);
             hp = 0;
             isDead = true;
             SetKinematic(false);
