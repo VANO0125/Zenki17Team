@@ -42,8 +42,6 @@ public class MeteoCtrl : MonoBehaviour
     public AudioClip Sebreak;
     public AudioClip Seattck;
     AudioSource audioSource;
-    [SerializeField]
-    private int meteoID = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -76,7 +74,14 @@ public class MeteoCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //if (transform.childCount == 1)
+        //{
+        //    var child = transform.GetChild(0).gameObject;
+        //    child.layer = 8;
+        //    child.GetComponent<Rigidbody2D>().isKinematic = false;
+        //    child.transform.parent = null;
+        //    Destroy(gameObject);
+        //}
         Move();
         Death();
         ShotEffect();
@@ -93,6 +98,8 @@ public class MeteoCtrl : MonoBehaviour
         if (timer >= 180)
         {
             isShot = false;
+            rig.velocity = Vector2.zero;
+            //rig.isKinematic = false;
         }
 
         if (!isCaught)
@@ -138,6 +145,10 @@ public class MeteoCtrl : MonoBehaviour
                 meteos[i].hp = 0;
             }
             audioSource.PlayOneShot(Sebreak);
+            if (isParent&&meteos[1]!=null)
+            {
+                meteos[i].hp = 0;
+            }
         }
     }
 
@@ -159,7 +170,15 @@ public class MeteoCtrl : MonoBehaviour
         isCaught = true;
         isShot = false;
         transform.parent = parent.transform;
-        SetSimulated(false);
+        SetSimulated(true);
+    }
+    public void Caught(Transform parent)
+    {
+        isCaught = true;
+        isShot = false;
+        transform.parent = parent;
+        playerPos = parent;
+        rig.simulated = false;
     }
 
     //隕石射出処理
@@ -320,10 +339,5 @@ public class MeteoCtrl : MonoBehaviour
                 break;
         }
         return totalSize;
-    }
-
-    public int GetMeteoID()
-    {
-        return meteoID;
     }
 }
