@@ -51,7 +51,7 @@ public class MeteoCtrl : MonoBehaviour
         {
             hp = maxHp;
             parent = transform.parent.GetComponent<MeteoCtrl>();
-            earth = parent.earth;
+            //earth = parent.earth;
             speed = parent.speed;
         }
         //子オブジェクトがあればサイズを合計
@@ -175,26 +175,11 @@ public class MeteoCtrl : MonoBehaviour
         playerRig = rig;
         SetSimulated(false);
     }
-    public void Caught(GameObject parent, Vector3 catchPos)
-    {
-        isCaught = true;
-        isShot = false;
-        transform.parent = parent.transform;
-        SetSimulated(true);
-    }
-    public void Caught(Transform parent)
-    {
-        isCaught = true;
-        isShot = false;
-        transform.parent = parent;
-        playerPos = parent;
-        rig.simulated = false;
-    }
 
     //隕石射出処理
     public void ShotMeteo(Vector2 vec, float shotPower, float power, Transform player)
     {
-        //rig.simulated = true;
+        rig.simulated = true;
         transform.parent = null;
         isCaught = false;
         shotVec = vec;
