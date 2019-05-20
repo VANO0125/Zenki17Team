@@ -44,10 +44,16 @@ public class MeteoCtrl : MonoBehaviour
     AudioSource audioSource;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
-        hp = maxHp;
+        if (!isParent)
+        {
+            hp = maxHp;
+            parent = transform.parent.GetComponent<MeteoCtrl>();
+            earth = parent.earth;
+            speed = parent.speed;
+        }
         //子オブジェクトがあればサイズを合計
         if (isParent)
         {
@@ -59,16 +65,24 @@ public class MeteoCtrl : MonoBehaviour
                 hp += meteos[i].hp;
             }
         }
-        else
-        {
-            parent = transform.parent.GetComponent<MeteoCtrl>();
-            earth = parent.earth;
-            speed = parent.speed;
-        }
-
         shotEffect = GetComponent<TrailRenderer>();
         audioSource = GetComponent<AudioSource>();
         shotEffect.enabled = false;
+    }
+
+    void Start()
+    {
+        //子オブジェクトがあればサイズを合計
+        if (isParent)
+        {
+            meteos = new MeteoCtrl[transform.childCount];
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                meteos[i] = transform.GetChild(i).GetComponent<MeteoCtrl>();
+                size += meteos[i].size;
+                hp += meteos[i].hp;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -120,7 +134,7 @@ public class MeteoCtrl : MonoBehaviour
             rig.velocity = playerRig.velocity;
         }
         else if (target != null)
-            rig.velocity = (target.position-transform.position).normalized * speed/size;
+            rig.velocity = (target.position - transform.position).normalized * speed;
     }
 
     void Division(int number)
@@ -219,7 +233,7 @@ public class MeteoCtrl : MonoBehaviour
                 isCore = false;
             }
             //  GetUnitMeteo().hp -= maxHp;
-            
+
             transform.parent = null;
             parent = null;
             isDead = true;

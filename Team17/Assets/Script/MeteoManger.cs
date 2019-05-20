@@ -21,6 +21,8 @@ public class MeteoManger : MonoBehaviour
     private List<float> spawnTime = new List<float>();
     private Dictionary<int, MeteoCtrl> meteoType = new Dictionary<int, MeteoCtrl>();
     private List<int> meteoID = new List<int>();
+    [SerializeField]
+    private Waring waring;
 
 
 
@@ -61,9 +63,9 @@ public class MeteoManger : MonoBehaviour
                 spawnNum++;
             }
             meteoCnt++;
-            Debug.Log("メテオ" + meteoCnt);
             newMeteo.earth = earth;
             newMeteo.SetTarget(earth.transform);
+            waring.CreateLineRendererObject(newMeteo.transform);
         }
 
     }

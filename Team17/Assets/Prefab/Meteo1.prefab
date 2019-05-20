@@ -55,9 +55,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 0
-  rig: {fileID: 5465109222938640004}
+  rig: {fileID: 0}
   number: 0
   parent: {fileID: 0}
+  meteos: []
   speed: 15
   power: 0
   target: {fileID: 0}
@@ -69,6 +70,7 @@ MonoBehaviour:
   isCore: 0
   isParent: 1
   maxHp: 0
+  hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109222938640004
@@ -443,9 +445,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 1
-  rig: {fileID: 5465109222938640004}
+  rig: {fileID: 0}
   number: 0
   parent: {fileID: 5465109222938640011}
+  meteos: []
   speed: 0
   power: 0
   target: {fileID: 0}
@@ -457,6 +460,7 @@ MonoBehaviour:
   isCore: 0
   isParent: 0
   maxHp: 20
+  hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109223015402127
@@ -833,9 +837,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 1
-  rig: {fileID: 5465109222938640004}
+  rig: {fileID: 0}
   number: 0
   parent: {fileID: 5465109222938640011}
+  meteos: []
   speed: 0
   power: 0
   target: {fileID: 0}
@@ -847,6 +852,7 @@ MonoBehaviour:
   isCore: 0
   isParent: 0
   maxHp: 20
+  hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109223687237606
@@ -1219,9 +1225,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 1
-  rig: {fileID: 5465109222938640004}
+  rig: {fileID: 0}
   number: 0
   parent: {fileID: 5465109222938640011}
+  meteos: []
   speed: 0
   power: 0
   target: {fileID: 0}
@@ -1233,6 +1240,7 @@ MonoBehaviour:
   isCore: 0
   isParent: 0
   maxHp: 20
+  hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109223816706943
@@ -1608,9 +1616,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 1
-  rig: {fileID: 5465109222938640004}
+  rig: {fileID: 0}
   number: 0
   parent: {fileID: 5465109222938640011}
+  meteos: []
   speed: 0
   power: 0
   target: {fileID: 0}
@@ -1622,6 +1631,7 @@ MonoBehaviour:
   isCore: 0
   isParent: 0
   maxHp: 20
+  hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109223833482490
@@ -1996,10 +2006,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e45f05632d83b4c947cd4d22ab758b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
-  rig: {fileID: 5465109222938640004}
+  size: 1
+  rig: {fileID: 0}
   number: 0
   parent: {fileID: 5465109222938640011}
+  meteos: []
   speed: 0
   power: 0
   target: {fileID: 0}
@@ -2011,6 +2022,7 @@ MonoBehaviour:
   isCore: 1
   isParent: 0
   maxHp: 20
+  hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109223850883019
@@ -2393,9 +2405,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 1
-  rig: {fileID: 5465109222938640004}
+  rig: {fileID: 0}
   number: 0
   parent: {fileID: 5465109222938640011}
+  meteos: []
   speed: 0
   power: 0
   target: {fileID: 0}
@@ -2407,6 +2420,7 @@ MonoBehaviour:
   isCore: 0
   isParent: 0
   maxHp: 20
+  hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109224030563430
@@ -2773,9 +2787,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 1
-  rig: {fileID: 5465109222938640004}
+  rig: {fileID: 0}
   number: 0
   parent: {fileID: 5465109222938640011}
+  meteos: []
   speed: 0
   power: 0
   target: {fileID: 0}
@@ -2787,6 +2802,7 @@ MonoBehaviour:
   isCore: 0
   isParent: 0
   maxHp: 20
+  hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109224242015552
@@ -3167,9 +3183,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 1
-  rig: {fileID: 5465109222938640004}
+  rig: {fileID: 0}
   number: 0
   parent: {fileID: 5465109222938640011}
+  meteos: []
   speed: 0
   power: 0
   target: {fileID: 0}
@@ -3181,6 +3198,7 @@ MonoBehaviour:
   isCore: 0
   isParent: 0
   maxHp: 20
+  hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
 --- !u!50 &5465109224843628485
