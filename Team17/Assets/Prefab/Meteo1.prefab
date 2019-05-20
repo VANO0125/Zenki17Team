@@ -73,6 +73,7 @@ MonoBehaviour:
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
+  bom: {fileID: 4753812337100113535, guid: 71ff98093a94a1a4d97edbce2350d6e9, type: 3}
 --- !u!50 &5465109222938640004
 Rigidbody2D:
   serializedVersion: 4
@@ -463,6 +464,7 @@ MonoBehaviour:
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
+  bom: {fileID: 0}
 --- !u!50 &5465109223015402127
 Rigidbody2D:
   serializedVersion: 4
@@ -855,6 +857,7 @@ MonoBehaviour:
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
+  bom: {fileID: 0}
 --- !u!50 &5465109223687237606
 Rigidbody2D:
   serializedVersion: 4
@@ -1243,6 +1246,7 @@ MonoBehaviour:
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
+  bom: {fileID: 0}
 --- !u!50 &5465109223816706943
 Rigidbody2D:
   serializedVersion: 4
@@ -1634,6 +1638,7 @@ MonoBehaviour:
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
+  bom: {fileID: 0}
 --- !u!50 &5465109223833482490
 Rigidbody2D:
   serializedVersion: 4
@@ -2025,6 +2030,7 @@ MonoBehaviour:
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
+  bom: {fileID: 0}
 --- !u!50 &5465109223850883019
 Rigidbody2D:
   serializedVersion: 4
@@ -2423,6 +2429,7 @@ MonoBehaviour:
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
+  bom: {fileID: 0}
 --- !u!50 &5465109224030563430
 Rigidbody2D:
   serializedVersion: 4
@@ -2805,6 +2812,7 @@ MonoBehaviour:
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
+  bom: {fileID: 0}
 --- !u!50 &5465109224242015552
 Rigidbody2D:
   serializedVersion: 4
@@ -3201,6 +3209,7 @@ MonoBehaviour:
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
+  bom: {fileID: 0}
 --- !u!50 &5465109224843628485
 Rigidbody2D:
   serializedVersion: 4
