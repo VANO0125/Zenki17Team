@@ -119,8 +119,8 @@ public class MeteoCtrl : MonoBehaviour
             rig.mass = playerRig.mass;
             rig.velocity = playerRig.velocity;
         }
-        else if (target != null && transform.parent == null)
-            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime / size);
+        else if (target != null)
+            rig.velocity = (target.position-transform.position).normalized * speed/size;
     }
 
     void Division(int number)
@@ -145,10 +145,6 @@ public class MeteoCtrl : MonoBehaviour
                 meteos[i].hp = 0;
             }
             audioSource.PlayOneShot(Sebreak);
-            if (isParent&&meteos[1]!=null)
-            {
-                meteos[i].hp = 0;
-            }
         }
     }
 
@@ -163,7 +159,7 @@ public class MeteoCtrl : MonoBehaviour
         transform.parent = parent;
         playerPos = parent;
         playerRig = rig;
-        SetSimulated(true);
+        SetSimulated(false);
     }
     public void Caught(GameObject parent, Vector3 catchPos)
     {
@@ -193,7 +189,6 @@ public class MeteoCtrl : MonoBehaviour
         isShot = true;
         playerPos = player;
         rig.AddForce(vec * shotPower, ForceMode2D.Impulse);
-
     }
 
     void ShotEffect()
@@ -221,13 +216,12 @@ public class MeteoCtrl : MonoBehaviour
             if (isCore)
             {
                 GetUnitMeteo().DivisionAll();
-                Debug.Log(GetUnitMeteo().ToString());
                 isCore = false;
             }
-          //  GetUnitMeteo().hp -= maxHp;
+            //  GetUnitMeteo().hp -= maxHp;
+            
             transform.parent = null;
             parent = null;
-            hp = 0;
             isDead = true;
             SetKinematic(false);
             audioSource.PlayOneShot(Sebreak);
@@ -282,7 +276,7 @@ public class MeteoCtrl : MonoBehaviour
         if (no2 == null)
             return this;
         else
-        return no2;
+            return no2;
     }
 
     public void Damage(float damage)
