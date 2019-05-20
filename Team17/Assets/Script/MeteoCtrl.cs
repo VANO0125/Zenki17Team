@@ -42,7 +42,7 @@ public class MeteoCtrl : MonoBehaviour
     public AudioClip Sebreak;
     public AudioClip Seattck;
     AudioSource audioSource;
-
+   
     // Start is called before the first frame update
     void Awake()
     {
@@ -51,7 +51,7 @@ public class MeteoCtrl : MonoBehaviour
         {
             hp = maxHp;
             parent = transform.parent.GetComponent<MeteoCtrl>();
-            //earth = parent.earth;
+       
             speed = parent.speed;
         }
         //子オブジェクトがあればサイズを合計
@@ -82,6 +82,10 @@ public class MeteoCtrl : MonoBehaviour
                 size += meteos[i].size;
                 hp += meteos[i].hp;
             }
+        }
+        else
+        {
+            earth = parent.earth;
         }
     }
 
@@ -137,26 +141,27 @@ public class MeteoCtrl : MonoBehaviour
             rig.velocity = (target.position - transform.position).normalized * speed;
     }
 
-    void Division(int number)
+  IEnumerator ChangeLayer(GameObject meteo)
     {
-        if (meteos[number] == null) return;
-        //隕石を分離させる
-        //meteos[number].transform.parent = null;
-        //meteos[number].parent = null;
-        //meteos[number].SetKinematic(false);
-        //meteos[number].rig.AddForce((meteos[number].transform.position - transform.position).normalized * 10, ForceMode2D.Impulse);
-        //meteos[number] = null;
-        //audioSource.PlayOneShot(Sebreak);
+        meteo.layer = 11;
+        yield return new WaitForSeconds(0.3f);
+        meteo.layer = 8;
     }
 
-    void DivisionAll()
+    void DivisionAll(Transform core)
     {
         //隕石を分離させる
         for (int i = 0; i < meteos.Length; i++)
         {
             if (isParent && meteos[i] != null)
             {
-                meteos[i].hp = 0;
+                //StartCoroutine(ChangeLayer(meteos[i].gameObject));
+
+                meteos[i].isShot = true;
+                meteos[i].SetKinematic(false);
+                meteos[i].rig.AddForce((meteos[i].transform.position - core.position).normalized * 300, ForceMode2D.Impulse);
+                  meteos[i].hp = 0;
+                
             }
             audioSource.PlayOneShot(Sebreak);
         }
@@ -214,7 +219,7 @@ public class MeteoCtrl : MonoBehaviour
         {
             if (isCore)
             {
-                GetUnitMeteo().DivisionAll();
+                GetUnitMeteo().DivisionAll(transform);
                 isCore = false;
             }
             //  GetUnitMeteo().hp -= maxHp;
