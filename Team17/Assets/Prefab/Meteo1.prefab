@@ -58,7 +58,7 @@ MonoBehaviour:
   rig: {fileID: 5465109222938640004}
   number: 0
   parent: {fileID: 0}
-  speed: 5
+  speed: 15
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
