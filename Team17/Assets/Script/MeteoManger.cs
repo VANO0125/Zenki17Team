@@ -19,6 +19,9 @@ public class MeteoManger : MonoBehaviour
     int meteoCnt = 0;
     int spawnNum;
     private List<float> spawnTime = new List<float>();
+    private Dictionary<int, MeteoCtrl> meteoType = new Dictionary<int,MeteoCtrl>();
+    private List<int> meteoID = new List<int>();
+    
 
 
 
@@ -31,7 +34,9 @@ public class MeteoManger : MonoBehaviour
         foreach (var enemyMaster in meteoTable.All)
         {
             spawnTime.Add(enemyMaster.TIME);
+            meteoID.Add(enemyMaster.ID);
         }
+        AddMeteo();
 
     }
 
@@ -50,7 +55,7 @@ public class MeteoManger : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= spawnTime[spawnNum])
         {
-            MeteoCtrl newMeteo = Instantiate(meteos[meteoNum], train.position, Quaternion.identity) as MeteoCtrl;
+            MeteoCtrl newMeteo = Instantiate(meteoType[meteoID[spawnNum]], train.position, Quaternion.identity) as MeteoCtrl;
             if (spawnNum < spawnTime.Count)
             {
                 spawnNum++;
@@ -68,5 +73,11 @@ public class MeteoManger : MonoBehaviour
         posNum = Random.Range(0, spawnPos.Count);
         meteoNum = Random.Range(0, meteos.Count);
         train = spawnPos[posNum].transform;
+    }
+
+    void AddMeteo()
+    {
+        meteoType.Add(0, meteos[0]);
+        meteoType.Add(1, meteos[1]);
     }
 }
