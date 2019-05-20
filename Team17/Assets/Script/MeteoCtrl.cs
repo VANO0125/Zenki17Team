@@ -42,6 +42,8 @@ public class MeteoCtrl : MonoBehaviour
     public AudioClip Sebreak;
     public AudioClip Seattck;
     AudioSource audioSource;
+    [SerializeField]
+    private int meteoID = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -74,14 +76,7 @@ public class MeteoCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (transform.childCount == 1)
-        //{
-        //    var child = transform.GetChild(0).gameObject;
-        //    child.layer = 8;
-        //    child.GetComponent<Rigidbody2D>().isKinematic = false;
-        //    child.transform.parent = null;
-        //    Destroy(gameObject);
-        //}
+ 
         Move();
         Death();
         ShotEffect();
@@ -98,9 +93,8 @@ public class MeteoCtrl : MonoBehaviour
         if (timer >= 180)
         {
             isShot = false;
-            rig.velocity = Vector2.zero;
-            //rig.isKinematic = false;
         }
+         
         if (!isCaught)
             rig.mass = 10;
     }
@@ -139,26 +133,33 @@ public class MeteoCtrl : MonoBehaviour
         //隕石を分離させる
         for (int i = 0; i < meteos.Length; i++)
         {
-            if (isParent&&meteos[1]!=null)
+            if (isParent && meteos[1] != null)
             {
                 meteos[i].hp = 0;
             }
+            audioSource.PlayOneShot(Sebreak);
         }
-        audioSource.PlayOneShot(Sebreak);
     }
 
     public void SetTarget(Transform target)
     { this.target = target; }
 
     //プレイヤーに掴まれる処理
-    public void Caught(Transform parent,Rigidbody2D rig)
+    public void Caught(Transform parent, Rigidbody2D rig)
     {
         isCaught = true;
         isShot = false;
         transform.parent = parent;
         playerPos = parent;
         playerRig = rig;
-        //rig.simulated = false;
+        SetSimulated(true);
+    }
+    public void Caught(GameObject parent,Vector3 catchPos)
+    {
+        isCaught = true;
+        isShot = false;
+        transform.parent = parent.transform;
+        SetSimulated(false);
     }
 
     //隕石射出処理
@@ -318,5 +319,10 @@ public class MeteoCtrl : MonoBehaviour
                 break;
         }
         return totalSize;
+    }
+
+    public int GetMeteoID()
+    {
+        return meteoID;
     }
 }
