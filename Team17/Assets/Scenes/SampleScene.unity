@@ -1436,6 +1436,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55533f7aec965984ab3e425f2bc81ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1771468862 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5465109222938640011, guid: 7b72462fb6027774baf1d75b9b97f843,
+    type: 3}
+  m_PrefabInstance: {fileID: 5465109224901243843}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e45f05632d83b4c947cd4d22ab758b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1773477387
 GameObject:
   m_ObjectHideFlags: 3
@@ -1530,18 +1542,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5979295513946470873}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1834840254 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6968104218640580953, guid: 80d2389b74d9963438787d7f175f9bb3,
-    type: 3}
-  m_PrefabInstance: {fileID: 6968104218148499943}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e45f05632d83b4c947cd4d22ab758b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1864066831
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,46 +2163,136 @@ PrefabInstance:
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
+    - target: {fileID: 5465109222938640011, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: rig
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5465109223850883018, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: earth
+      value: 
+      objectReference: {fileID: 7186988538431724158}
+    - target: {fileID: 5465109223850883018, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1771468862}
+    - target: {fileID: 5465109223850883018, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: rig
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465109223850883018, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465109224843628484, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 5465109224843628484, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1771468862}
+    - target: {fileID: 5465109224843628484, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: rig
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465109224030563429, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 5465109224030563429, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1771468862}
+    - target: {fileID: 5465109224030563429, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: rig
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465109224242015559, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 5465109224242015559, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1771468862}
+    - target: {fileID: 5465109224242015559, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: rig
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465109223015402126, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 5465109223015402126, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1771468862}
+    - target: {fileID: 5465109223015402126, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: rig
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465109223833482489, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 5465109223833482489, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1771468862}
+    - target: {fileID: 5465109223833482489, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: rig
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465109223687237605, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 5465109223687237605, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1771468862}
+    - target: {fileID: 5465109223687237605, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: rig
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465109223816706942, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 5465109223816706942, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
-      propertyPath: earth
+      propertyPath: parent
       value: 
-      objectReference: {fileID: 7186988538431724158}
+      objectReference: {fileID: 1771468862}
+    - target: {fileID: 5465109223816706942, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: rig
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b72462fb6027774baf1d75b9b97f843, type: 3}
 --- !u!1001 &5979295513946470873
@@ -2490,201 +2580,96 @@ PrefabInstance:
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
-    - target: {fileID: 6968104217833121847, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
-      propertyPath: parent
-      value: 
-      objectReference: {fileID: 1834840254}
     - target: {fileID: 6968104219148820779, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
-      propertyPath: earth
-      value: 
-      objectReference: {fileID: 7186988538431724158}
-    - target: {fileID: 6968104219148820779, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
-      propertyPath: maxHp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104218597694379, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104218597694379, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
-      propertyPath: maxHp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104218980997648, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104218980997648, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
-      propertyPath: maxHp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104219098293809, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104219098293809, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
-      propertyPath: maxHp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104218417128155, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104218417128155, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
-      propertyPath: maxHp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104217471711758, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104217471711758, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
-      propertyPath: maxHp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104219264022189, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104219264022189, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
-      propertyPath: maxHp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104218731815457, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104218731815457, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
-      propertyPath: maxHp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104217887651806, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104217887651806, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
-      propertyPath: maxHp
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104217473980794, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104217473980794, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
-      propertyPath: parent
-      value: 
-      objectReference: {fileID: 1834840254}
-    - target: {fileID: 6968104217710333406, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104217710333406, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
-      propertyPath: isShot
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104217710333406, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
-      propertyPath: isCore
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104217710333406, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
-      propertyPath: maxHp
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104217796246912, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104217796246912, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
-      propertyPath: maxHp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104218577911819, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104218577911819, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
-      propertyPath: maxHp
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104218743530011, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104218743530011, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
-      propertyPath: maxHp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104219567281260, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104219567281260, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
-      propertyPath: maxHp
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104217602231662, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104217602231662, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
-      propertyPath: maxHp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104218089360727, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104218089360727, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
-      propertyPath: maxHp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968104218758863284, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
       propertyPath: earth
       value: 
       objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104218758863284, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
-      propertyPath: maxHp
-      value: 40
-      objectReference: {fileID: 0}
+      propertyPath: earth
+      value: 
+      objectReference: {fileID: 7186988538431724158}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80d2389b74d9963438787d7f175f9bb3, type: 3}
 --- !u!114 &7186988538431724158 stripped

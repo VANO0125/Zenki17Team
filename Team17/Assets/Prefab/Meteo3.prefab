@@ -157,10 +157,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 40
   hp: 40
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104217471711759
 Rigidbody2D:
   serializedVersion: 4
@@ -439,7 +440,7 @@ MonoBehaviour:
   size: 0
   rig: {fileID: 0}
   number: 0
-  parent: {fileID: 0}
+  parent: {fileID: 6968104218640580953}
   speed: 0
   power: 0
   target: {fileID: 0}
@@ -450,10 +451,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 1
-  playerPos: {fileID: 0}
+  maxHp: 0
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104217473980795
 Rigidbody2D:
   serializedVersion: 4
@@ -832,10 +834,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 40
   hp: 40
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104217602231663
 Rigidbody2D:
   serializedVersion: 4
@@ -1215,10 +1218,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 20
   hp: 20
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104217710333407
 Rigidbody2D:
   serializedVersion: 4
@@ -1595,10 +1599,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 40
   hp: 40
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104217796246913
 Rigidbody2D:
   serializedVersion: 4
@@ -1878,7 +1883,7 @@ MonoBehaviour:
   size: 0
   rig: {fileID: 0}
   number: 0
-  parent: {fileID: 0}
+  parent: {fileID: 6968104218640580953}
   speed: 0
   power: 0
   target: {fileID: 0}
@@ -1889,10 +1894,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 1
-  playerPos: {fileID: 0}
+  maxHp: 0
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104217833121832
 Rigidbody2D:
   serializedVersion: 4
@@ -2269,10 +2275,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 1
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 20
   hp: 20
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104217887651807
 Rigidbody2D:
   serializedVersion: 4
@@ -2652,10 +2659,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 40
   hp: 40
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104218089360712
 Rigidbody2D:
   serializedVersion: 4
@@ -3032,10 +3040,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 40
   hp: 40
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104218417128156
 Rigidbody2D:
   serializedVersion: 4
@@ -3410,10 +3419,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 1
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 20
   hp: 20
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104218577911820
 Rigidbody2D:
   serializedVersion: 4
@@ -3797,10 +3807,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 40
   hp: 40
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104218597694380
 Rigidbody2D:
   serializedVersion: 4
@@ -4084,10 +4095,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 1
-  playerPos: {fileID: 0}
+  maxHp: 0
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104218640580954
 Rigidbody2D:
   serializedVersion: 4
@@ -4460,10 +4472,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 40
   hp: 40
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104218731815458
 Rigidbody2D:
   serializedVersion: 4
@@ -4844,10 +4857,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 40
   hp: 40
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104218743530012
 Rigidbody2D:
   serializedVersion: 4
@@ -5226,10 +5240,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 40
   hp: 40
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104218758863285
 Rigidbody2D:
   serializedVersion: 4
@@ -5611,10 +5626,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 40
   hp: 40
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104218980997649
 Rigidbody2D:
   serializedVersion: 4
@@ -5991,10 +6007,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 40
   hp: 40
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104219098293810
 Rigidbody2D:
   serializedVersion: 4
@@ -6375,10 +6392,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 40
   hp: 40
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104219148820780
 Rigidbody2D:
   serializedVersion: 4
@@ -6756,10 +6774,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 40
   hp: 40
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104219264022190
 Rigidbody2D:
   serializedVersion: 4
@@ -7134,10 +7153,11 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  playerPos: {fileID: 0}
+  maxHp: 20
   hp: 20
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  meteoID: 0
 --- !u!50 &6968104219567281261
 Rigidbody2D:
   serializedVersion: 4

@@ -13,7 +13,7 @@ public class MeteoCtrl : MonoBehaviour
     private int number;//子供の番号
     [SerializeField]
     private MeteoCtrl parent;//親オブジェクト
-    private MeteoCtrl[] meteos;
+    public MeteoCtrl[] meteos;
     public float speed;
     [SerializeField]
     private float power;
@@ -202,9 +202,10 @@ public class MeteoCtrl : MonoBehaviour
             if (isCore)
             {
                 GetUnitMeteo().DivisionAll();
+                Debug.Log(GetUnitMeteo().ToString());
                 isCore = false;
             }
-            GetUnitMeteo().hp -= maxHp;
+          //  GetUnitMeteo().hp -= maxHp;
             transform.parent = null;
             parent = null;
             hp = 0;
