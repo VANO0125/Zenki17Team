@@ -57,10 +57,11 @@ public class MeteoManger : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= spawnTime[spawnNum])
         {
-            MeteoCtrl newMeteo = Instantiate(meteoType[meteoID[spawnNum]], train.position, Quaternion.identity) as MeteoCtrl;
-            if (spawnNum < spawnTime.Count)
+            MeteoCtrl newMeteo = Instantiate(meteoType[meteoID[spawnNum]], train.position, Quaternion.identity) as MeteoCtrl;          
+            spawnNum++;
+            if(spawnNum >= spawnTime.Count - 1)
             {
-                spawnNum++;
+                spawnNum = 0;
             }
             meteoCnt++;
             timer = 0;
