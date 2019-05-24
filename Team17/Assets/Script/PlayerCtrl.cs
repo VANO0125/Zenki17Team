@@ -84,6 +84,7 @@ public class PlayerCtrl : MonoBehaviour
         MeteoCatch();
         MeteoThrow();
         SetUI();
+        
     }
 
     void Rotate()

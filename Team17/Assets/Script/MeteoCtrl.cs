@@ -235,8 +235,8 @@ public class MeteoCtrl : MonoBehaviour
     //分裂しきっていない時のダメージ処理
     public void TotalAddMeteo(EarthCtrl earth)
     {
-        earth.AddMeteo(size);
-        Destroy(gameObject);
+        //earth.AddMeteo(size);
+        //Destroy(gameObject);
     }
 
     public MeteoCtrl GetParent()
@@ -318,7 +318,9 @@ public class MeteoCtrl : MonoBehaviour
         if (col.gameObject.tag == "Earth")
         {
             EarthCtrl earth = col.gameObject.GetComponent<EarthCtrl>();
-            GetHighest().TotalAddMeteo(earth);
+           earth.AddMeteo(GetHighest().size);
+            Destroy(GetHighest().gameObject);
+            //Debug.Log("nu"+earth.hp);
             //サイズが一定以下なら加点
         }
     }

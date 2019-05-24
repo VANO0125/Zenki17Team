@@ -8,7 +8,7 @@ public class EarthCtrl : MonoBehaviour
     // Start is called before the first frame update    
     [SerializeField]
     private float maxHp;//最大HP
-    private float hp;//現在のHP
+    public float hp;//現在のHP
     [SerializeField]
     private int safeSize;//隕石にならないサイズ
     [SerializeField]
@@ -29,12 +29,13 @@ public class EarthCtrl : MonoBehaviour
     public Number scoreNumber;//スコア描写
     public GameObject over;
     private float timer;
-
+   
     void Start()
     {
         //HP
         hp = maxHp;
         timer = earthTimer;
+        Time.timeScale = 1.0f;
     }
 
     // Update is called once per frame
@@ -52,20 +53,30 @@ public class EarthCtrl : MonoBehaviour
             pulsExp--;
             player.AddExp(1);
         }
-
         DisPlayCamera();
+
         if (hp <= 0)//HP0以下の時
         {
             isDead = true;
             Destroy();
         }
+
     }
+
 
     void Destroy()
     {
         //破壊処理
         Destroy(gameObject);
         over.SetActive(true);
+        if (Time.timeScale != 0)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+        }
     }
 
     public void AddMeteo(int meteoSize)
@@ -103,11 +114,5 @@ public class EarthCtrl : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "Meteo")
-        {
-
-        }
-    }
+   
 }
