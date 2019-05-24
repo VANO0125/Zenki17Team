@@ -30,6 +30,11 @@ public class PlayerCtrl : MonoBehaviour
     public Number scoreNumber;//スコア描写
     public int score;
 
+    private bool right, left;
+    float rTimer, lTimer;
+
+    private Animator anim;
+
     public AudioClip throwSE;
     public AudioClip catchSE;
     public AudioClip punchSE;
@@ -42,7 +47,7 @@ public class PlayerCtrl : MonoBehaviour
         expSlider.maxValue = expTable;
         expTable = GetComponent<ExpList>().expList[0];
         audioSource = GetComponent<AudioSource>();
-
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -53,9 +58,9 @@ public class PlayerCtrl : MonoBehaviour
         //スティックでプレイヤー移動
         float size = catchMeteo != null ? catchMeteo.size : 1;
         float rate = speed / size;
-        if (rig.velocity.magnitude >= rate && vec != Vector2.zero)        
+        if (rig.velocity.magnitude >= rate && vec != Vector2.zero)
             rig.velocity = rig.velocity.normalized * rate;
-        
+
 
         rig.AddForce(vec * speed);
 
@@ -75,6 +80,7 @@ public class PlayerCtrl : MonoBehaviour
             level++;
         }
         Rotate();
+        Attack();
         MeteoCatch();
         MeteoThrow();
         SetUI();
@@ -94,13 +100,13 @@ public class PlayerCtrl : MonoBehaviour
         float angle = Mathf.Atan2(moveAngle.x, moveAngle.y) * Mathf.Rad2Deg;
         Quaternion rad = Quaternion.Euler(0, 0, -angle);
 
-      //  int rate = catchMeteo != null ? (catchMeteo.size) / 2 : 0;//隕石が大きいほど振り返る速度を遅く
-       // rateTimer++;
+        //  int rate = catchMeteo != null ? (catchMeteo.size) / 2 : 0;//隕石が大きいほど振り返る速度を遅く
+        // rateTimer++;
 
         //if (rateTimer >= rate * 10)
         //{ 
-            Quaternion rotation = Quaternion.RotateTowards(transform.rotation, rad, 10f);
-            transform.rotation = rotation;
+        Quaternion rotation = Quaternion.RotateTowards(transform.rotation, rad, 10f);
+        transform.rotation = rotation;
         //}
 
         //if (transform.rotation == Quaternion.Euler(0, 0, -angle))
@@ -116,6 +122,35 @@ public class PlayerCtrl : MonoBehaviour
         expSlider.value = exp;
     }
 
+    void Attack()
+    {
+        rTimer++;
+        lTimer++;
+        if (GamePad.GetButtonDown(GamePad.Button.RightShoulder, GamePad.Index.Any) && rTimer >= 20)
+        {
+            anim.SetTrigger("RHand");
+            rTimer = 0;
+        }
+        if (GamePad.GetButtonDown(GamePad.Button.LeftShoulder, GamePad.Index.Any) && lTimer >= 20)
+        {
+            anim.SetTrigger("LHand");
+            lTimer = 0;
+        }
+    }
+
+    void MeteoPanch()
+    {
+        Ray2D panchRay = new Ray2D(transform.position, transform.up); //前方にRayを投射
+        RaycastHit2D meteoHit = Physics2D.Raycast(panchRay.origin, panchRay.direction, 6, layerMask);
+        if (meteoHit)
+        {
+            var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
+            meteo.Damage(power * 0.1f);
+            meteo.DamageEffect(meteoHit.point);
+            //    audioSource.PlayOneShot(punchSE);
+        }
+    }
+
     void MeteoCatch()
     {
         //Bボタンで前方の隕石を掴む
@@ -127,7 +162,7 @@ public class PlayerCtrl : MonoBehaviour
             //if (meteo.transform.parent==null)
             {
                 catchMeteo = meteo.GetHighest();
-                meteo.GetHighest().Caught(transform,rig);
+                meteo.GetHighest().Caught(transform, rig);
                 rig.velocity = Vector2.zero;
             }
             //else if (meteo.GetTotalSize() >= 1)
@@ -135,7 +170,7 @@ public class PlayerCtrl : MonoBehaviour
             //    meteo.Damage(power * 0.1f);
             //    meteo.DamageEffect(meteoHit.point);
             //    audioSource.PlayOneShot(punchSE);
-           // }
+            // }
         }
     }
 

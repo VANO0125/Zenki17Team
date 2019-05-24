@@ -177,8 +177,8 @@ public class MeteoCtrl : MonoBehaviour
             m.playerRig = rig;
             m.SetSimulated(false);
         }
-            isCaught = true;
-            transform.parent = parent;
+        isCaught = true;
+        transform.parent = parent;
     }
 
     //隕石射出処理
@@ -187,27 +187,23 @@ public class MeteoCtrl : MonoBehaviour
         foreach (var m in GetHighest().GetAll())
         {
             m.rig.simulated = true;
-            m.isCaught = false;
-            m.shotVec = vec;
-            m.shotPower = shotPower;
             m.power = power;
             m.isShot = true;
-            m.playerPos = player;
+            m.isCaught = false;
         }
-            transform.parent = null;
-            rig.AddForce(vec * shotPower, ForceMode2D.Impulse);
+        playerPos = player;
+        shotVec = vec;
+        this.shotPower = shotPower;
+        transform.parent = null;
+        rig.AddForce(vec * shotPower / size, ForceMode2D.Impulse);
     }
 
     void ShotEffect()
     {
         if (isShot)
-        {
             shotEffect.enabled = true;
-        }
         else
-        {
             shotEffect.enabled = false;
-        }
     }
 
     public void SetKinematic(bool flag)
@@ -289,10 +285,9 @@ public class MeteoCtrl : MonoBehaviour
     public List<MeteoCtrl> GetAll()
     {
         List<MeteoCtrl> ms = new List<MeteoCtrl>();
-        if (!isParent) return null;
-        else
+        ms.Add(this);
+        if (isParent)
         {
-            ms.Add(this);
             for (int i = 0; i < meteos.Length; i++)
             {
                 if (meteos[i] != null)
@@ -304,10 +299,10 @@ public class MeteoCtrl : MonoBehaviour
                             ms.Add(m.transform.GetChild(j).GetComponent<MeteoCtrl>());
                     }
                 }
-                    ms.Add(meteos[i]);
+                ms.Add(meteos[i]);
             }
-            return ms;
         }
+        return ms;
     }
 
     public void Damage(float damage)
