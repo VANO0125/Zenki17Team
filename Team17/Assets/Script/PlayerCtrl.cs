@@ -50,16 +50,16 @@ public class PlayerCtrl : MonoBehaviour
     {
         Vector2 vec = GamePad.GetAxis(GamePad.Axis.LeftStick, GamePad.Index.Any);
         float axis = Input.GetAxis("R_XAxis_0");
-        //rig.velocity = vec * speed;//スティックでプレイヤー移動
-        if (rig.velocity.magnitude >= speed && vec != Vector2.zero)
-            rig.velocity = rig.velocity.normalized * speed;
+        //スティックでプレイヤー移動
+        float size = catchMeteo != null ? catchMeteo.size : 1;
+        float rate = speed / size;
+        Debug.Log(rate);
+        if (rig.velocity.magnitude >= rate && vec != Vector2.zero)        
+            rig.velocity = rig.velocity.normalized * rate;
+        
 
         rig.AddForce(vec * speed);
 
-        if (axis != 0)
-        {
-            transform.Rotate(0, 0, -axis * 1.5f);
-        }
 
         //レベルアップ処理
         if (exp >= expTable)
@@ -125,17 +125,18 @@ public class PlayerCtrl : MonoBehaviour
         if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any) && meteoHit)
         {
             var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
-            if (meteo.transform.parent==null)
+            //if (meteo.transform.parent==null)
             {
-                meteo.Caught(transform,rig);
-                catchMeteo = meteo;
+                catchMeteo = meteo.GetHighest();
+                meteo.GetHighest().Caught(transform,rig);
+                rig.velocity = Vector2.zero;
             }
-            else if (meteo.GetTotalSize() >= 1)
-            {
-                meteo.Damage(power * 0.1f);
-                meteo.DamageEffect(meteoHit.point);
-                audioSource.PlayOneShot(punchSE);
-            }
+            //else if (meteo.GetTotalSize() >= 1)
+            //{
+            //    meteo.Damage(power * 0.1f);
+            //    meteo.DamageEffect(meteoHit.point);
+            //    audioSource.PlayOneShot(punchSE);
+           // }
         }
     }
 

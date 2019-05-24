@@ -42,17 +42,13 @@ public class MeteoCtrl : MonoBehaviour
     public AudioClip Sebreak;
     public AudioClip Seattck;
     AudioSource audioSource;
-   
+
     // Start is called before the first frame update
     void Awake()
     {
+        hp = maxHp;
         rig = GetComponent<Rigidbody2D>();
-        if (!isParent)
-        {
-            hp = maxHp;
-            parent = transform.parent.GetComponent<MeteoCtrl>();
-            speed = parent.speed;
-        }
+
         //子オブジェクトがあればサイズを合計
         if (isParent)
         {
@@ -60,31 +56,36 @@ public class MeteoCtrl : MonoBehaviour
             for (int i = 0; i < transform.childCount; i++)
             {
                 meteos[i] = transform.GetChild(i).GetComponent<MeteoCtrl>();
-                size += meteos[i].size;
-                hp += meteos[i].hp;
+                if (meteos[i].isParent)
+                {
+                    MeteoCtrl m = meteos[i];
+                    MeteoCtrl[] ms = new MeteoCtrl[m.transform.childCount];
+                    m.parent = this;
+                    for (int j = 0; j < m.transform.childCount; j++)
+                    {
+                        ms[j] = m.transform.GetChild(j).GetComponent<MeteoCtrl>();
+                        size += ms[j].size;
+                        hp += ms[j].hp;
+                    }
+                }
+                else
+                {
+                    meteos[i].parent = this;
+                    size += meteos[i].size;
+                    hp += meteos[i].hp;
+                }
             }
+        }
+        else
+        {
+            earth = parent.earth;
+            speed = parent.speed;
         }
         shotEffect = GetComponent<TrailRenderer>();
         audioSource = GetComponent<AudioSource>();
         shotEffect.enabled = false;
     }
 
-    void Start()
-    {
-        //子オブジェクトがあればサイズを合計
-        if (isParent)
-        {
-            meteos = new MeteoCtrl[transform.childCount];
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                meteos[i] = transform.GetChild(i).GetComponent<MeteoCtrl>();
-                size += meteos[i].size;
-                hp += meteos[i].hp;
-            }
-        }
-        else
-        earth = parent.earth;
-    }
 
     // Update is called once per frame
     void Update()
@@ -138,7 +139,7 @@ public class MeteoCtrl : MonoBehaviour
             rig.velocity = (target.position - transform.position).normalized * speed;
     }
 
-  IEnumerator ChangeLayer(GameObject meteo)
+    IEnumerator ChangeLayer(GameObject meteo)
     {
         meteo.layer = 11;
         yield return new WaitForSeconds(0.3f);
@@ -157,8 +158,8 @@ public class MeteoCtrl : MonoBehaviour
                 meteos[i].isShot = true;
                 meteos[i].SetKinematic(false);
                 meteos[i].rig.AddForce((meteos[i].transform.position - core.position).normalized * 300, ForceMode2D.Impulse);
-                  meteos[i].hp = 0;
-                
+                meteos[i].hp = 0;
+
             }
             audioSource.PlayOneShot(Sebreak);
         }
@@ -243,7 +244,7 @@ public class MeteoCtrl : MonoBehaviour
     public MeteoCtrl GetHighest()
     {
         var p = parent;
-        MeteoCtrl hightest = this;
+        var hightest = this;
         int stoper = 0;
         while (p != null)
         {
@@ -280,6 +281,21 @@ public class MeteoCtrl : MonoBehaviour
             return no2;
     }
 
+    public List<MeteoCtrl> GetAll()
+    {
+        List<MeteoCtrl> m = new List<MeteoCtrl>();
+        if (!isParent) return null;
+        else
+        {
+            for(int i = 0;i< meteos.Length;i++)
+            {
+                if (meteos[i] != null)
+                    m.Add(meteos[i]);
+            }
+            return m;
+        }
+    }
+
     public void Damage(float damage)
     { hp -= damage; }
 
@@ -292,6 +308,7 @@ public class MeteoCtrl : MonoBehaviour
     {
         if (col.gameObject.tag == "Earth")
         {
+            EarthCtrl earth = col.gameObject.GetComponent<EarthCtrl>();
             GetHighest().TotalAddMeteo(earth);
             //サイズが一定以下なら加点
         }

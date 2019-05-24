@@ -152,7 +152,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -440,13 +440,13 @@ MonoBehaviour:
   size: 0
   rig: {fileID: 0}
   number: 0
-  parent: {fileID: 6968104218640580953}
+  parent: {fileID: 0}
   meteos: []
   speed: 0
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -829,7 +829,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -1213,7 +1213,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -1594,7 +1594,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -1883,13 +1883,13 @@ MonoBehaviour:
   size: 0
   rig: {fileID: 0}
   number: 0
-  parent: {fileID: 6968104218640580953}
+  parent: {fileID: 0}
   meteos: []
   speed: 0
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -2270,7 +2270,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -2654,7 +2654,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -3035,7 +3035,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -3414,7 +3414,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -3802,7 +3802,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -4090,7 +4090,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -4467,7 +4467,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -4852,7 +4852,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -5235,7 +5235,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -5621,7 +5621,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -6002,7 +6002,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -6387,7 +6387,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -6769,7 +6769,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
@@ -7148,7 +7148,7 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7, type: 3}
+  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
   isShot: 0
