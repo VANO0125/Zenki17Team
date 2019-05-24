@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2075655257}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.327, z: 0}
+  m_LocalPosition: {x: -0, y: 0.406, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 6055413462914045821}
@@ -109,8 +109,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6055413462914045808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalPosition: {x: -0.206, y: 0, z: 0}
+  m_LocalScale: {x: 8.97, y: 10, z: 1}
   m_Children:
   - {fileID: 2075655258}
   m_Father: {fileID: 0}
@@ -153,7 +153,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: dcf59e521dbf56e479dd9d5a15d44775, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -216,19 +216,11 @@ MonoBehaviour:
   speed: 15
   level: 0
   exp: 0
-  nextExpBase: 0
-  nextExpInterval: 0
-  prevNeedExp: 0
-  needExp: 0
   expTable: 10
   levelText: {fileID: 0}
   expSlider: {fileID: 0}
   shotPower: 1000
   power: 0
-  meteoValue: 0
-  meteo: {fileID: 1004868371321564924, guid: 779d7121dc83e914aa0118e90d5f087e, type: 3}
-  meteoText: {fileID: 0}
-  meteoCounter: 0
   rushInterval: 10
   scoreNumber: {fileID: 0}
   score: 0
