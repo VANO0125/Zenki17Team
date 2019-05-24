@@ -1863,7 +1863,7 @@ PrefabInstance:
     - target: {fileID: 7926851147943706104, guid: 32abf45a15ceb3c4095ac028951e4d98,
         type: 3}
       propertyPath: safeSize
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32abf45a15ceb3c4095ac028951e4d98, type: 3}
@@ -1883,6 +1883,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330094088881906100, guid: 04f6f322d561b634bb106a82ecca3d28,
+        type: 3}
+      propertyPath: panel
+      value: 
+      objectReference: {fileID: 8888306278845358883, guid: 05c496fde4123d94fa2595a7aabba170,
+        type: 3}
+    - target: {fileID: 1330094088670717027, guid: 04f6f322d561b634bb106a82ecca3d28,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1330094088881906103, guid: 04f6f322d561b634bb106a82ecca3d28,
         type: 3}
@@ -1989,12 +2000,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1330094088881906100, guid: 04f6f322d561b634bb106a82ecca3d28,
-        type: 3}
-      propertyPath: panel
-      value: 
-      objectReference: {fileID: 8888306278845358883, guid: 05c496fde4123d94fa2595a7aabba170,
-        type: 3}
     - target: {fileID: 1330094087652793919, guid: 04f6f322d561b634bb106a82ecca3d28,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2004,6 +2009,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330094088499239549, guid: 04f6f322d561b634bb106a82ecca3d28,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 1330094088499239549, guid: 04f6f322d561b634bb106a82ecca3d28,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04f6f322d561b634bb106a82ecca3d28, type: 3}
@@ -2124,6 +2139,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5465109222938640011, guid: 7b72462fb6027774baf1d75b9b97f843,
+        type: 3}
+      propertyPath: earth
+      value: 
+      objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 5465109222938640010, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2179,11 +2199,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5465109222938640011, guid: 7b72462fb6027774baf1d75b9b97f843,
-        type: 3}
-      propertyPath: earth
-      value: 
-      objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 5465109223850883018, guid: 7b72462fb6027774baf1d75b9b97f843,
         type: 3}
       propertyPath: earth
@@ -2451,6 +2466,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6968104218640580953, guid: 80d2389b74d9963438787d7f175f9bb3,
+        type: 3}
+      propertyPath: earth
+      value: 
+      objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104218640580955, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2506,11 +2526,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6968104218640580953, guid: 80d2389b74d9963438787d7f175f9bb3,
-        type: 3}
-      propertyPath: earth
-      value: 
-      objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 6968104217833121847, guid: 80d2389b74d9963438787d7f175f9bb3,
         type: 3}
       propertyPath: earth
