@@ -170,26 +170,32 @@ public class MeteoCtrl : MonoBehaviour
     //プレイヤーに掴まれる処理
     public void Caught(Transform parent, Rigidbody2D rig)
     {
-        isCaught = true;
-        isShot = false;
-        transform.parent = parent;
-        playerPos = parent;
-        playerRig = rig;
-        SetSimulated(false);
+        foreach (var m in GetHighest().GetAll())
+        {
+            m.isShot = false;
+            m.playerPos = parent;
+            m.playerRig = rig;
+            m.SetSimulated(false);
+        }
+            isCaught = true;
+            transform.parent = parent;
     }
 
     //隕石射出処理
     public void ShotMeteo(Vector2 vec, float shotPower, float power, Transform player)
     {
-        rig.simulated = true;
-        transform.parent = null;
-        isCaught = false;
-        shotVec = vec;
-        this.shotPower = shotPower;
-        this.power = power;
-        isShot = true;
-        playerPos = player;
-        rig.AddForce(vec * shotPower, ForceMode2D.Impulse);
+        foreach (var m in GetHighest().GetAll())
+        {
+            m.rig.simulated = true;
+            m.isCaught = false;
+            m.shotVec = vec;
+            m.shotPower = shotPower;
+            m.power = power;
+            m.isShot = true;
+            m.playerPos = player;
+        }
+            transform.parent = null;
+            rig.AddForce(vec * shotPower, ForceMode2D.Impulse);
     }
 
     void ShotEffect()
@@ -282,16 +288,25 @@ public class MeteoCtrl : MonoBehaviour
 
     public List<MeteoCtrl> GetAll()
     {
-        List<MeteoCtrl> m = new List<MeteoCtrl>();
+        List<MeteoCtrl> ms = new List<MeteoCtrl>();
         if (!isParent) return null;
         else
         {
-            for(int i = 0;i< meteos.Length;i++)
+            ms.Add(this);
+            for (int i = 0; i < meteos.Length; i++)
             {
                 if (meteos[i] != null)
-                    m.Add(meteos[i]);
+                {
+                    if (meteos[i].isParent)
+                    {
+                        MeteoCtrl m = meteos[i];
+                        for (int j = 0; j < m.transform.childCount; j++)
+                            ms.Add(m.transform.GetChild(j).GetComponent<MeteoCtrl>());
+                    }
+                }
+                    ms.Add(meteos[i]);
             }
-            return m;
+            return ms;
         }
     }
 

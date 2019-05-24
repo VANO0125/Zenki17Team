@@ -53,7 +53,6 @@ public class PlayerCtrl : MonoBehaviour
         //スティックでプレイヤー移動
         float size = catchMeteo != null ? catchMeteo.size : 1;
         float rate = speed / size;
-        Debug.Log(rate);
         if (rig.velocity.magnitude >= rate && vec != Vector2.zero)        
             rig.velocity = rig.velocity.normalized * rate;
         
