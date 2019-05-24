@@ -1780,17 +1780,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 1330094088881906107, guid: 04f6f322d561b634bb106a82ecca3d28,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1330094088881906100, guid: 04f6f322d561b634bb106a82ecca3d28,
-        type: 3}
-      propertyPath: panel
-      value: 
-      objectReference: {fileID: 8888306278845358883, guid: 05c496fde4123d94fa2595a7aabba170,
-        type: 3}
     - target: {fileID: 1330094088670717027, guid: 04f6f322d561b634bb106a82ecca3d28,
         type: 3}
       propertyPath: m_IsActive
@@ -1910,55 +1899,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1330094087614453397, guid: 04f6f322d561b634bb106a82ecca3d28,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1330094087614453394, guid: 04f6f322d561b634bb106a82ecca3d28,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 6f41821bc3ff6904fb68f7f4e9273e56,
-        type: 3}
-    - target: {fileID: 2531153850606834493, guid: 04f6f322d561b634bb106a82ecca3d28,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 2531153850606834493, guid: 04f6f322d561b634bb106a82ecca3d28,
-        type: 3}
-      propertyPath: m_Type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474183965742605569, guid: 04f6f322d561b634bb106a82ecca3d28,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.9716981
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474183965742605569, guid: 04f6f322d561b634bb106a82ecca3d28,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.9487807
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474183965742605569, guid: 04f6f322d561b634bb106a82ecca3d28,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.9487807
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474183965742605569, guid: 04f6f322d561b634bb106a82ecca3d28,
-        type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474183965742605569, guid: 04f6f322d561b634bb106a82ecca3d28,
-        type: 3}
-      propertyPath: m_Text
-      value: 'NEXT
-
-
-'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04f6f322d561b634bb106a82ecca3d28, type: 3}
@@ -2412,6 +2352,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8980538207983981228, guid: 0e40c4f7c7859b54c8702550a4e768d9,
+        type: 3}
+      propertyPath: earth
+      value: 
+      objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 8980538207983981229, guid: 0e40c4f7c7859b54c8702550a4e768d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2467,11 +2412,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8980538207983981228, guid: 0e40c4f7c7859b54c8702550a4e768d9,
-        type: 3}
-      propertyPath: earth
-      value: 
-      objectReference: {fileID: 7186988538431724158}
     - target: {fileID: 8980538208392911853, guid: 0e40c4f7c7859b54c8702550a4e768d9,
         type: 3}
       propertyPath: earth
