@@ -20,27 +20,27 @@ TagManager:
   - Meteo
   - Grand
   - Wall
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Meteo0
+  - Meteo1
+  - Meteo2
+  - Meteo3
+  - Meteo4
+  - Meteo5
+  - Meteo6
+  - Meteo7
+  - Meteo8
+  - Meteo9
+  - Meteo10
+  - Meteo11
+  - Meteo12
+  - Meteo13
+  - Meteo14
+  - Meteo15
+  - Meteo16
+  - Meteo17
+  - Meteo18
+  - Meteo19
+  - Meteo20
   m_SortingLayers:
   - name: Default
     uniqueID: 0

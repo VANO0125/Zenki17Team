@@ -26,7 +26,7 @@ public class PlayerCtrl : MonoBehaviour
     private MeteoCtrl catchMeteo;
     private float rushTimer;
     public float rushInterval = 10;
-    private int layerMask = 1 << 8; //Meteoレイヤーにだけ反応するようにする
+    private int layerMask = -1 - (1 << 0 | 1 << 1 | 1 << 2 | 1 << 4 | 1 << 5 | 1 << 9 | 1 << 10);//Meteoレイヤーにだけ反応するようにする
     public Number scoreNumber;//スコア描写
     public int score;
 
