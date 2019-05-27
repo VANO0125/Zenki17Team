@@ -45,12 +45,14 @@ public class MeteoCtrl : MonoBehaviour
     public AudioClip Sebreak;
     public AudioClip Seattck;
     AudioSource audioSource;
+ 
 
     // Start is called before the first frame update
     void Awake()
     {
+        
         localPos = transform.localPosition;
-        layerNum = Random.Range(11, 31);
+        
         hp = maxHp;
         rig = GetComponent<Rigidbody2D>();
 
@@ -58,6 +60,7 @@ public class MeteoCtrl : MonoBehaviour
         if (isParent)
         {
             earth = GameObject.FindGameObjectWithTag("Earth").GetComponent<EarthCtrl>();
+            layerNum = MeteoLayer.Instance.GetLayer();
             gameObject.layer = layerNum;
             meteos = new MeteoCtrl[transform.childCount];
 
@@ -205,7 +208,8 @@ public class MeteoCtrl : MonoBehaviour
             m.isShot = false;
             m.isCaught = true;
             //   m.playerPos = parent;
-            m.rig.velocity = Vector2.zero;
+            if (m.rig != null)
+                m.rig.velocity = Vector2.zero;
             m.SetSimulated(false);
         }
         isCaught = true;
