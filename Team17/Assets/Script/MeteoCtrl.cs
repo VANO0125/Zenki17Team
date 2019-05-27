@@ -38,6 +38,8 @@ public class MeteoCtrl : MonoBehaviour
     private float timer;
     public float maxHp;
     public float hp;
+    private int layerNum;
+    private List<int> saveNum;
     TrailRenderer shotEffect;
     public AudioClip Sebreak;
     public AudioClip Seattck;
@@ -46,16 +48,21 @@ public class MeteoCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        layerNum = Random.Range(11, 31);
         hp = maxHp;
         rig = GetComponent<Rigidbody2D>();
 
         //子オブジェクトがあればサイズを合計
         if (isParent)
         {
+            gameObject.layer = layerNum;
             meteos = new MeteoCtrl[transform.childCount];
+
             for (int i = 0; i < transform.childCount; i++)
             {
-                meteos[i] = transform.GetChild(i).GetComponent<MeteoCtrl>();
+
+                meteos[i] = transform.GetChild(i).GetComponent<MeteoCtrl>(); ;
+                meteos[i].gameObject.layer = layerNum;
                 if (meteos[i].isParent)
                 {
                     MeteoCtrl m = meteos[i];
@@ -64,6 +71,7 @@ public class MeteoCtrl : MonoBehaviour
                     for (int j = 0; j < m.transform.childCount; j++)
                     {
                         ms[j] = m.transform.GetChild(j).GetComponent<MeteoCtrl>();
+                        ms[j].gameObject.layer = layerNum;
                         size += ms[j].size;
                         hp += ms[j].hp;
                     }
@@ -102,6 +110,7 @@ public class MeteoCtrl : MonoBehaviour
         Death();
         ShotEffect();
 
+
         if (isShot)
             timer++;
         else
@@ -115,7 +124,7 @@ public class MeteoCtrl : MonoBehaviour
         {
             isShot = false;
             rig.velocity = Vector2.zero;
-            //rig.isKinematic = false;
+            rig.isKinematic = false;
         }
 
         if (!isCaught)
@@ -132,18 +141,16 @@ public class MeteoCtrl : MonoBehaviour
         if (isShot) return;
         else if (isCaught)
         {
-            rig.mass = playerRig.mass;
-            rig.velocity = playerRig.velocity;
+            //  rig.mass = playerRig.mass;
+            //   rig.velocity = playerRig.velocity;
         }
         else if (target != null)
             rig.velocity = (target.position - transform.position).normalized * speed;
     }
 
-    IEnumerator ChangeLayer(GameObject meteo)
+    void ChangeLayer(MeteoCtrl meteo)
     {
-        meteo.layer = 11;
-        yield return new WaitForSeconds(0.3f);
-        meteo.layer = 8;
+        meteo.gameObject.layer = layerNum;
     }
 
     void DivisionAll(Transform core)
@@ -156,6 +163,7 @@ public class MeteoCtrl : MonoBehaviour
                 //StartCoroutine(ChangeLayer(meteos[i].gameObject));
 
                 meteos[i].isShot = true;
+                meteos[i].gameObject.layer = 8;
                 meteos[i].SetKinematic(false);
                 meteos[i].rig.AddForce((meteos[i].transform.position - core.position).normalized * 300, ForceMode2D.Impulse);
                 meteos[i].hp = 0;
@@ -170,11 +178,14 @@ public class MeteoCtrl : MonoBehaviour
     //プレイヤーに掴まれる処理
     public void Caught(Transform parent, Rigidbody2D rig)
     {
-        foreach (var m in GetHighest().GetAll())
+        transform.parent = parent;
+
+        foreach (var m in GetAll())
         {
             m.isShot = false;
-            m.playerPos = parent;
-            m.playerRig = rig;
+            //   m.playerPos = parent;
+            //     m.playerRig = rig;
+            m.isCaught = true;
             m.SetSimulated(false);
         }
         isCaught = true;
@@ -184,18 +195,23 @@ public class MeteoCtrl : MonoBehaviour
     //隕石射出処理
     public void ShotMeteo(Vector2 vec, float shotPower, float power, Transform player)
     {
-        foreach (var m in GetHighest().GetAll())
+        transform.parent = null;
+
+        foreach (var m in GetAll())
         {
             m.rig.simulated = true;
+            m.rig.isKinematic = false;
             m.power = power;
             m.isShot = true;
             m.isCaught = false;
+            m.shotVec = vec;
+            m.shotPower = shotPower;
+            m.power = power;
+            m.playerPos = player;
         }
-        playerPos = player;
-        shotVec = vec;
-        this.shotPower = shotPower;
         transform.parent = null;
         rig.AddForce(vec * shotPower / size, ForceMode2D.Impulse);
+        //    m.rig.AddForce(vec * shotPower, ForceMode2D.Impulse);
     }
 
     void ShotEffect()
@@ -208,14 +224,14 @@ public class MeteoCtrl : MonoBehaviour
 
     public void SetKinematic(bool flag)
     {
-        if(rig!=null)
-        rig.isKinematic = flag;
+        if (rig != null)
+            rig.isKinematic = flag;
     }
 
     public void SetSimulated(bool flag)
     {
-        if(rig!=null)
-        rig.simulated = flag;
+        if (rig != null)
+            rig.simulated = flag;
     }
 
     void Death()
@@ -324,7 +340,7 @@ public class MeteoCtrl : MonoBehaviour
         if (col.gameObject.tag == "Earth")
         {
             EarthCtrl earth = col.gameObject.GetComponent<EarthCtrl>();
-           earth.AddMeteo(GetHighest().size);
+            earth.AddMeteo(GetHighest().size);
             Destroy(GetHighest().gameObject);
             //Debug.Log("nu"+earth.hp);
             //サイズが一定以下なら加点
