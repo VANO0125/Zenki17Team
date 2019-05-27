@@ -146,6 +146,7 @@ public class MeteoCtrl : MonoBehaviour
         if (transform.childCount == 1 && transform.GetChild(0).tag == "Meteo")
         {
             transform.GetChild(0).parent = null;
+            MeteoLayer.Instance.ChangeBool(layerNum);
             Destroy(gameObject);
         }
     }
