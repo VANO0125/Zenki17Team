@@ -16,9 +16,10 @@ public  class MeteoLayer :SingletonMonoBehaviour<MeteoLayer>
 
     public int GetLayer()
     {
+        layerNum = 11;
         for (int i = 0; i < flags.Length; i++)
         {
-            layerNum = 11;
+
             if (!flags[i])
             {
                 flags[i] = true;
@@ -26,7 +27,13 @@ public  class MeteoLayer :SingletonMonoBehaviour<MeteoLayer>
                 return layerNum + i;
             }
 
+
         }
         return 8;
+    }
+
+    public void ChangeBool(int Num)
+    {
+        flags[Num - 11] = false;
     }
 }
