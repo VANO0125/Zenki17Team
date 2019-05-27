@@ -2211,7 +2211,7 @@ PrefabInstance:
     - target: {fileID: 3209338339426327236, guid: f228b385e63b1f543a210c5cb7c9c440,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 202750368, guid: f228b385e63b1f543a210c5cb7c9c440, type: 3}
       propertyPath: ryusei

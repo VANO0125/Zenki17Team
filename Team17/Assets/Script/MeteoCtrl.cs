@@ -158,7 +158,10 @@ public class MeteoCtrl : MonoBehaviour
         else if (target != null)
         {
             foreach (var m in GetAll())
-                m.rig.velocity = (target.position - transform.position).normalized * speed;
+            {
+                if (m.rig != null)
+                    m.rig.velocity = (target.position - transform.position).normalized * speed;
+            }
         }
     }
 
@@ -213,7 +216,8 @@ public class MeteoCtrl : MonoBehaviour
 
         foreach (var m in GetAll())
         {
-            m.rig.simulated = true;
+            if (m.rig != null)
+                m.rig.simulated = true;
             m.power = power;
             m.isShot = true;
             m.isCaught = false;
@@ -221,7 +225,8 @@ public class MeteoCtrl : MonoBehaviour
             m.shotPower = shotPower;
             m.power = power;
             m.playerPos = player;
-            m.rig.AddForce(vec * shotPower / size, ForceMode2D.Impulse);
+            if (m.rig != null)
+                m.rig.AddForce(vec * shotPower / size, ForceMode2D.Impulse);
         }
     }
 
