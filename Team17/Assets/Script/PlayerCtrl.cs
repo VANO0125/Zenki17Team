@@ -147,7 +147,10 @@ public class PlayerCtrl : MonoBehaviour
         if (meteoHit)
         {
             var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
-            meteo.Damage(power * 0.1f);
+            if (meteo.transform.parent != null)
+                meteo.Damage(power * 0.1f);
+            else meteo.ShotMeteo(transform.up, shotPower, power, transform);
+            
             meteo.DamageEffect(meteoHit.point);
             //    audioSource.PlayOneShot(punchSE);
         }

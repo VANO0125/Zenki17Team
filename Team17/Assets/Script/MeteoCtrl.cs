@@ -57,6 +57,7 @@ public class MeteoCtrl : MonoBehaviour
         //子オブジェクトがあればサイズを合計
         if (isParent)
         {
+            earth = GameObject.FindGameObjectWithTag("Earth").GetComponent<EarthCtrl>();
             gameObject.layer = layerNum;
             meteos = new MeteoCtrl[transform.childCount];
 
@@ -75,14 +76,14 @@ public class MeteoCtrl : MonoBehaviour
                         ms[j] = m.transform.GetChild(j).GetComponent<MeteoCtrl>();
                         ms[j].gameObject.layer = layerNum;
                         size += ms[j].size;
-                        hp += ms[j].hp;
+                        hp += ms[j].maxHp;
                     }
                 }
                 else
                 {
                     meteos[i].parent = this;
                     size += meteos[i].size;
-                    hp += meteos[i].hp;
+                    hp += meteos[i].maxHp;
                 }
             }
         }
@@ -139,7 +140,11 @@ public class MeteoCtrl : MonoBehaviour
             rig.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         else rig.constraints = RigidbodyConstraints2D.None;
-
+        if (transform.childCount == 1 && transform.GetChild(0).tag == "Meteo")
+        {
+            transform.GetChild(0).parent = null;
+            Destroy(gameObject);
+        }
     }
 
     public void SetSize(int size)
@@ -165,9 +170,9 @@ public class MeteoCtrl : MonoBehaviour
         }
     }
 
-    void ChangeLayer(MeteoCtrl meteo)
+    void ChangeLayer(MeteoCtrl meteo, int num)
     {
-        meteo.gameObject.layer = layerNum;
+        meteo.gameObject.layer = num;
     }
 
     void DivisionAll(Transform core)
@@ -177,8 +182,6 @@ public class MeteoCtrl : MonoBehaviour
         {
             if (isParent && meteos[i] != null)
             {
-                //StartCoroutine(ChangeLayer(meteos[i].gameObject));
-
                 meteos[i].isShot = true;
                 meteos[i].gameObject.layer = 8;
                 meteos[i].SetKinematic(false);
@@ -265,6 +268,7 @@ public class MeteoCtrl : MonoBehaviour
             parent = null;
             isDead = true;
             SetKinematic(false);
+            ChangeLayer(this, 8);
             audioSource.PlayOneShot(Sebreak);
             DamageEffect(transform.position);
         }
@@ -344,7 +348,24 @@ public class MeteoCtrl : MonoBehaviour
     }
 
     public void Damage(float damage)
-    { hp -= damage; }
+    {
+        hp -= damage;
+        MeteoCtrl h = GetHighest();
+        MeteoCtrl u = GetUnitMeteo();
+
+        if (h != u)
+        {
+            h.hp -= damage;
+            u.hp -= damage;
+        }
+        else if (h != this)
+            h.hp -= damage;
+
+        if (damage / h.hp >= 1)
+            h.DivisionAll(transform);
+        else if (damage / h.hp >= 0.5f)
+            u.DivisionAll(transform);
+    }
 
     public void DamageEffect(Vector2 position)
     {
