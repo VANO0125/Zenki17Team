@@ -7,13 +7,15 @@ public class EarthCtrl : MonoBehaviour
 {
     // Start is called before the first frame update    
     [SerializeField]
+    private GameObject earth;
+    [SerializeField]
     private float maxHp;//最大HP
     public float hp;//現在のHP
     [SerializeField]
     private int safeSize;//隕石にならないサイズ
     [SerializeField]
     private int defaultScore;//基礎加点数
-    private int score;//スコア
+    public int score;//スコア
     private int pulsScore;
     public bool isDead;//死亡判定
 
@@ -29,13 +31,18 @@ public class EarthCtrl : MonoBehaviour
     public Number scoreNumber;//スコア描写
     public GameObject over;
     private float timer;
-   
+
+    public float gameTimer;
+    public int starCounter;
+
     void Start()
     {
         //HP
         hp = maxHp;
         timer = earthTimer;
         Time.timeScale = 1.0f;
+        gameTimer = 0;
+        starCounter = 0;
     }
 
     // Update is called once per frame
@@ -60,14 +67,15 @@ public class EarthCtrl : MonoBehaviour
             isDead = true;
             Destroy();
         }
-
+        if (!isDead)
+            gameTimer+=Time.deltaTime;
     }
 
 
     void Destroy()
     {
         //破壊処理
-        Destroy(gameObject);
+        earth.SetActive(false);
         over.SetActive(true);
         if (Time.timeScale != 0)
         {
@@ -89,6 +97,7 @@ public class EarthCtrl : MonoBehaviour
             scoreNumber.Set(score);//スコアを更新
             pulsExp = exp;
             star.FallStar();
+            starCounter++;
         }
         else
         {

@@ -207,10 +207,16 @@ public class MeteoCtrl : MonoBehaviour
     }
 
     public void SetKinematic(bool flag)
-    { rig.isKinematic = flag; }
+    {
+        if(rig!=null)
+        rig.isKinematic = flag;
+    }
 
     public void SetSimulated(bool flag)
-    { rig.simulated = flag; }
+    {
+        if(rig!=null)
+        rig.simulated = flag;
+    }
 
     void Death()
     {

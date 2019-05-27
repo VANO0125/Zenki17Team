@@ -6,6 +6,8 @@ using GamepadInput;
 
 public class PlayerCtrl : MonoBehaviour
 {
+    [SerializeField]
+    private Transform body;
     private Rigidbody2D rig;
     public float speed;//移動スピード
     private Vector2 moveAngle;//回転ベクトル
@@ -24,6 +26,7 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField]
     private float power;//投げた隕石の威力
     private MeteoCtrl catchMeteo;
+    private bool isCatch;
     private float rushTimer;
     public float rushInterval = 10;
     private int layerMask = 1 << 8; //Meteoレイヤーにだけ反応するようにする
@@ -64,7 +67,6 @@ public class PlayerCtrl : MonoBehaviour
 
         rig.AddForce(vec * speed);
 
-
         //レベルアップ処理
         if (exp >= expTable)
         {
@@ -84,7 +86,8 @@ public class PlayerCtrl : MonoBehaviour
         MeteoCatch();
         MeteoThrow();
         SetUI();
-        
+
+        anim.SetBool("IsCatch", catchMeteo);
     }
 
     void Rotate()
@@ -163,8 +166,9 @@ public class PlayerCtrl : MonoBehaviour
             //if (meteo.transform.parent==null)
             {
                 catchMeteo = meteo.GetHighest();
-                meteo.GetHighest().Caught(transform, rig);
+                meteo.GetHighest().Caught(body, rig);
                 rig.velocity = Vector2.zero;
+                isCatch = true;
             }
             //else if (meteo.GetTotalSize() >= 1)
             //{
@@ -178,11 +182,17 @@ public class PlayerCtrl : MonoBehaviour
     void MeteoThrow()
     {
         //Bボタンを離すと前方に隕石を投げる     
-        if (catchMeteo != null && !GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
+        if (isCatch && !GamePad.GetButton(GamePad.Button.B, GamePad.Index.Any))
         {
-            catchMeteo.ShotMeteo(transform.up, shotPower, power, transform);
-            catchMeteo = null;
+            anim.SetTrigger("Slow");
+            isCatch = false;
         }
+    }
+
+    void Slow()
+    {
+        catchMeteo.ShotMeteo(transform.up, shotPower, power, transform);
+        catchMeteo = null;
     }
 }
 

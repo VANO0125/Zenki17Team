@@ -248,7 +248,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8430242958819441254}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 24.131762, y: 24.131762, z: 24.131762}
   m_Children:
@@ -334,14 +334,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b14136b57611a47af9a653cf643889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  earth: {fileID: 989836311543304807}
   maxHp: 10
-  safeSize: 4
+  hp: 0
+  safeSize: 3
   defaultScore: 100
   isDead: 0
   player: {fileID: 0}
-  exp: 0
+  exp: 10
   star: {fileID: 0}
   earthCamera: {fileID: 0}
   earthTimer: 120
   scoreNumber: {fileID: 0}
   over: {fileID: 0}
+  gameTimer: 0
