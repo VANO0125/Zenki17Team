@@ -68,6 +68,7 @@ public class MeteoManger : MonoBehaviour
             newMeteo.earth = earth;
             newMeteo.SetTarget(earth.transform);
             waring.CreateLineRendererObject(newMeteo.transform);
+           
         }
 
     }
