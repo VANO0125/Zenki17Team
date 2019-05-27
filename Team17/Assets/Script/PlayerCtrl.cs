@@ -55,7 +55,7 @@ public class PlayerCtrl : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         Vector2 vec = GamePad.GetAxis(GamePad.Axis.LeftStick, GamePad.Index.Any);
         float axis = Input.GetAxis("R_XAxis_0");
         //スティックでプレイヤー移動

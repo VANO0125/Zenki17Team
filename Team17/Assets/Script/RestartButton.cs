@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using GamepadInput;
 
 
 public class RestartButton : MonoBehaviour
@@ -18,10 +19,11 @@ public class RestartButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ( Input.GetKeyDown(KeyCode.JoystickButton0))
+        if (GamePad.GetAnyButton(GamePad.Button.B))
         {
             button.onClick.Invoke();
         }
+       
     }
     public void ReStart()
     {
