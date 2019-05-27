@@ -17,6 +17,7 @@ public class MeteoCtrl : MonoBehaviour
     public float speed;
     [SerializeField]
     private float power;
+    private Vector3 localPos;
 
     public Transform target;
     public EarthCtrl earth;//地球
@@ -48,6 +49,7 @@ public class MeteoCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        localPos = transform.localPosition;
         layerNum = Random.Range(11, 31);
         hp = maxHp;
         rig = GetComponent<Rigidbody2D>();
@@ -129,6 +131,15 @@ public class MeteoCtrl : MonoBehaviour
 
         if (!isCaught)
             rig.mass = 10;
+
+
+        if (transform.parent != null && transform.parent.gameObject.tag == "Meteo")
+        {
+            transform.localPosition = localPos;
+            rig.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+        else rig.constraints = RigidbodyConstraints2D.None;
+
     }
 
     public void SetSize(int size)
@@ -145,7 +156,10 @@ public class MeteoCtrl : MonoBehaviour
             //   rig.velocity = playerRig.velocity;
         }
         else if (target != null)
-            rig.velocity = (target.position - transform.position).normalized * speed;
+        {
+            foreach (var m in GetAll())
+                m.rig.velocity = (target.position - transform.position).normalized * speed;
+        }
     }
 
     void ChangeLayer(MeteoCtrl meteo)
@@ -183,9 +197,9 @@ public class MeteoCtrl : MonoBehaviour
         foreach (var m in GetAll())
         {
             m.isShot = false;
-            //   m.playerPos = parent;
-            //     m.playerRig = rig;
             m.isCaught = true;
+            //   m.playerPos = parent;
+            m.rig.velocity = Vector2.zero;
             m.SetSimulated(false);
         }
         isCaught = true;
@@ -200,7 +214,6 @@ public class MeteoCtrl : MonoBehaviour
         foreach (var m in GetAll())
         {
             m.rig.simulated = true;
-            m.rig.isKinematic = false;
             m.power = power;
             m.isShot = true;
             m.isCaught = false;
@@ -208,10 +221,8 @@ public class MeteoCtrl : MonoBehaviour
             m.shotPower = shotPower;
             m.power = power;
             m.playerPos = player;
+            m.rig.AddForce(vec * shotPower / size, ForceMode2D.Impulse);
         }
-        transform.parent = null;
-        rig.AddForce(vec * shotPower / size, ForceMode2D.Impulse);
-        //    m.rig.AddForce(vec * shotPower, ForceMode2D.Impulse);
     }
 
     void ShotEffect()

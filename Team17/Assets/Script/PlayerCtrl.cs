@@ -63,8 +63,6 @@ public class PlayerCtrl : MonoBehaviour
         float rate = speed / size;
         if (rig.velocity.magnitude >= rate && vec != Vector2.zero)
             rig.velocity = rig.velocity.normalized * rate;
-
-
         rig.AddForce(vec * speed);
 
         //レベルアップ処理
@@ -163,19 +161,13 @@ public class PlayerCtrl : MonoBehaviour
         if (GamePad.GetButtonDown(GamePad.Button.B, GamePad.Index.Any) && meteoHit)
         {
             var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
-            //if (meteo.transform.parent==null)
+            if (catchMeteo == null)
             {
                 catchMeteo = meteo.GetHighest();
                 meteo.GetHighest().Caught(body, rig);
                 rig.velocity = Vector2.zero;
                 isCatch = true;
             }
-            //else if (meteo.GetTotalSize() >= 1)
-            //{
-            //    meteo.Damage(power * 0.1f);
-            //    meteo.DamageEffect(meteoHit.point);
-            //    audioSource.PlayOneShot(punchSE);
-            // }
         }
     }
 
