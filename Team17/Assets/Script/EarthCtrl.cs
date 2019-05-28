@@ -12,7 +12,7 @@ public class EarthCtrl : MonoBehaviour
     private float maxHp;//最大HP
     public float hp;//現在のHP
     [SerializeField]
-    private int safeSize;//隕石にならないサイズ
+    public int safeSize;//隕石にならないサイズ
     [SerializeField]
     private int defaultScore;//基礎加点数
     public int score;//スコア
