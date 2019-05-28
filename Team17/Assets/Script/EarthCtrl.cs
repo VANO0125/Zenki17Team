@@ -34,13 +34,12 @@ public class EarthCtrl : MonoBehaviour
 
     public float gameTimer;
     public int starCounter;
-
     void Start()
     {
         //HP
         hp = maxHp;
         timer = earthTimer;
-        Time.timeScale = 1.0f;
+        Time.timeScale = 1f;
         gameTimer = 0;
         starCounter = 0;
     }
@@ -68,23 +67,20 @@ public class EarthCtrl : MonoBehaviour
             Destroy();
         }
         if (!isDead)
-            gameTimer+=Time.deltaTime;
+            gameTimer += Time.deltaTime;
     }
 
+    void SetStart()
+    {
+        Time.timeScale = 1;
+    }
 
     void Destroy()
     {
         //破壊処理
         earth.SetActive(false);
         over.SetActive(true);
-        if (Time.timeScale != 0)
-        {
-            Time.timeScale = 0;
-        }
-        else
-        {
-            Time.timeScale = 1.0f;
-        }
+        Time.timeScale = 0;
     }
 
     public void AddMeteo(int meteoSize)
@@ -123,5 +119,5 @@ public class EarthCtrl : MonoBehaviour
         }
     }
 
-   
+
 }

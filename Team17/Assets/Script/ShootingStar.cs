@@ -21,7 +21,7 @@ public class ShootingStar : MonoBehaviour
     public void FallStar()
     {
         //流れ星を2秒表示
-        float r = Random.Range(-0.5f, 0.5f);
+        float r = Random.Range(-0.7f, 0.3f);
         GameObject obj = Instantiate(ryusei, transform.position + Vector3.up * r, Quaternion.identity);
         Destroy(obj, 2f);
     }

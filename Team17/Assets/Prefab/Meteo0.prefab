@@ -880,7 +880,7 @@ MonoBehaviour:
   number: 0
   parent: {fileID: 0}
   meteos: []
-  speed: 15
+  speed: 40
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}

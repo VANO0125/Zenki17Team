@@ -20,7 +20,6 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField]
     private Slider expSlider;
 
-
     [SerializeField]
     private float shotPower;
     [SerializeField]
@@ -56,36 +55,43 @@ public class PlayerCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 vec = GamePad.GetAxis(GamePad.Axis.LeftStick, GamePad.Index.Any);
-        float axis = Input.GetAxis("R_XAxis_0");
-        //スティックでプレイヤー移動
-        float size = catchMeteo != null ? catchMeteo.size : 1;
-        float rate = speed / size;
-        if (rig.velocity.magnitude >= rate && vec != Vector2.zero)
-            rig.velocity = rig.velocity.normalized * rate;
-        rig.AddForce(vec * speed);
-
-        //レベルアップ処理
-        if (exp >= expTable)
+        if (GameManager.isStart)
         {
-            int remainder = exp - expTable;
-            exp += remainder;
-            power += 5;
-            expTable *= 2;
-            expSlider.maxValue = expTable;
-            exp = 0;
-            exp += remainder;
-            expTable = GetComponent<ExpList>().expList[level];
-            expSlider.maxValue = expTable;
-            level++;
-        }
-        Rotate();
-        Attack();
-        MeteoCatch();
-        MeteoThrow();
-        SetUI();
+            Vector2 vec = GamePad.GetAxis(GamePad.Axis.LeftStick, GamePad.Index.Any);
+            float axis = Input.GetAxis("R_XAxis_0");
+            //スティックでプレイヤー移動
+            float size = catchMeteo != null ? catchMeteo.size : 1;
+            float rate = speed / size;
+            if (rig.velocity.magnitude >= rate && vec != Vector2.zero)
+                rig.velocity = rig.velocity.normalized * rate;
+            rig.AddForce(vec * speed);
+            if (isCatch)
+            {
+                rig.AddForce(-transform.position.normalized * 3);
+            }
 
-        anim.SetBool("IsCatch", catchMeteo);
+            //レベルアップ処理
+            if (exp >= expTable)
+            {
+                int remainder = exp - expTable;
+                exp += remainder;
+                power += 5;
+                expTable *= 2;
+                expSlider.maxValue = expTable;
+                exp = 0;
+                exp += remainder;
+                expTable = GetComponent<ExpList>().expList[level];
+                expSlider.maxValue = expTable;
+                level++;
+            }
+            Rotate();
+            Attack();
+            MeteoCatch();
+            MeteoThrow();
+            SetUI();
+
+            anim.SetBool("IsCatch", catchMeteo);
+        }
     }
 
     void Rotate()
@@ -150,7 +156,7 @@ public class PlayerCtrl : MonoBehaviour
             if (meteo.transform.parent != null)
                 meteo.Damage(power * 0.1f);
             else meteo.ShotMeteo(transform.up, shotPower, power, transform);
-            
+
             meteo.DamageEffect(meteoHit.point);
             //    audioSource.PlayOneShot(punchSE);
         }

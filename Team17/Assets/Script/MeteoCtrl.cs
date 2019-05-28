@@ -105,60 +105,64 @@ public class MeteoCtrl : MonoBehaviour
             meteoParticle.transform.parent = transform;
             meteoParticle.SetActive(false);
         }
+        target = earth.transform;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        //if (transform.childCount == 1)
-        //{
-        //    var child = transform.GetChild(0).gameObject;
-        //    child.layer = 8;
-        //    child.GetComponent<Rigidbody2D>().isKinematic = false;
-        //    child.transform.parent = null;
-        //    Destroy(gameObject);
-        //}
-        Move();
-        Death();
-        ShotEffect();
+        if (GameManager.isStart)
+        {
+            //if (transform.childCount == 1)
+            //{
+            //    var child = transform.GetChild(0).gameObject;
+            //    child.layer = 8;
+            //    child.GetComponent<Rigidbody2D>().isKinematic = false;
+            //    child.transform.parent = null;
+            //    Destroy(gameObject);
+            //}
+            Move();
+            Death();
+            ShotEffect();
 
 
-        if (isShot)
-            timer++;
-        else
-        {
-            if (earth != null)
-                target = earth.transform;
-            timer = 0;
-        }
+            if (isShot)
+                timer++;
+            else
+            {
+                if (earth != null)
+                    target = earth.transform;
+                timer = 0;
+            }
 
-        if (timer >= 180)
-        {
-            isShot = false;
-            rig.velocity = Vector2.zero;
-            rig.isKinematic = false;
-        }
+            if (timer >= 180)
+            {
+                isShot = false;
+                rig.velocity = Vector2.zero;
+                rig.isKinematic = false;
+            }
 
-        if (!isCaught)
-            rig.mass = 10;
-        ReMove();
-       
-        if (GetHighest().size <= earth.safeSize && meteoParticle != null)
-            meteoParticle.SetActive(true);
-        else if (meteoParticle != null)
-            meteoParticle.SetActive(false);
-        if (transform.parent != null && transform.parent.gameObject.tag == "Meteo")
-        {
-            transform.localPosition = localPos;
-            rig.constraints = RigidbodyConstraints2D.FreezeRotation;
-        }
-        else rig.constraints = RigidbodyConstraints2D.None;
-        if (transform.childCount == 1 && transform.GetChild(0).tag == "Meteo")
-        {
-            transform.GetChild(0).parent = null;
-            MeteoLayer.Instance.ChangeBool(layerNum);
-            Destroy(gameObject);
+            if (!isCaught)
+                rig.mass = 10;
+            ReMove();
+
+            if (GetHighest().size <= earth.safeSize && meteoParticle != null)
+                meteoParticle.SetActive(true);
+            else if (meteoParticle != null)
+                meteoParticle.SetActive(false);
+            if (transform.parent != null && transform.parent.gameObject.tag == "Meteo")
+            {
+                transform.localPosition = localPos;
+                rig.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
+            else rig.constraints = RigidbodyConstraints2D.None;
+            if (transform.childCount == 1 && transform.GetChild(0).tag == "Meteo")
+            {
+                transform.GetChild(0).parent = null;
+                MeteoLayer.Instance.ChangeBool(layerNum);
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -169,20 +173,25 @@ public class MeteoCtrl : MonoBehaviour
 
     void Move()
     {
-        if (isShot) return;
-        else if (isCaught)
+        //if (isShot) return;
+        //  else if (isCaught)
         {
             //  rig.mass = playerRig.mass;
             //   rig.velocity = playerRig.velocity;
         }
-        else if (target != null && transform.parent == null)
+
+        if (target != null && transform.parent == null)
         {
             foreach (var m in GetAll())
             {
                 if (m != null)
                 {
-                    int accel = size < earth.safeSize ? 3 : 1;
-                    m.rig.velocity = (target.position - transform.position).normalized * speed * accel;
+                    int accel = size <= earth.safeSize ? 3 : 1;
+                    //float gravity = (target.position - transform.position).magnitude<50? 20:1;
+
+                    // m.rig.velocity = (target.position - transform.position).normalized * speed * accel;
+                    //  if(rig.velocity.magnitude<=speed)
+                    m.rig.AddForce((target.position - transform.position).normalized * speed * accel);
                 }
             }
         }
@@ -228,7 +237,7 @@ public class MeteoCtrl : MonoBehaviour
                 meteos[i].isShot = true;
                 meteos[i].gameObject.layer = 8;
                 meteos[i].SetKinematic(false);
-                meteos[i].rig.AddForce((meteos[i].transform.position - core.position).normalized * 300, ForceMode2D.Impulse);
+                meteos[i].rig.AddForce((meteos[i].transform.position - core.position).normalized * 50, ForceMode2D.Impulse);
                 meteos[i].hp = 0;
             }
             audioSource.PlayOneShot(Sebreak);

@@ -39,16 +39,18 @@ public class MeteoManger : MonoBehaviour
             meteoID.Add(enemyMaster.ID);
         }
         AddMeteo();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!earth.isDead)
+        if (GameManager.isStart)
         {
-            SpawnPos();
-            Spawn();
+            if (!earth.isDead)
+            {
+                SpawnPos();
+                Spawn();
+            }
         }
     }
 
