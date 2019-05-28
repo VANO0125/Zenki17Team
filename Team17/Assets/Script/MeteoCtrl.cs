@@ -90,6 +90,7 @@ public class MeteoCtrl : MonoBehaviour
                     hp += meteos[i].maxHp;
                 }
             }
+            maxHp = hp;
         }
         else
         {
@@ -186,12 +187,13 @@ public class MeteoCtrl : MonoBehaviour
             {
                 if (m != null)
                 {
-                    int accel = size <= earth.safeSize ? 3 : 1;
+                    if (size <= earth.safeSize && (target.position - transform.position).magnitude <= 150)
+                        m.rig.velocity = (target.position - transform.position).normalized * speed;
                     //float gravity = (target.position - transform.position).magnitude<50? 20:1;
 
                     // m.rig.velocity = (target.position - transform.position).normalized * speed * accel;
                     //  if(rig.velocity.magnitude<=speed)
-                    m.rig.AddForce((target.position - transform.position).normalized * speed * accel);
+                    m.rig.AddForce((target.position - transform.position).normalized * speed);
                 }
             }
         }
@@ -212,7 +214,11 @@ public class MeteoCtrl : MonoBehaviour
                     meteos[i] = null;
             }
             if (transform.childCount == 0)
+            {
+                if (layerNum != 8)
+                    MeteoLayer.Instance.ChangeBool(layerNum);
                 Destroy(gameObject);
+            }
         }
         if (transform.parent != null && transform.parent.gameObject.tag == "Meteo")
         {
@@ -223,6 +229,8 @@ public class MeteoCtrl : MonoBehaviour
         if (transform.childCount == 1 && transform.GetChild(0).tag == "Meteo")
         {
             transform.GetChild(0).parent = null;
+            if (layerNum != 8)
+                MeteoLayer.Instance.ChangeBool(layerNum);
             Destroy(gameObject);
         }
     }
@@ -414,9 +422,9 @@ public class MeteoCtrl : MonoBehaviour
         else if (h != this)
             h.hp -= damage;
 
-        if (damage / h.hp >= 1)
+        if (damage / h.maxHp >= 1)
             h.DivisionAll(transform);
-        else if (damage / h.hp >= 0.5f)
+        else if (damage / h.maxHp >= 0.5f)
             u.hp = 0;
     }
 
@@ -446,7 +454,7 @@ public class MeteoCtrl : MonoBehaviour
             {
                 if (GetTotalSize() > 1)
                 {
-                    Damage(otherMeteo.power);
+                    Damage(otherMeteo.power * otherMeteo.GetHighest().size);
                     otherMeteo.hp = 0;
                     foreach (ContactPoint2D point in col.contacts)
                         DamageEffect(point.point);

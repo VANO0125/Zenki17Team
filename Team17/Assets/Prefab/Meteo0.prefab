@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e45f05632d83b4c947cd4d22ab758b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 1
+  size: 2
   rig: {fileID: 0}
   number: 0
   parent: {fileID: 0}
@@ -182,7 +182,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  maxHp: 20
+  maxHp: 15
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -586,7 +586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e45f05632d83b4c947cd4d22ab758b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 1
+  size: 2
   rig: {fileID: 0}
   number: 0
   parent: {fileID: 0}
@@ -601,7 +601,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  maxHp: 20
+  maxHp: 15
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -1291,7 +1291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e45f05632d83b4c947cd4d22ab758b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 1
+  size: 2
   rig: {fileID: 0}
   number: 0
   parent: {fileID: 0}
@@ -1304,9 +1304,9 @@ MonoBehaviour:
     type: 3}
   partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
-  isCore: 1
+  isCore: 0
   isParent: 0
-  maxHp: 20
+  maxHp: 15
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}

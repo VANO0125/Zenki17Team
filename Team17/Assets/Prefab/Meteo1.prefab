@@ -459,7 +459,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  maxHp: 20
+  maxHp: 30
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -851,7 +851,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  maxHp: 20
+  maxHp: 30
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -1239,7 +1239,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  maxHp: 20
+  maxHp: 30
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -1630,7 +1630,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  maxHp: 20
+  maxHp: 30
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -2021,7 +2021,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 1
   isParent: 0
-  maxHp: 20
+  maxHp: 30
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -2419,7 +2419,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  maxHp: 20
+  maxHp: 30
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -2801,7 +2801,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  maxHp: 20
+  maxHp: 30
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -3197,7 +3197,7 @@ MonoBehaviour:
   isShot: 0
   isCore: 0
   isParent: 0
-  maxHp: 20
+  maxHp: 30
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}

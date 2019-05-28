@@ -46,8 +46,8 @@ public class PlayerCtrl : MonoBehaviour
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
-        expSlider.maxValue = expTable;
         expTable = GetComponent<ExpList>().expList[0];
+        expSlider.maxValue = expTable;
         audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
     }
@@ -76,8 +76,6 @@ public class PlayerCtrl : MonoBehaviour
                 int remainder = exp - expTable;
                 exp += remainder;
                 power += 5;
-                expTable *= 2;
-                expSlider.maxValue = expTable;
                 exp = 0;
                 exp += remainder;
                 expTable = GetComponent<ExpList>().expList[level];
@@ -154,8 +152,8 @@ public class PlayerCtrl : MonoBehaviour
         {
             var meteo = meteoHit.transform.gameObject.GetComponent<MeteoCtrl>();
             if (meteo.transform.parent != null)
-                meteo.Damage(power * 0.1f);
-            else meteo.ShotMeteo(transform.up, shotPower, power, transform);
+                meteo.Damage(power);
+            else meteo.ShotMeteo(transform.up, shotPower, power / 2, transform);
 
             meteo.DamageEffect(meteoHit.point);
             //    audioSource.PlayOneShot(punchSE);

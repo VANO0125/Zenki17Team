@@ -11,7 +11,7 @@ public class ExpList : MonoBehaviour
     {
         expList = new List<int>(20)
         {
-            15,//Lr1
+            20,//Lr1
             30,//Lr2
             50,//Lr3
             100,//Lr4
