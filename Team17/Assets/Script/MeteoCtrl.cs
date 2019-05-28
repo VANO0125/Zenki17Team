@@ -143,12 +143,23 @@ public class MeteoCtrl : MonoBehaviour
         if (!isCaught)
             rig.mass = 10;
         ReMove();
-
-
+       
         if (GetHighest().size <= earth.safeSize && meteoParticle != null)
             meteoParticle.SetActive(true);
         else if (meteoParticle != null)
             meteoParticle.SetActive(false);
+        if (transform.parent != null && transform.parent.gameObject.tag == "Meteo")
+        {
+            transform.localPosition = localPos;
+            rig.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+        else rig.constraints = RigidbodyConstraints2D.None;
+        if (transform.childCount == 1 && transform.GetChild(0).tag == "Meteo")
+        {
+            transform.GetChild(0).parent = null;
+            MeteoLayer.Instance.ChangeBool(layerNum);
+            Destroy(gameObject);
+        }
     }
 
     public void SetSize(int size)
