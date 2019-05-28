@@ -152,9 +152,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 0
@@ -446,9 +446,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 1
@@ -829,9 +829,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 0
@@ -1213,9 +1213,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 0
@@ -1594,9 +1594,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 0
@@ -1889,9 +1889,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 1
@@ -2270,9 +2270,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 1
   isParent: 0
@@ -2654,9 +2654,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 0
@@ -3035,9 +3035,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 0
@@ -3414,9 +3414,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 1
   isParent: 0
@@ -3802,9 +3802,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 0
@@ -4090,9 +4090,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 1
@@ -4467,9 +4467,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 0
@@ -4852,9 +4852,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 0
@@ -5235,9 +5235,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 0
@@ -5621,9 +5621,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 0
@@ -6002,9 +6002,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 0
@@ -6387,9 +6387,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 0
@@ -6769,9 +6769,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 0
@@ -7148,9 +7148,9 @@ MonoBehaviour:
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
-  effect: {fileID: 0}
   damageEffect: {fileID: 4432154299934993615, guid: 25316138e7b2aa14ea59e98f0b0a8fa7,
     type: 3}
+  partile: {fileID: 5542578857053201389, guid: 2b9ccc236c50ed845bf07af5482702ae, type: 3}
   isShot: 0
   isCore: 0
   isParent: 0
