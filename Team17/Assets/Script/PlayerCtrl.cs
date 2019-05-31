@@ -69,16 +69,8 @@ public class PlayerCtrl : MonoBehaviour
             rig.AddForce(vec * speed);
 
             //レベルアップ処理
-            if (exp >= expTable)
-            {
-                Vector2 vec = GamePad.GetAxis(GamePad.Axis.LeftStick, GamePad.Index.Any);
-                float axis = Input.GetAxis("R_XAxis_0");
-                //スティックでプレイヤー移動
-                float size = catchMeteo != null ? catchMeteo.size : 1;
-                float rate = speed / size;
-                if (rig.velocity.magnitude >= rate && vec != Vector2.zero)
-                    rig.velocity = rig.velocity.normalized * rate;
-                rig.AddForce(vec * speed);
+           
+               
                 if (isCatch)
                 {
                     rig.AddForce(-transform.position.normalized * 3);
@@ -104,7 +96,7 @@ public class PlayerCtrl : MonoBehaviour
 
                 anim.SetBool("IsCatch", catchMeteo);
             }
-        }
+        
     }
 
     void Rotate()

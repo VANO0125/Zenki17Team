@@ -175,7 +175,7 @@ public class MeteoCtrl : MonoBehaviour
             if (transform.childCount == 1 && transform.GetChild(0).tag == "Meteo")
             {
                 transform.GetChild(0).parent = null;
-                MeteoLayer.Instance.ChangeBool(layerNum);
+                DestroyNum();
                 Destroy(gameObject);
             }
             if (!isCaught)
@@ -266,8 +266,8 @@ public class MeteoCtrl : MonoBehaviour
                     Destroy(shotObject);
                 Destroy(gameObject);
             }
-                DestroyNum();
-                Destroy(gameObject);
+                //DestroyNum();
+                //Destroy(gameObject);
             }
         
         if (transform.childCount == 1 && transform.GetChild(0).tag == "Meteo")
