@@ -29,7 +29,7 @@ public class ShootingStar : MonoBehaviour
     public void FallMeteo()
     {
         //隕石を2秒表示
-        GameObject obj = Instantiate(meteo, transform.position, Quaternion.identity);
+        GameObject obj = Instantiate(meteo, Vector3.up*10, Quaternion.identity);
         Destroy(obj, 2f);
     }
 }

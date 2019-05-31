@@ -24,6 +24,8 @@ public class EarthCtrl : MonoBehaviour
     public int exp;//追加される経験値
     private int pulsExp;
 
+    [SerializeField]
+    private GameObject deathEffect;
     public ShootingStar star;//地上視点
     public GameObject earthCamera;//地上カメラ
     private bool isDisplay;//地上カメラが表示されているか
@@ -61,9 +63,8 @@ public class EarthCtrl : MonoBehaviour
         }
         DisPlayCamera();
 
-        if (hp <= 0)//HP0以下の時
+        if (hp <= 0&&!isDead)//HP0以下の時
         {
-            isDead = true;
             Destroy();
         }
         if (!isDead)
@@ -78,13 +79,16 @@ public class EarthCtrl : MonoBehaviour
     void Destroy()
     {
         //破壊処理
+        isDead = true;
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
         earth.SetActive(false);
         over.SetActive(true);
-        Time.timeScale = 0;
+        GameManager.isStart = false;
     }
 
     public void AddMeteo(int meteoSize)
     {
+        if (!GameManager.isStart) return;
         if (meteoSize <= safeSize)
         {
             isDisplay = true;//カメラ表示
