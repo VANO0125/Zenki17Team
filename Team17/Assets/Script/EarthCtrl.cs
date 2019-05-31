@@ -31,6 +31,12 @@ public class EarthCtrl : MonoBehaviour
     public Number scoreNumber;//スコア描写
     public GameObject over;
     private float timer;
+    [SerializeField]
+    private bool isBonus;
+    private float bonusTimer;
+    private int bonusCnt;
+    [SerializeField]
+    private float exitBonusTimer = 4.0f;
 
     public float gameTimer;
     public int starCounter;
@@ -42,6 +48,8 @@ public class EarthCtrl : MonoBehaviour
         Time.timeScale = 1f;
         gameTimer = 0;
         starCounter = 0;
+        bonusTimer = 0;
+        bonusCnt = 1;
     }
 
     // Update is called once per frame
@@ -68,6 +76,11 @@ public class EarthCtrl : MonoBehaviour
         }
         if (!isDead)
             gameTimer += Time.deltaTime;
+        if(isBonus)
+        {
+            bonusTimer += Time.deltaTime; ;
+        }
+        BonusExit();
     }
 
     void SetStart()
@@ -87,13 +100,16 @@ public class EarthCtrl : MonoBehaviour
     {
         if (meteoSize <= safeSize)
         {
+            bonusTimer = 0; 
             isDisplay = true;//カメラ表示
             timer = earthTimer;//表示時間をリセット
-            score += meteoSize * defaultScore;
+            score += meteoSize * defaultScore * bonusCnt;
+            BonusTime();
             scoreNumber.Set(score);//スコアを更新
             pulsExp = exp;
             star.FallStar();
             starCounter++;
+            isBonus = true;
         }
         else
         {
@@ -117,6 +133,23 @@ public class EarthCtrl : MonoBehaviour
             isDisplay = false;
             earthCamera.SetActive(false);
         }
+    }
+
+    void BonusExit()
+    {
+        if (!isBonus) return;
+        if(bonusTimer >=exitBonusTimer)
+        {
+            isBonus = false;
+            bonusTimer = 0;
+            bonusCnt = 1;
+        }
+    }
+
+    void BonusTime()
+    {
+        if (!isBonus) return;
+        bonusCnt++;
     }
 
 
