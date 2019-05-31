@@ -23,13 +23,13 @@ public class MeteoManger : MonoBehaviour
     private List<int> meteoID = new List<int>();
     [SerializeField]
     private Waring waring;
-
-
+    private int current;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        current = 0;
         spawnNum = 0;
         meteoTable = new MeteoTable();
         meteoTable.Load();
@@ -59,9 +59,9 @@ public class MeteoManger : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= spawnTime[spawnNum])
         {
-            MeteoCtrl newMeteo = Instantiate(meteoType[meteoID[spawnNum]], train.position, Quaternion.identity) as MeteoCtrl;          
+            MeteoCtrl newMeteo = Instantiate(meteoType[meteoID[spawnNum]], train.position, Quaternion.identity) as MeteoCtrl;
             spawnNum++;
-            if(spawnNum >= spawnTime.Count - 1)
+            if (spawnNum >= spawnTime.Count - 1)
             {
                 spawnNum = 0;
             }
@@ -70,7 +70,7 @@ public class MeteoManger : MonoBehaviour
             newMeteo.earth = earth;
             newMeteo.SetTarget(earth.transform);
             waring.CreateLineRendererObject(newMeteo.transform);
-           
+
         }
 
     }
@@ -78,8 +78,11 @@ public class MeteoManger : MonoBehaviour
     void SpawnPos()
     {
         posNum = Random.Range(0, spawnPos.Count);
+        while (posNum == meteoNum)
+            posNum = Random.Range(0, spawnPos.Count);
         meteoNum = Random.Range(0, meteos.Count);
         train = spawnPos[posNum].transform;
+        current = posNum;
     }
 
     void AddMeteo()
