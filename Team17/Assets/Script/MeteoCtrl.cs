@@ -295,7 +295,7 @@ public class MeteoCtrl : MonoBehaviour
                 meteos[i].isShot = true;
                 meteos[i].gameObject.layer = 8;
                 meteos[i].SetKinematic(false);
-                meteos[i].rig.AddForce((meteos[i].transform.position - core.position).normalized * 3, ForceMode2D.Impulse);
+                meteos[i].rig.AddForce((meteos[i].transform.position - core.position).normalized * 1000, ForceMode2D.Impulse);
                 meteos[i].hp = 0;
             }
             audioSource.PlayOneShot(Sebreak);

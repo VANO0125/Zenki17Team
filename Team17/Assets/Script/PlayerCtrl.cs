@@ -68,18 +68,18 @@ public class PlayerCtrl : MonoBehaviour
                 rig.velocity = rig.velocity.normalized * rate;
             rig.AddForce(vec * speed);
 
-            //レベルアップ処理
            
                
                 if (isCatch)
                 {
                     rig.AddForce(-transform.position.normalized * 3);
                 }
-
+            if (level <= 30)
+            {
                 //レベルアップ処理
                 if (exp >= expTable)
                 {
-                    int remainder = exp - expTable;
+                    int remainder = exp - expTable ;
                     exp += remainder;
                     power += 5;
                     exp = 0;
@@ -88,6 +88,8 @@ public class PlayerCtrl : MonoBehaviour
                     expSlider.maxValue = expTable;
                     level++;
                 }
+           
+            }
                 Rotate();
                 Attack();
                 MeteoCatch();

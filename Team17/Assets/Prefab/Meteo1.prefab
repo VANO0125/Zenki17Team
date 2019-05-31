@@ -58,7 +58,7 @@ MonoBehaviour:
   number: 0
   parent: {fileID: 0}
   meteos: []
-  speed: 3
+  speed: 18
   power: 0
   target: {fileID: 0}
   earth: {fileID: 0}
@@ -71,6 +71,7 @@ MonoBehaviour:
   shotEffect: {fileID: 5650058007943873574, guid: c8fa7b7258f87584180232c65c5fe9e5,
     type: 3}
   maxHp: 0
+  maxParent: 0
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -358,6 +359,7 @@ MonoBehaviour:
   shotEffect: {fileID: 5650058007943873574, guid: c8fa7b7258f87584180232c65c5fe9e5,
     type: 3}
   maxHp: 30
+  maxParent: 0
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -647,6 +649,7 @@ MonoBehaviour:
   shotEffect: {fileID: 5650058007943873574, guid: c8fa7b7258f87584180232c65c5fe9e5,
     type: 3}
   maxHp: 30
+  maxParent: 0
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -932,6 +935,7 @@ MonoBehaviour:
   shotEffect: {fileID: 5650058007943873574, guid: c8fa7b7258f87584180232c65c5fe9e5,
     type: 3}
   maxHp: 30
+  maxParent: 0
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -1220,6 +1224,7 @@ MonoBehaviour:
   shotEffect: {fileID: 5650058007943873574, guid: c8fa7b7258f87584180232c65c5fe9e5,
     type: 3}
   maxHp: 30
+  maxParent: 0
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -1508,6 +1513,7 @@ MonoBehaviour:
   shotEffect: {fileID: 5650058007943873574, guid: c8fa7b7258f87584180232c65c5fe9e5,
     type: 3}
   maxHp: 30
+  maxParent: 0
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -1803,6 +1809,7 @@ MonoBehaviour:
   shotEffect: {fileID: 5650058007943873574, guid: c8fa7b7258f87584180232c65c5fe9e5,
     type: 3}
   maxHp: 30
+  maxParent: 0
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -2082,6 +2089,7 @@ MonoBehaviour:
   shotEffect: {fileID: 5650058007943873574, guid: c8fa7b7258f87584180232c65c5fe9e5,
     type: 3}
   maxHp: 30
+  maxParent: 0
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
@@ -2375,6 +2383,7 @@ MonoBehaviour:
   shotEffect: {fileID: 5650058007943873574, guid: c8fa7b7258f87584180232c65c5fe9e5,
     type: 3}
   maxHp: 30
+  maxParent: 0
   hp: 0
   Sebreak: {fileID: 8300000, guid: 9496c02afe0772542ba83089ce43517c, type: 3}
   Seattck: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
