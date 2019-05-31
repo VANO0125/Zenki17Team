@@ -43,6 +43,8 @@ public class MeteoCtrl : MonoBehaviour
     private float shotTime;
     private float timer;
     public float maxHp;
+    [SerializeField]
+    private bool maxParent;
     public float hp;
     private int layerNum;
     private List<int> saveNum;
@@ -61,11 +63,19 @@ public class MeteoCtrl : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
 
         //子オブジェクトがあればサイズを合計
-        if (isParent)
+        if (isParent )
         {
             earth = GameObject.FindGameObjectWithTag("Earth").GetComponent<EarthCtrl>();
-            layerNum = MeteoLayer.Instance.GetLayer();
+            if(!GetHighest().gameObject.GetComponent<MeteoCtrl>().maxParent)
+            {
+                layerNum = MeteoLayer.Instance.GetLayer();
+            }
+            else
+            {
+                layerNum = GetHighest().gameObject.GetComponent<MeteoCtrl>().layerNum;
+            }          
             gameObject.layer = layerNum;
+            maxParent = true;
             meteos = new MeteoCtrl[transform.childCount];
 
             for (int i = 0; i < transform.childCount; i++)
@@ -152,7 +162,6 @@ public class MeteoCtrl : MonoBehaviour
                 Destroy(shotObject);
 
             ReMove();
-
             if (GetHighest().size <= earth.safeSize && meteoParticle != null)
                 meteoParticle.SetActive(true);
             else if (meteoParticle != null)
@@ -167,6 +176,26 @@ public class MeteoCtrl : MonoBehaviour
             {
                 transform.GetChild(0).parent = null;
                 MeteoLayer.Instance.ChangeBool(layerNum);
+                Destroy(gameObject);
+            }
+            if (!isCaught)
+                rig.mass = 10;
+            ReMove();
+
+            if (GetHighest().size <= earth.safeSize && meteoParticle != null)
+                meteoParticle.SetActive(true);
+            else if (meteoParticle != null)
+                meteoParticle.SetActive(false);
+            if (transform.parent != null && transform.parent.gameObject.tag == "Meteo")
+            {
+                transform.localPosition = localPos;
+                rig.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
+            else rig.constraints = RigidbodyConstraints2D.None;
+            if (transform.childCount == 1 && transform.GetChild(0).tag == "Meteo")
+            {
+                transform.GetChild(0).parent = null;
+                DestroyNum();
                 Destroy(gameObject);
             }
         }
@@ -237,7 +266,10 @@ public class MeteoCtrl : MonoBehaviour
                     Destroy(shotObject);
                 Destroy(gameObject);
             }
-        }
+                DestroyNum();
+                Destroy(gameObject);
+            }
+        
         if (transform.childCount == 1 && transform.GetChild(0).tag == "Meteo")
         {
             transform.GetChild(0).parent = null;
@@ -245,6 +277,12 @@ public class MeteoCtrl : MonoBehaviour
                 MeteoLayer.Instance.ChangeBool(layerNum);
             Destroy(gameObject);
         }
+    }
+
+    void DestroyNum()
+    {
+        if (layerNum != 8)
+            MeteoLayer.Instance.ChangeBool(layerNum);
     }
 
     void DivisionAll(Transform core)
@@ -447,8 +485,8 @@ public class MeteoCtrl : MonoBehaviour
     {
         if (col.gameObject.tag == "Earth")
         {
-            EarthCtrl earth = col.gameObject.GetComponent<EarthCtrl>();
-            earth.AddMeteo(GetHighest().size);
+            EarthCtrl earth = col.gameObject.GetComponent<EarthCtrl>();          
+            earth.AddMeteo(GetHighest().size);             
             Destroy(GetHighest().gameObject);
             //Debug.Log("nu"+earth.hp);
             //サイズが一定以下なら加点
