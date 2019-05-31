@@ -110,6 +110,31 @@ namespace GamepadInput
             return axis;
         }
 
+        public static bool GetAnyButton(Button button)
+        {
+            KeyCode code = GetAnyKeycode(button);
+            return Input.GetKeyDown(code);
+        }
+
+        public static KeyCode GetAnyKeycode(Button button)
+        {
+            {
+                switch (button)
+                {
+                    case Button.A: return KeyCode.JoystickButton0;
+                    case Button.B: return KeyCode.JoystickButton0;
+                    case Button.X: return KeyCode.JoystickButton0;
+                    case Button.Y: return KeyCode.JoystickButton0;
+                    case Button.RightShoulder: return KeyCode.JoystickButton0;
+                    case Button.LeftShoulder: return KeyCode.JoystickButton0;
+                    case Button.Back: return KeyCode.JoystickButton0;
+                    case Button.Start: return KeyCode.JoystickButton0;
+                    case Button.LeftStick: return KeyCode.JoystickButton0;
+                    case Button.RightStick: return KeyCode.JoystickButton0;
+                }
+            }
+            return KeyCode.None;
+        }
 
         static KeyCode GetKeycode(Button button, Index controlIndex)
         {

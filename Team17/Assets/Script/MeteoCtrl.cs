@@ -77,7 +77,7 @@ public class MeteoCtrl : MonoBehaviour
             gameObject.layer = layerNum;
             maxParent = true;
             meteos = new MeteoCtrl[transform.childCount];
-
+            earth = GameObject.FindGameObjectWithTag("Earth").GetComponent<EarthCtrl>();
             for (int i = 0; i < transform.childCount; i++)
             {
 
