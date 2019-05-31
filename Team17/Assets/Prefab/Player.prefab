@@ -332,6 +332,7 @@ MonoBehaviour:
   expTable: 10
   levelText: {fileID: 0}
   expSlider: {fileID: 0}
+  shotEffect: {fileID: 0}
   shotPower: 1000
   power: 100
   rushInterval: 10
@@ -339,7 +340,7 @@ MonoBehaviour:
   score: 0
   throwSE: {fileID: 8300000, guid: a2099654fba7a674da28d8cfc8e8ce2e, type: 3}
   catchSE: {fileID: 8300000, guid: 33e4d086f40bfd146bc8c275aa78a8fb, type: 3}
-  punchSE: {fileID: 8300000, guid: 6636116f626eecb4b8c1ecbbd831ecaa, type: 3}
+  punchSE: {fileID: 8300000, guid: 7b95ddd83786dc745a8f8f521830dd19, type: 3}
 --- !u!114 &4026410390526199935
 MonoBehaviour:
   m_ObjectHideFlags: 0
