@@ -21,6 +21,8 @@ public class PlayerCtrl : MonoBehaviour
     private Slider expSlider;
 
     [SerializeField]
+    private GameObject shotEffect;
+    [SerializeField]
     private float shotPower;
     [SerializeField]
     private float power;//投げた隕石の威力
