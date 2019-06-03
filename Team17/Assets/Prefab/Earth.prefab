@@ -337,14 +337,21 @@ MonoBehaviour:
   earth: {fileID: 989836311543304807}
   maxHp: 10
   hp: 0
-  safeSize: 3
+  safeSize: 2
   defaultScore: 100
+  score: 0
   isDead: 0
   player: {fileID: 0}
   exp: 10
+  deathEffect: {fileID: 2830411773799725431, guid: 26bca4cf98165fb43a8b9af10f59d1b3,
+    type: 3}
   star: {fileID: 0}
   earthCamera: {fileID: 0}
   earthTimer: 120
   scoreNumber: {fileID: 0}
   over: {fileID: 0}
+  isBonus: 0
+  exitBonusTimer: 4
   gameTimer: 0
+  starCounter: 0
+  commbo: {fileID: 0}

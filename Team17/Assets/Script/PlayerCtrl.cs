@@ -47,11 +47,12 @@ public class PlayerCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();
         expTable = GetComponent<ExpList>().expList[0];
         expSlider.maxValue = expTable;
         audioSource = GetComponent<AudioSource>();
-        anim = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -194,6 +195,7 @@ public class PlayerCtrl : MonoBehaviour
         {
             anim.SetTrigger("Slow");
             isCatch = false;
+
         }
     }
 

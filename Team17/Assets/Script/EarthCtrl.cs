@@ -42,6 +42,9 @@ public class EarthCtrl : MonoBehaviour
 
     public float gameTimer;
     public int starCounter;
+    [SerializeField]
+    private Text commbo;
+    
     void Start()
     {
         //HP
@@ -52,6 +55,7 @@ public class EarthCtrl : MonoBehaviour
         starCounter = 0;
         bonusTimer = 0;
         bonusCnt = 1;
+        commbo = commbo.GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -82,6 +86,8 @@ public class EarthCtrl : MonoBehaviour
             bonusTimer += Time.deltaTime; ;
         }
         BonusExit();
+
+        CommboText();
     }
 
     void SetStart()
@@ -108,6 +114,7 @@ public class EarthCtrl : MonoBehaviour
             isDisplay = true;//カメラ表示
             timer = earthTimer;//表示時間をリセット
             score += meteoSize * defaultScore * bonusCnt;
+            CommboUpdate();
             BonusTime();
             scoreNumber.Set(score);//スコアを更新
             pulsExp = exp;
@@ -156,5 +163,20 @@ public class EarthCtrl : MonoBehaviour
         bonusCnt++;
     }
 
+    void CommboText()
+    {
+        if(isBonus)
+        {
+            commbo.enabled = true;
+        }
+        else
+        {
+            commbo.enabled = false;
+        }
+    }
+    void CommboUpdate()
+    {
+        commbo.text = bonusCnt.ToString() + "コンボ！";
+    }
 
 }
